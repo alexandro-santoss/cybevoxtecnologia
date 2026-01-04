@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 
-<title>CyberVox Tecnologia | Informática, Smartphones, Games e Utilidades</title>
+<title>CyberVox Tecnologia | Informática, Papelaria, Limpeza e Embalagens</title>
 
-<meta name="description" content="CyberVox Tecnologia: informática, smartphones, games, papelaria, limpeza, embalagens e ofertas.">
-<meta name="keywords" content="cybervox, informática, smartphones, games, papelaria, limpeza, embalagens">
+<meta name="description" content="CyberVox Tecnologia: informática, papelaria, limpeza, embalagens e utilidades com entrega rápida e compra segura.">
+<meta name="keywords" content="cybervox, informatica, papelaria, limpeza, embalagens">
 <meta name="author" content="CyberVox Tecnologia">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,109 +14,97 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
+/* ================= HEADER ================= */
+.header{background:#fff;border-bottom:1px solid #e5e5e5}
+.header-container{
+  max-width:1280px;margin:auto;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  gap:20px;padding:15px
+}
+.logo{font-size:26px;font-weight:800;color:#111}
+
+.search-box input{
+  padding:12px 16px;
+  border-radius:30px;
+  border:1px solid #ddd;
+  min-width:280px;
+}
+
+.header-actions a{
+  margin-left:14px;
+  font-weight:600;
+  text-decoration:none;
+  color:#111;
+}
+
 /* ================= MENU SUPERIOR ================= */
 .top-categories{
-  display:flex;
-  gap:10px;
+  display:flex;gap:10px;
   padding:12px 16px;
   background:#fff;
   border-bottom:1px solid #e5e5e5;
-  overflow-x:auto;
+  overflow-x:auto
 }
 .top-categories a{
   padding:10px 16px;
   border-radius:20px;
   background:#f0f0f0;
-  color:#222;
-  text-decoration:none;
-  font-weight:600;
-  transition:.2s;
+  color:#222;text-decoration:none;
+  font-weight:600;white-space:nowrap
 }
 .top-categories a:hover,
-.top-categories a.active{
-  background:#111;
-  color:#fff;
-}
-.top-categories a.ofertas{
-  background:#d62828;
-  color:#fff;
-}
+.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#d62828;color:#fff}
 
-/* ================= MENU LATERAL ================= */
-.sidebar{
-  padding:20px;
-  background:#fafafa;
-}
-.sidebar a{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 14px;
-  margin-bottom:10px;
-  background:#fff;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-  color:#222;
-  box-shadow:0 4px 10px rgba(0,0,0,.06);
-  transition:.2s;
-}
-.sidebar a:hover{
-  background:#111;
+/* ================= HERO ================= */
+.hero{
+  background:linear-gradient(135deg,#111,#333);
   color:#fff;
-  transform:translateY(-2px);
+  padding:60px 20px;
+  text-align:center
 }
+.hero h1{font-size:36px;margin-bottom:10px}
+.hero p{font-size:18px;opacity:.9}
 
-/* ================= PRODUTOS ================= */
+/* ================= GRID PADRÃO ================= */
 .products-grid{
+  max-width:1280px;
+  margin:40px auto;
+  padding:0 20px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
-  margin-top:20px;
+  gap:25px
 }
 .product-card{
   background:#fff;
-  border-radius:10px;
-  padding:15px;
+  border-radius:12px;
+  padding:20px;
   box-shadow:0 6px 18px rgba(0,0,0,.08);
-  text-align:center;
+  text-align:center
 }
 .product-card img{
-  max-width:100%;
+  width:100%;
   height:160px;
   object-fit:contain;
 }
 .product-card h3{
-  font-size:15px;
-  margin:10px 0;
+  font-size:16px;
+  margin:12px 0;
   color:#111;
 }
-.product-card strong{
-  display:block;
-  margin-bottom:10px;
-  font-size:16px;
-  color:#000;
-}
-.product-card button{
-  width:100%;
-  padding:10px;
-  margin-top:6px;
-  border:none;
-  border-radius:6px;
-  font-weight:600;
-  cursor:pointer;
+.product-card a{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 20px;
   background:#111;
   color:#fff;
-}
-.product-card button.favorito{
-  background:#e5e5e5;
-  color:#111;
-}
-.product-card button:hover{
-  opacity:.9;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:600
 }
 
-/* ================= RODAPÉ ================= */
+/* ================= RODAPÉ PADRÃO ================= */
 .footer{
   background:#111;
   color:#e5e5e5;
@@ -170,19 +158,40 @@
   position:fixed;
   bottom:20px;
   right:20px;
-  z-index:9999;
+  z-index:9999
 }
 .whatsapp-btn{
-  width:60px;
-  height:60px;
+  width:60px;height:60px;
   background:#25d366;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 8px 20px rgba(0,0,0,.35);
+  box-shadow:0 8px 20px rgba(0,0,0,.35)
 }
 .whatsapp-btn img{width:34px}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width:768px){
+  .header-container{flex-direction:column;gap:12px}
+  .search-box input{width:100%;min-width:unset}
+  .header-actions{
+    width:100%;
+    display:flex;
+    justify-content:space-between
+  }
+  .hero h1{font-size:28px}
+  .hero p{font-size:16px}
+  .products-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:16px
+  }
+  .product-card img{height:120px}
+  .footer-content{
+    grid-template-columns:1fr;
+    text-align:center
+  }
+}
 </style>
 </head>
 
@@ -192,59 +201,53 @@
   <div class="header-container">
     <div class="logo">CYBERVOX</div>
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Buscar produtos...">
+      <input type="text" placeholder="Buscar produtos...">
     </div>
     <div class="header-actions">
-      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="carrinho.html">🛒 Carrinho</a>
       <a href="favoritos.html">❤️ Favoritos</a>
-      <a href="minha-conta.html">👤 Minha Conta</a>
+      <a href="minha-conta.html">👤 Conta</a>
     </div>
   </div>
 </header>
 
 <nav class="top-categories">
-  <a class="active" href="informatica.html">💻 Informática</a>
-  <a href="smartphones.html">📱 Smartphones</a>
-  <a href="games.html">🎮 Games</a>
+  <a href="informatica.html">💻 Informática</a>
   <a href="papelaria.html">📚 Papelaria</a>
   <a href="limpeza.html">🧼 Limpeza</a>
   <a href="embalagens.html">📦 Embalagens</a>
   <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
 </nav>
 
-<div class="layout">
+<section class="hero">
+  <h1>CyberVox Tecnologia</h1>
+  <p>Tudo para seu negócio, escola ou casa em um só lugar</p>
+</section>
 
-  <aside class="sidebar">
-    <a href="hardware.html">🧩 Hardware</a>
-    <a href="software.html">💿 Software</a>
-    <a href="computadores.html">🖥️ Computadores</a>
-    <a href="setup-gamers.html">🎮 Setup Gamers</a>
-    <a href="notebook.html">💻 Notebook</a>
-    <a href="monitores.html">🖥️ Monitores</a>
-    <a href="perifericos.html">⌨️ Periféricos</a>
-    <a href="acessorios.html">🔌 Acessórios</a>
-    <a href="energia.html">⚡ Energia</a>
-    <a href="impressao.html">🖨️ Impressão</a>
-    <a href="audio.html">🔊 Áudio</a>
-    <a href="automacao.html">🤖 Automação</a>
-    <a href="redes.html">🌐 Redes</a>
-    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
-  </aside>
-
-  <main class="content">
-    <section class="hero-banner">
-      <h1>Bem-vindo à CyberVox Tecnologia</h1>
-      <p>Sua loja completa de tecnologia, informática e utilidades.</p>
-    </section>
-
-    <h2>Produtos em Destaque</h2>
-    <section class="products-grid" id="listaProdutos"></section>
-  </main>
-
-</div>
+<section class="products-grid">
+  <div class="product-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" loading="lazy">
+    <h3>Informática</h3>
+    <a href="informatica.html">Ver produtos</a>
+  </div>
+  <div class="product-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064193.png" loading="lazy">
+    <h3>Papelaria</h3>
+    <a href="papelaria.html">Ver produtos</a>
+  </div>
+  <div class="product-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" loading="lazy">
+    <h3>Limpeza</h3>
+    <a href="limpeza.html">Ver produtos</a>
+  </div>
+  <div class="product-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920324.png" loading="lazy">
+    <h3>Embalagens</h3>
+    <a href="embalagens.html">Ver produtos</a>
+  </div>
+</section>
 
 <footer class="footer">
-
   <div class="footer-top">
     <div>🚚 Entrega Rápida</div>
     <div>🔐 Compra Segura</div>
@@ -253,7 +256,6 @@
   </div>
 
   <div class="footer-content">
-
     <div>
       <h4>Atendimento</h4>
       <ul>
@@ -291,84 +293,18 @@
         <li><a href="https://wa.me/5511978357841">Atendimento WhatsApp</a></li>
       </ul>
     </div>
-
   </div>
 
   <div class="footer-bottom">
     © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
   </div>
-
 </footer>
 
 <div class="whatsapp-float">
   <a class="whatsapp-btn" href="https://wa.me/5511978357841" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
   </a>
 </div>
-
-<script>
-const produtos=[
- {id:1,nome:"Notebook Lenovo IdeaPad 3",preco:2999.90,img:"https://images.kabum.com.br/produtos/fotos/149985/notebook-lenovo-ideapad-3_1629731584_g.jpg"},
- {id:2,nome:"Monitor Samsung 24 Full HD",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/160043/monitor-samsung-24_1634587566_g.jpg"},
- {id:3,nome:"Teclado Logitech K120",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/97415/teclado-logitech-k120_1542820197_g.jpg"},
- {id:4,nome:"Mouse Gamer Logitech G203",preco:169.90,img:"https://images.kabum.com.br/produtos/fotos/97539/mouse-logitech-g203_1543008213_g.jpg"}
-];
-
-let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
-let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
-
-const lista=document.getElementById("listaProdutos");
-const busca=document.getElementById("searchInput");
-const cartCount=document.querySelector(".cart-count");
-
-function atualizarCarrinho(){
-  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
-}
-
-function addCarrinho(id){
-  const p=produtos.find(x=>x.id===id);
-  const item=carrinho.find(x=>x.id===id);
-  item?item.qtd++:carrinho.push({...p,qtd:1});
-  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
-  atualizarCarrinho();
-}
-
-function favoritar(id,btn){
-  const idx=favoritos.findIndex(f=>f.id===id);
-  if(idx>=0){
-    favoritos.splice(idx,1);
-    btn.textContent="♡ Favoritar";
-  }else{
-    favoritos.push(produtos.find(p=>p.id===id));
-    btn.textContent="♥ Favorito";
-  }
-  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
-}
-
-function renderizar(listaProdutos){
-  lista.innerHTML="";
-  listaProdutos.forEach(p=>{
-    const fav=favoritos.some(f=>f.id===p.id);
-    lista.innerHTML+=`
-    <div class="product-card">
-      <img src="${p.img}" alt="${p.nome}">
-      <h3>${p.nome}</h3>
-      <strong>R$ ${p.preco.toFixed(2)}</strong>
-      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
-      <button class="favorito" onclick="favoritar(${p.id},this)">
-        ${fav?"♥ Favorito":"♡ Favoritar"}
-      </button>
-    </div>`;
-  });
-}
-
-busca.addEventListener("input",()=>{
-  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
-});
-
-renderizar(produtos);
-atualizarCarrinho();
-</script>
 
 </body>
 </html>
