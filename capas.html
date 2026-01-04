@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Capas para Smartphones | CyberVox Tecnologia</title>
+
+<meta name="description" content="Capas para smartphones com proteção, estilo e resistência para iPhone, Samsung, Motorola e Xiaomi.">
+<meta name="keywords" content="capas smartphone, capas iphone, capas samsung, capas xiaomi, capas motorola">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid #e5e5e5;overflow-x:auto
+}
+.top-categories a{
+  padding:8px 14px;border-radius:18px;background:#f1f5f9;
+  color:#111;text-decoration:none;font-weight:600
+}
+.top-categories a:hover,
+.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#dc2626;color:#fff}
+
+.layout{display:flex;gap:20px;padding:20px}
+
+.sidebar{
+  width:240px;padding:20px;background:#f1f5f9;border-radius:14px
+}
+.sidebar a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  text-decoration:none;font-weight:600;color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06)
+}
+.sidebar a:hover,
+.sidebar a.active{background:#111;color:#fff;transform:translateY(-2px)}
+
+.content{flex:1}
+
+.product-card button.favorito{
+  background:#e5e7eb;color:#111
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar capas...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a class="active" href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="android.html">🤖 Android</a>
+    <a href="apple.html">🍎 Apple</a>
+    <a href="acessorios-smartphone.html">📱 Acessórios</a>
+    <a class="active" href="capas.html">🛡️ Capas</a>
+    <a href="carregadores.html">🔌 Carregadores</a>
+    <a href="fones.html">🎧 Fones de Ouvido</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Capas para Smartphones</h1>
+      <p>Proteção confiável e estilo para o seu celular.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos=[
+/* ===== IPHONE ===== */
+{id:701,nome:"Capa Silicone iPhone 11",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/356001/capa-silicone-iphone_1619981111_g.jpg"},
+{id:702,nome:"Capa Silicone iPhone 12",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/356002/capa-silicone-iphone12_1619982222_g.jpg"},
+{id:703,nome:"Capa Silicone iPhone 13",preco:44.90,img:"https://images.kabum.com.br/produtos/fotos/356003/capa-silicone-iphone13_1619983333_g.jpg"},
+{id:704,nome:"Capa Silicone iPhone 14",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/356004/capa-silicone-iphone14_1619984444_g.jpg"},
+{id:705,nome:"Capa Silicone iPhone 15",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/356005/capa-silicone-iphone15_1619985555_g.jpg"},
+{id:706,nome:"Capa Transparente iPhone 13",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/356008/capa-transparente_1619988888_g.jpg"},
+{id:707,nome:"Capa Anti Impacto iPhone 14",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/406025/capa-armor_1669981111_g.jpg"},
+
+/* ===== SAMSUNG ===== */
+{id:708,nome:"Capa Samsung Galaxy A14",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/366010/capa-samsung-a14_1629981111_g.jpg"},
+{id:709,nome:"Capa Samsung Galaxy A15",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/366011/capa-samsung-a15_1629982222_g.jpg"},
+{id:710,nome:"Capa Samsung Galaxy A34",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/366012/capa-samsung-a34_1629983333_g.jpg"},
+{id:711,nome:"Capa Samsung Galaxy S23",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/366013/capa-samsung-s23_1629984444_g.jpg"},
+{id:712,nome:"Capa Samsung Galaxy S24",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/366014/capa-samsung-s24_1629985555_g.jpg"},
+{id:713,nome:"Capa Carteira Samsung A15",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/396023/capa-carteira_1659982222_g.jpg"},
+
+/* ===== XIAOMI ===== */
+{id:714,nome:"Capa Xiaomi Redmi Note 12",preco:29.90,img:"https://images.kabum.com.br/produtos/fotos/376015/capa-redmi-note12_1639981111_g.jpg"},
+{id:715,nome:"Capa Xiaomi Redmi Note 13",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/376016/capa-redmi-note13_1639982222_g.jpg"},
+{id:716,nome:"Capa Xiaomi Poco X5",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/376017/capa-poco-x5_1639983333_g.jpg"},
+{id:717,nome:"Capa Xiaomi Poco X6",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/376018/capa-poco-x6_1639984444_g.jpg"},
+{id:718,nome:"Capa Carteira Xiaomi",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/396024/capa-carteira_1659983333_g.jpg"},
+
+/* ===== MOTOROLA ===== */
+{id:719,nome:"Capa Moto G34",preco:29.90,img:"https://images.kabum.com.br/produtos/fotos/386019/capa-moto-g34_1649981111_g.jpg"},
+{id:720,nome:"Capa Moto G54",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/386020/capa-moto-g54_1649982222_g.jpg"},
+{id:721,nome:"Capa Moto G84",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/386021/capa-moto-g84_1649983333_g.jpg"},
+
+/* ===== UNIVERSAIS / PREMIUM ===== */
+{id:722,nome:"Capa Anti Impacto Universal",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/416030/capa-reforcada_1679984444_g.jpg"},
+{id:723,nome:"Capa TPU Colorida Universal",preco:24.90,img:"https://images.kabum.com.br/produtos/fotos/416027/capa-tpu_1679981111_g.jpg"},
+{id:724,nome:"Capa Couro Sintético Premium",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/416029/capa-couro_1679983333_g.jpg"}
+];
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

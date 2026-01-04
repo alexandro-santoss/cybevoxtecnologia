@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel RH | CyberVox Tecnologia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{font-family:Arial;background:#f4f6f8;margin:0}
+.container{max-width:1100px;margin:auto;padding:40px}
+.card{
+  background:#fff;
+  padding:20px;
+  border-radius:8px;
+  margin-bottom:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,.05)
+}
+button{
+  background:#e63946;
+  color:#fff;
+  border:none;
+  padding:8px 12px;
+  border-radius:4px;
+  cursor:pointer
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Painel Interno de RH</h1>
+<div id="lista"></div>
+</div>
+
+<script>
+const lista=document.getElementById("lista");
+const dados=JSON.parse(localStorage.getItem("curriculosRH"))||[];
+
+if(!dados.length){
+  lista.innerHTML="<p>Nenhum currículo cadastrado.</p>";
+}
+
+dados.forEach((c,i)=>{
+  lista.innerHTML+=`
+  <div class="card">
+    <strong>${c.nome}</strong><br>
+    ${c.email}<br>
+    ${c.telefone}<br>
+    Vaga: ${c.vaga}<br>
+    <small>${c.data}</small><br><br>
+    <button onclick="remover(${i})">Remover</button>
+  </div>`;
+});
+
+function remover(i){
+  dados.splice(i,1);
+  localStorage.setItem("curriculosRH",JSON.stringify(dados));
+  location.reload();
+}
+</script>
+
+</body>
+</html>

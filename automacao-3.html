@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Automação | CyberVox Tecnologia</title>
+
+<meta name="description" content="Automação e IoT: lâmpadas, sensores, câmeras, fechaduras, hubs, controles IR e kits inteligentes.">
+<meta name="keywords" content="automacao, iot, casa inteligente, smart home, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar produtos de automação...">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a class="active" href="informatica.html">Informática</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a href="higiene.html">Higiene</a>
+  <a href="games.html">Games</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="papelaria.html">Papelaria</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">Hardware</a>
+    <a href="software.html">Software</a>
+    <a href="computadores.html">Computadores</a>
+    <a href="setup-gamers.html">Setup Gamers</a>
+    <a href="notebook.html">Notebook</a>
+    <a href="monitores.html">Monitores</a>
+    <a href="perifericos.html">Periféricos</a>
+    <a href="acessorios.html">Acessórios</a>
+    <a href="energia.html">Energia</a>
+    <a href="impressao.html">Impressão</a>
+    <a href="audio.html">Áudio</a>
+    <a href="automacao.html" class="active">Automação</a>
+    <a href="redes.html">Redes</a>
+    <a href="cadeiras-gamers.html">Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <a href="informatica.html">Informática</a> ›
+      <span>Automação</span>
+    </nav>
+
+    <section class="hero-banner">
+      <h1>Automação & IoT</h1>
+      <p>Conectividade, segurança e controle inteligente para ambientes modernos.</p>
+    </section>
+
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+    <div style="text-align:center;margin-top:20px;">
+      <strong>Páginas:</strong>
+      <a href="automacao.html">1</a>
+      <a href="automacao-2.html">2</a>
+      <a href="automacao-3.html">3</a>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+      <a href="politica-troca.html">Garantia</a>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+      <a href="#">Carreiras</a>
+      <a href="#">Sustentabilidade</a>
+    </div>
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841" target="_blank">
+        Atendimento via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function showToast(msg){
+  const t=document.createElement("div");
+  t.className="toast show";
+  t.innerText=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+  showToast("Produto adicionado ao carrinho");
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+const produtos = [
+ {nome:"Lâmpada Smart TP-Link Tapo L530",desc:"RGB Wi-Fi com Alexa.",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/130221/tapo-l530_1650012299_g.jpg"},
+ {nome:"Lâmpada Smart Xiaomi Mi LED",desc:"Controle por app.",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/118001/xiaomi-led_1625200012_g.jpg"},
+ {nome:"Tomada Smart Tuya Wi-Fi",desc:"Automação de energia.",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/126001/tuya-plug_1640011122_g.jpg"},
+ {nome:"Interruptor Smart Intelbras EWS 300",desc:"Controle de iluminação.",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/123221/intelbras-ews300_1639012299_g.jpg"},
+ {nome:"Sensor de Gás Smart Tuya",desc:"Alerta em tempo real.",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/127001/sensor-gas-tuya_1642233441_g.jpg"},
+ {nome:"Sensor de Fumaça Intelbras",desc:"Segurança residencial.",preco:229.90,img:"https://images.kabum.com.br/produtos/fotos/118781/intelbras-fumaca_1626691401_g.jpg"},
+ {nome:"Câmera Wi-Fi Intelbras IM5",desc:"Full HD com áudio.",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/122001/intelbras-im5_1634570001_g.jpg"},
+ {nome:"Câmera Wi-Fi TP-Link Tapo C310",desc:"Externa IP66.",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/130331/tapo-c310_1651012299_g.jpg"},
+ {nome:"Campainha Smart Positivo",desc:"Vídeo e notificação.",preco:429.90,img:"https://images.kabum.com.br/produtos/fotos/123457/positivo-campainha_1639022211_g.jpg"},
+ {nome:"Fechadura Smart Intelbras FR 210",desc:"Biometria e senha.",preco:1199.90,img:"https://images.kabum.com.br/produtos/fotos/125221/intelbras-fr210_1640012299_g.jpg"},
+ {nome:"Fechadura Smart Xiaomi",desc:"Controle via app.",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/118002/xiaomi-lock_1625201122_g.jpg"},
+ {nome:"Hub Smart Intelbras Zigbee",desc:"Integra dispositivos.",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/123222/intelbras-hub_1639012399_g.jpg"},
+ {nome:"Hub Smart Aqara Xiaomi",desc:"Automação avançada.",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/118003/aqara-hub_1625202233_g.jpg"},
+ {nome:"Controle IR Smart Tuya",desc:"Controla ar e TV.",preco:139.90,img:"https://images.kabum.com.br/produtos/fotos/126113/controle-tuya_1640012444_g.jpg"},
+ {nome:"Kit Automação Positivo Casa",desc:"Lâmpada + tomada.",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/121906/positivo-kit_1633022555_g.jpg"},
+ {nome:"Kit Segurança Smart Intelbras",desc:"Câmera + sensor.",preco:549.90,img:"https://images.kabum.com.br/produtos/fotos/124001/intelbras-kit_1639900011_g.jpg"},
+ {nome:"Sensor Vibração Tuya",desc:"Detecção de impacto.",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/127002/sensor-vibracao_1642233555_g.jpg"},
+ {nome:"Sensor Umidade Smart",desc:"Monitoramento climático.",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/127003/sensor-umidade_1642233666_g.jpg"},
+ {nome:"Relé Smart Wi-Fi Sonoff",desc:"Automação elétrica.",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/118004/sonoff-rele_1625203344_g.jpg"},
+ {nome:"Controlador Smart Cortina",desc:"Automatiza cortinas.",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/127004/cortina-smart_1642233777_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

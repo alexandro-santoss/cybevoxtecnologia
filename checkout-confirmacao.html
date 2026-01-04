@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Pedido Confirmado | CyberVox Tecnologia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* =========================
+   CONFIRMAÇÃO DE PEDIDO
+   ========================= */
+
+.confirmacao-box {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.confirmacao-icone {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.confirmacao-titulo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.confirmacao-sub {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.confirmacao-status {
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.status-aguardando {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-processando {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-pago {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.confirmacao-detalhes {
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 14px;
+  text-align: left;
+  margin: 20px 0;
+}
+
+.confirmacao-detalhes p {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.confirmacao-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.confirmacao-btn:hover {
+  background: #1d4ed8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" placeholder="O que você procura?">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho</a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<!-- MENU SUPERIOR -->
+<nav class="top-categories">
+  <a class="active" href="informatica.html">Informática</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="games.html">Games</a>
+  <a href="papelaria.html">Papelaria</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <!-- MENU LATERAL -->
+  <aside class="sidebar">
+    <a href="hardware.html">Hardware</a>
+    <a href="computadores.html">Computadores</a>
+    <a href="monitores.html">Monitores</a>
+    <a href="perifericos.html">Periféricos</a>
+    <a href="acessorios.html">Acessórios</a>
+    <a href="energia.html">Energia</a>
+    <a href="impressao.html">Impressão</a>
+    <a href="audio.html">Áudio</a>
+    <a href="automacao.html">Automação</a>
+    <a href="redes.html">Redes</a>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Pedido Confirmado</h1>
+      <p>Obrigado por comprar com a CyberVox Tecnologia.</p>
+    </section>
+
+    <div class="confirmacao-box">
+
+      <div class="confirmacao-icone">📦</div>
+
+      <div class="confirmacao-titulo">
+        Seu pedido foi registrado com sucesso
+      </div>
+
+      <div class="confirmacao-sub">
+        Acompanhe o status do seu pedido em “Minha Conta”.
+      </div>
+
+      <div id="statusBox" class="confirmacao-status">
+        Status do pagamento
+      </div>
+
+      <div class="confirmacao-detalhes">
+        <p><strong>Número do pedido:</strong> <span id="pedidoNumero"></span></p>
+        <p><strong>Valor total:</strong> <span id="pedidoTotal"></span></p>
+        <p><strong>Forma de pagamento:</strong> PIX</p>
+        <p><strong>Data:</strong> <span id="pedidoData"></span></p>
+      </div>
+
+      <a href="index.html">
+        <button class="confirmacao-btn">
+          Continuar comprando
+        </button>
+      </a>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- RODAPÉ -->
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+      <a href="politica-troca.html">Garantia</a>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+      <a href="#">Carreiras</a>
+      <a href="#">Sustentabilidade</a>
+    </div>
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841" target="_blank">
+        Atendimento via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+
+</footer>
+
+<script>
+function formatar(v){
+  return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+}
+
+/* GERAR NÚMERO DO PEDIDO */
+function gerarNumeroPedido(){
+  return "CVX" + Date.now();
+}
+
+/* LER RESUMO */
+const resumo = JSON.parse(localStorage.getItem("checkoutResumoCybervox"));
+if(!resumo || !resumo.itens || !resumo.itens.length){
+  window.location.href = "index.html";
+}
+
+/* CRIAR PEDIDO */
+const pedido = {
+  numero: gerarNumeroPedido(),
+  total: resumo.total,
+  formaPagamento: "PIX",
+  status: "AGUARDANDO_PAGAMENTO",
+  data: new Date().toLocaleString("pt-BR"),
+  itens: resumo.itens
+};
+
+/* SALVAR HISTÓRICO */
+const pedidos = JSON.parse(localStorage.getItem("pedidosCybervox")) || [];
+pedidos.push(pedido);
+localStorage.setItem("pedidosCybervox", JSON.stringify(pedidos));
+
+/* EXIBIR */
+document.getElementById("pedidoNumero").innerText = pedido.numero;
+document.getElementById("pedidoTotal").innerText = formatar(pedido.total);
+document.getElementById("pedidoData").innerText = pedido.data;
+
+/* STATUS VISUAL */
+const statusBox = document.getElementById("statusBox");
+
+if(pedido.status === "AGUARDANDO_PAGAMENTO"){
+  statusBox.classList.add("status-aguardando");
+  statusBox.innerHTML = "⏳ Aguardando pagamento via PIX";
+}
+
+if(pedido.status === "PROCESSANDO"){
+  statusBox.classList.add("status-processando");
+  statusBox.innerHTML = "🔄 Pagamento em processamento";
+}
+
+if(pedido.status === "PAGO"){
+  statusBox.classList.add("status-pago");
+  statusBox.innerHTML = "✅ Pagamento confirmado";
+}
+
+/* LIMPAR DADOS TEMPORÁRIOS */
+localStorage.removeItem("carrinhoCybervox");
+localStorage.removeItem("checkoutResumoCybervox");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Apple iPhone | CyberVox Tecnologia</title>
+
+<meta name="description" content="Apple iPhone originais com garantia, alto desempenho, iOS atualizado e tecnologia premium.">
+<meta name="keywords" content="iphone, apple, smartphone apple, ios, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= MENU SUPERIOR ================= */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:10px 16px;
+  border-radius:20px;
+  background:#f0f0f0;
+  color:#222;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#d62828;
+  color:#fff;
+}
+
+/* ================= MENU LATERAL ================= */
+.sidebar{
+  padding:20px;
+  background:#fafafa;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  margin-bottom:10px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#222;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:.2s;
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* ================= BOTÃO FAVORITOS ================= */
+.product-card button.favorito{
+  background:#e5e5e5;
+  color:#111;
+}
+.product-card button.favorito:hover{
+  background:#d1d5db;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar iPhone...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a class="active" href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="android.html">🤖 Android</a>
+    <a class="active" href="apple.html">🍎 Apple</a>
+    <a href="acessorios-smartphone.html">📱 Acessórios</a>
+    <a href="capas.html">🛡️ Capas</a>
+    <a href="carregadores.html">🔌 Carregadores</a>
+    <a href="fones.html">🎧 Fones de Ouvido</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Apple iPhone</h1>
+      <p>iPhones originais com desempenho premium, segurança e ecossistema Apple.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos=[
+ {id:401,nome:"iPhone 11 64GB",preco:2799.90,img:"https://images.kabum.com.br/produtos/fotos/154321/iphone-11_1600000001_g.jpg"},
+ {id:402,nome:"iPhone 11 128GB",preco:2999.90,img:"https://images.kabum.com.br/produtos/fotos/154321/iphone-11_1600000001_g.jpg"},
+ {id:403,nome:"iPhone 12 64GB",preco:3299.90,img:"https://images.kabum.com.br/produtos/fotos/177654/iphone-12_1610000001_g.jpg"},
+ {id:404,nome:"iPhone 12 128GB",preco:3499.90,img:"https://images.kabum.com.br/produtos/fotos/177654/iphone-12_1610000001_g.jpg"},
+ {id:405,nome:"iPhone 13 128GB",preco:4199.90,img:"https://images.kabum.com.br/produtos/fotos/204556/iphone-13_1620000001_g.jpg"},
+ {id:406,nome:"iPhone 13 256GB",preco:4499.90,img:"https://images.kabum.com.br/produtos/fotos/204556/iphone-13_1620000001_g.jpg"},
+ {id:407,nome:"iPhone 14 128GB",preco:4799.90,img:"https://images.kabum.com.br/produtos/fotos/247998/iphone-14_1630000001_g.jpg"},
+ {id:408,nome:"iPhone 14 Plus 128GB",preco:5199.90,img:"https://images.kabum.com.br/produtos/fotos/247999/iphone-14-plus_1630000002_g.jpg"},
+ {id:409,nome:"iPhone 14 Pro 128GB",preco:5899.90,img:"https://images.kabum.com.br/produtos/fotos/248000/iphone-14-pro_1630000003_g.jpg"},
+ {id:410,nome:"iPhone 15 128GB",preco:5299.90,img:"https://images.kabum.com.br/produtos/fotos/462111/iphone-15_1690000001_g.jpg"},
+ {id:411,nome:"iPhone 15 Plus 128GB",preco:5699.90,img:"https://images.kabum.com.br/produtos/fotos/462112/iphone-15-plus_1690000002_g.jpg"},
+ {id:412,nome:"iPhone 15 Pro 128GB",preco:6499.90,img:"https://images.kabum.com.br/produtos/fotos/462113/iphone-15-pro_1690000003_g.jpg"},
+ {id:413,nome:"iPhone 15 Pro Max 256GB",preco:7499.90,img:"https://images.kabum.com.br/produtos/fotos/462114/iphone-15-pro-max_1690000004_g.jpg"},
+ {id:414,nome:"iPhone SE 2022 64GB",preco:2499.90,img:"https://images.kabum.com.br/produtos/fotos/345112/iphone-se-2022_1650000001_g.jpg"},
+ {id:415,nome:"iPhone SE 2022 128GB",preco:2799.90,img:"https://images.kabum.com.br/produtos/fotos/345112/iphone-se-2022_1650000001_g.jpg"},
+ {id:416,nome:"iPhone 12 Mini 64GB",preco:2999.90,img:"https://images.kabum.com.br/produtos/fotos/177655/iphone-12-mini_1610000002_g.jpg"},
+ {id:417,nome:"iPhone 13 Mini 128GB",preco:3999.90,img:"https://images.kabum.com.br/produtos/fotos/204557/iphone-13-mini_1620000002_g.jpg"},
+ {id:418,nome:"iPhone 14 Pro Max 256GB",preco:6999.90,img:"https://images.kabum.com.br/produtos/fotos/248001/iphone-14-pro-max_1630000004_g.jpg"},
+ {id:419,nome:"iPhone 15 256GB",preco:5899.90,img:"https://images.kabum.com.br/produtos/fotos/462111/iphone-15_1690000001_g.jpg"},
+ {id:420,nome:"iPhone 15 Pro 256GB",preco:6999.90,img:"https://images.kabum.com.br/produtos/fotos/462113/iphone-15-pro_1690000003_g.jpg"},
+ {id:421,nome:"iPhone 13 Pro 128GB",preco:5599.90,img:"https://images.kabum.com.br/produtos/fotos/204558/iphone-13-pro_1620000003_g.jpg"},
+ {id:422,nome:"iPhone 12 Pro 128GB",preco:4799.90,img:"https://images.kabum.com.br/produtos/fotos/177656/iphone-12-pro_1610000003_g.jpg"},
+ {id:423,nome:"iPhone XR 64GB",preco:2399.90,img:"https://images.kabum.com.br/produtos/fotos/123456/iphone-xr_1590000001_g.jpg"},
+ {id:424,nome:"iPhone XR 128GB",preco:2699.90,img:"https://images.kabum.com.br/produtos/fotos/123456/iphone-xr_1590000001_g.jpg"},
+ {id:425,nome:"iPhone 14 256GB",preco:5199.90,img:"https://images.kabum.com.br/produtos/fotos/247998/iphone-14_1630000001_g.jpg"}
+];
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

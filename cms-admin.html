@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>CMS Admin | CyberVox Tecnologia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX · CMS</div>
+    <div class="header-actions">
+      <a href="index.html">🏠 Site</a>
+      <a href="painel-mensagens.html">📩 Mensagens</a>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+
+<section class="hero-banner">
+  <h1>CMS Institucional</h1>
+  <p>Gerencie os textos institucionais do site.</p>
+</section>
+
+<section class="products-grid">
+
+<div class="product-card">
+  <h3>Sobre Nós</h3>
+  <textarea id="sobre" style="width:100%;min-height:160px"></textarea>
+  <button onclick="salvar('sobre')">Salvar</button>
+</div>
+
+<div class="product-card">
+  <h3>Trocas e Devoluções</h3>
+  <textarea id="trocas" style="width:100%;min-height:160px"></textarea>
+  <button onclick="salvar('trocas')">Salvar</button>
+</div>
+
+<div class="product-card">
+  <h3>Rastreamento</h3>
+  <textarea id="rastreamento" style="width:100%;min-height:160px"></textarea>
+  <button onclick="salvar('rastreamento')">Salvar</button>
+</div>
+
+</section>
+
+</main>
+
+<script>
+function salvar(chave){
+  localStorage.setItem("cms_"+chave, document.getElementById(chave).value);
+  alert("Conteúdo salvo com sucesso!");
+}
+
+function carregar(){
+  ["sobre","trocas","rastreamento"].forEach(k=>{
+    document.getElementById(k).value =
+      localStorage.getItem("cms_"+k) || "";
+  });
+}
+
+carregar();
+</script>
+
+</body>
+</html>

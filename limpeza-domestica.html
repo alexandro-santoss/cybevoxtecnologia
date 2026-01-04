@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Limpeza Doméstica | CyberVox Tecnologia</title>
+
+<meta name="description" content="Produtos de limpeza doméstica na CyberVox Tecnologia: detergentes, desinfetantes, álcool, sabão, multiuso e muito mais.">
+<meta name="keywords" content="limpeza domestica, detergente, desinfetante, alcool, sabao">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ====== ESTILO IDÊNTICO AO limpeza.html ====== */
+.top-categories{display:flex;gap:10px;padding:12px 16px;background:#fff;border-bottom:1px solid #e5e5e5;overflow-x:auto}
+.top-categories a{padding:10px 16px;border-radius:20px;background:#f0f0f0;color:#222;text-decoration:none;font-weight:600}
+.top-categories a:hover,.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#d62828;color:#fff}
+
+.sidebar{padding:20px;background:#fafafa}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:12px 14px;margin-bottom:10px;background:#fff;border-radius:10px;text-decoration:none;font-weight:600;color:#222;box-shadow:0 4px 10px rgba(0,0,0,.06);transition:.2s}
+.sidebar a:hover{background:#111;color:#fff;transform:translateY(-2px)}
+
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;margin-top:20px}
+.product-card{background:#fff;border-radius:10px;padding:15px;box-shadow:0 6px 18px rgba(0,0,0,.08);text-align:center}
+.product-card img{max-width:100%;height:160px;object-fit:contain}
+.product-card h3{font-size:15px;margin:10px 0;color:#111}
+.product-card strong{display:block;margin-bottom:10px;font-size:16px;color:#000}
+.product-card button{width:100%;padding:10px;margin-top:6px;border:none;border-radius:6px;font-weight:600;cursor:pointer;background:#111;color:#fff}
+.product-card button.favorito{background:#e5e5e5;color:#111}
+
+.footer{background:#111;color:#e5e5e5;margin-top:40px}
+.footer-bottom{text-align:center;padding:15px;font-size:14px;color:#9ca3af;border-top:1px solid #222}
+
+.whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:9999}
+.whatsapp-btn{width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.whatsapp-btn img{width:34px}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar limpeza doméstica...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a class="active" href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="limpeza-domestica.html">🏠 Limpeza Doméstica</a>
+    <a href="limpeza-profissional.html">🏢 Limpeza Profissional</a>
+    <a href="descartaveis.html">🧻 Descartáveis</a>
+    <a href="dispenser.html">🧼 Dispenser</a>
+    <a href="utensilios-limpeza.html">🧹 Utensílios</a>
+  </aside>
+
+  <main class="content">
+    <section class="hero-banner">
+      <h1>Limpeza Doméstica</h1>
+      <p>Produtos essenciais para a limpeza da sua casa, com qualidade e ótimo custo-benefício.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+  </main>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<div class="whatsapp-float">
+  <a class="whatsapp-btn" href="https://wa.me/5511978357841" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  </a>
+</div>
+
+<script>
+const baseProdutos=[
+ {nome:"Detergente Líquido Neutro 500ml",preco:3.99,img:"https://images.kabum.com.br/produtos/fotos/295144/detergente-liquido_1640128825_g.jpg"},
+ {nome:"Desinfetante Floral 2L",preco:12.90,img:"https://images.kabum.com.br/produtos/fotos/293412/desinfetante_1639423122_g.jpg"},
+ {nome:"Álcool 70% 1L",preco:8.90,img:"https://images.kabum.com.br/produtos/fotos/292184/alcool-70_1638219912_g.jpg"},
+ {nome:"Sabão em Pó 1kg",preco:12.50,img:"https://images.kabum.com.br/produtos/fotos/292890/sabao-po_1638322211_g.jpg"},
+ {nome:"Limpador Multiuso",preco:7.90,img:"https://images.kabum.com.br/produtos/fotos/293990/limpador-multiuso_1639000111_g.jpg"},
+ {nome:"Esponja Multiuso",preco:3.50,img:"https://images.kabum.com.br/produtos/fotos/292100/esponja_1638000101_g.jpg"},
+ {nome:"Pano de Chão Algodão",preco:9.90,img:"https://images.kabum.com.br/produtos/fotos/293330/pano-chao_1638901011_g.jpg"},
+ {nome:"Água Sanitária 2L",preco:6.90,img:"https://images.kabum.com.br/produtos/fotos/292441/agua-sanitaria_1638123456_g.jpg"},
+ {nome:"Limpa Vidros Spray",preco:8.50,img:"https://images.kabum.com.br/produtos/fotos/293100/limpa-vidros_1638500012_g.jpg"},
+ {nome:"Desengordurante Cozinha",preco:9.90,img:"https://images.kabum.com.br/produtos/fotos/293220/desengordurante_1638800000_g.jpg"}
+];
+
+let produtos=[];
+for(let i=0;i<100;i++){
+  produtos.push({...baseProdutos[i%10],id:i+1001});
+}
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function render(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  render(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+render(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

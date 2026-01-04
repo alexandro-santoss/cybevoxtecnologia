@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Redes | CyberVox Tecnologia</title>
+
+<meta name="description" content="Equipamentos de redes: roteadores, switches, access points, cabos, placas de rede e soluções para empresas e residências.">
+<meta name="keywords" content="redes, roteador, switch, access point, cabo de rede, wifi, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL DO INDEX ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar redes...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a class="active" href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Redes</h1>
+      <p>Soluções completas de conectividade para residências, empresas e ambientes corporativos.</p>
+    </section>
+
+    <!-- FILTRO DE PREÇO -->
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* ===== PRODUTOS REDES (30) ===== */
+const produtos = [
+ {nome:"Roteador TP-Link Archer C6 AC1200",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/100289/roteador-tplink-archer-c6_1550581223_g.jpg"},
+ {nome:"Roteador TP-Link Archer AX10 Wi-Fi 6",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/150221/roteador-ax10_1632213322_g.jpg"},
+ {nome:"Roteador Mercusys AC12G",preco:219.90,img:"https://images.kabum.com.br/produtos/fotos/112221/mercusys-ac12g_1621122211_g.jpg"},
+ {nome:"Roteador Intelbras RF 1200",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/113221/intelbras-rf1200_1622211122_g.jpg"},
+ {nome:"Roteador Xiaomi Mi Router 4A",preco:279.90,img:"https://images.kabum.com.br/produtos/fotos/114221/xiaomi-router_1623322211_g.jpg"},
+ {nome:"Switch TP-Link 8 Portas Gigabit",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/115221/switch-tplink-8p_1624412211_g.jpg"},
+ {nome:"Switch TP-Link 16 Portas Gigabit",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/116221/switch-16p_1625512211_g.jpg"},
+ {nome:"Switch Intelbras 24 Portas",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/117221/switch-intelbras_1626612211_g.jpg"},
+ {nome:"Access Point TP-Link EAP225",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/118221/ap-eap225_1627712211_g.jpg"},
+ {nome:"Access Point Intelbras AP 1250",preco:549.90,img:"https://images.kabum.com.br/produtos/fotos/119221/ap-intelbras_1628812211_g.jpg"},
+ {nome:"Placa de Rede TP-Link Gigabit PCIe",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/100289/placa-de-rede-tp-link_1550581223_g.jpg"},
+ {nome:"Adaptador Wi-Fi USB TP-Link TL-WN722N",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/120221/adaptador-wifi-usb_1629912211_g.jpg"},
+ {nome:"Adaptador Wi-Fi USB Dual Band",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/121221/adaptador-dualband_1631012211_g.jpg"},
+ {nome:"Cabo de Rede CAT5e 10m",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/122221/cabo-cat5e_1632112211_g.jpg"},
+ {nome:"Cabo de Rede CAT6 20m",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/123221/cabo-cat6_1633212211_g.jpg"},
+ {nome:"Patch Panel 24 Portas",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/124221/patch-panel_1634312211_g.jpg"},
+ {nome:"Rack de Parede 9U",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/125221/rack-9u_1635412211_g.jpg"},
+ {nome:"Rack de Parede 12U",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/126221/rack-12u_1636512211_g.jpg"},
+ {nome:"Conector RJ45 CAT6 (100 un)",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/127221/conector-rj45_1637612211_g.jpg"},
+ {nome:"Crimpador de Rede Profissional",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/128221/crimpador_1638712211_g.jpg"},
+ {nome:"Testador de Cabo de Rede",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/129221/testador-rede_1639812211_g.jpg"},
+ {nome:"Conversor Fibra Óptica TP-Link",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/130221/conversor-fibra_1640912211_g.jpg"},
+ {nome:"ONU FiberHome",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/131221/onu-fiberhome_1642012211_g.jpg"},
+ {nome:"Repetidor Wi-Fi TP-Link RE305",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/132221/repetidor_1643112211_g.jpg"},
+ {nome:"Repetidor Wi-Fi Intelbras IWE 3000N",preco:219.90,img:"https://images.kabum.com.br/produtos/fotos/133221/repetidor-intelbras_1644212211_g.jpg"},
+ {nome:"Controladora Wi-Fi TP-Link Omada",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/134221/controladora-omada_1645312211_g.jpg"},
+ {nome:"Antena Wi-Fi Externa 12dBi",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/135221/antena-wifi_1646412211_g.jpg"},
+ {nome:"Firewall Appliance UTM",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/136221/firewall_1647512211_g.jpg"},
+ {nome:"Gateway VPN Corporativo",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/137221/gateway-vpn_1648612211_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados = produtos.filter(p=>p.preco>=min && p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados = produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

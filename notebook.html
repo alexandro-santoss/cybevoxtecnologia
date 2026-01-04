@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Notebooks | CyberVox Tecnologia</title>
+
+<meta name="description" content="Notebooks para uso profissional, estudos, home office e alto desempenho.">
+<meta name="keywords" content="notebook, laptop, home office, notebook profissional, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid #e5e5e5;overflow-x:auto
+}
+.top-categories a{
+  padding:8px 14px;border-radius:18px;background:#f1f5f9;
+  color:#111;text-decoration:none;font-weight:600;font-size:14px
+}
+.top-categories a:hover,.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#dc2626;color:#fff}
+
+.layout{display:flex;gap:20px}
+.sidebar{
+  width:240px;padding:20px;background:#f1f5f9;border-radius:14px
+}
+.sidebar a{
+  display:flex;gap:10px;align-items:center;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  font-weight:600;color:#111;text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,.06)
+}
+.sidebar a:hover,.sidebar a.active{
+  background:#111;color:#fff;transform:translateY(-2px)
+}
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar notebooks...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+<aside class="sidebar">
+  <a href="hardware.html">🧩 Hardware</a>
+  <a href="software.html">💿 Software</a>
+  <a href="computadores.html">🖥️ Computadores</a>
+  <a href="setup-gamers.html">🎮 Setup Gamers</a>
+  <a class="active" href="notebook.html">💻 Notebook</a>
+  <a href="monitores.html">🖥️ Monitores</a>
+  <a href="perifericos.html">⌨️ Periféricos</a>
+  <a href="acessorios.html">🔌 Acessórios</a>
+  <a href="energia.html">⚡ Energia</a>
+  <a href="impressao.html">🖨️ Impressão</a>
+  <a href="audio.html">🔊 Áudio</a>
+  <a href="automacao.html">🤖 Automação</a>
+  <a href="redes.html">🌐 Redes</a>
+  <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+</aside>
+
+<main class="content">
+
+<section class="hero-banner">
+  <h1>Notebooks</h1>
+  <p>Mobilidade, desempenho e confiabilidade para trabalho, estudo e lazer.</p>
+</section>
+
+<section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+  <strong>Filtrar por preço</strong><br><br>
+  <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+  <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+  <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+</section>
+
+<section class="products-grid" id="listaProdutos"></section>
+
+</main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText=
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){favoritos.splice(idx,1);btn.innerText="♡ Favoritar";}
+  else{favoritos.push(p);btn.innerText="♥ Favorito";}
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* === 30 NOTEBOOKS === */
+const produtos=[
+{nome:"Notebook Lenovo IdeaPad 3 i3",desc:"Intel Core i3, 8GB RAM, SSD 256GB.",preco:2799.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Lenovo IdeaPad 3 i5",desc:"Intel Core i5, 8GB RAM, SSD 512GB.",preco:3499.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Dell Inspiron i3",desc:"Uso doméstico e profissional.",preco:2899.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Dell Inspiron i5",desc:"Desempenho equilibrado.",preco:3799.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Dell Inspiron i7",desc:"Alta performance.",preco:4699.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Samsung Book i3",desc:"Design leve e portátil.",preco:2699.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Samsung Book i5",desc:"Trabalho e estudos.",preco:3399.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Acer Aspire 5 i5",desc:"Excelente custo-benefício.",preco:3599.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Acer Aspire 3 Ryzen 5",desc:"Performance AMD.",preco:3299.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook HP 250 G8",desc:"Uso corporativo.",preco:3199.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook HP ProBook i5",desc:"Linha empresarial.",preco:4299.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Lenovo ThinkPad i5",desc:"Robustez profissional.",preco:4499.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Lenovo ThinkPad i7",desc:"Alto desempenho corporativo.",preco:5299.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook ASUS VivoBook i5",desc:"Design moderno.",preco:3699.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook ASUS VivoBook i7",desc:"Performance avançada.",preco:4799.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Gamer Acer Nitro 5",desc:"Intel i5, GTX/RTX.",preco:5499.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Gamer Dell G15",desc:"Alta performance gamer.",preco:6499.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Gamer Lenovo Legion",desc:"Ryzen 7, RTX.",preco:7899.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Ultrafino Samsung",desc:"Leve e portátil.",preco:3999.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Ultrafino LG Gram",desc:"Extremamente leve.",preco:7999.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Apple MacBook Air M1",desc:"Desempenho e bateria.",preco:6999.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Apple MacBook Air M2",desc:"Nova geração Apple.",preco:8999.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Corporativo Positivo",desc:"Uso administrativo.",preco:2499.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Multilaser Legacy",desc:"Estudos e tarefas básicas.",preco:2299.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Vaio FE15",desc:"Design premium.",preco:3899.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Vaio Z",desc:"Alta performance.",preco:6999.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Gamer ASUS TUF",desc:"Resistência militar.",preco:7299.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Gamer MSI Katana",desc:"Alto desempenho gamer.",preco:7699.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Ryzen 7 Premium",desc:"Multitarefa pesada.",preco:5899.90,img:"https://via.placeholder.com/250"},
+{nome:"Notebook Corporativo Executivo",desc:"Alta confiabilidade.",preco:8499.90,img:"https://via.placeholder.com/250"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}">
+      <h3>${p.nome}</h3>
+      <p>${p.desc}</p>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+      <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+    </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

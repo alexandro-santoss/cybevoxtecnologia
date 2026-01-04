@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Software | CyberVox Tecnologia</title>
+
+<meta name="description" content="Softwares originais para Windows, Office, antivírus, produtividade e uso profissional.">
+<meta name="keywords" content="software, windows, office, antivirus, licenças, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL DO INDEX ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar software...">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a class="active" href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <a href="informatica.html">Informática</a> ›
+      <span>Software</span>
+    </nav>
+
+    <section class="hero-banner">
+      <h1>Software</h1>
+      <p>Licenças originais para produtividade, segurança e uso profissional.</p>
+    </section>
+
+    <!-- FILTRO DE PREÇO (PRESERVADO) -->
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+
+    <div>
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="fale-conosco.html">Fale Conosco</a></li>
+        <li><a href="rastreamento.html">Rastreamento</a></li>
+        <li><a href="politica-troca.html">Troca e Devolução</a></li>
+        <li><a href="politica-troca.html">Garantia</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li><a href="marca-propria.html">Marca Própria</a></li>
+        <li><a href="carreiras.html">Carreiras</a></li>
+        <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Minha Conta</h4>
+      <ul>
+        <li><a href="minha-conta.html">Entrar / Cadastrar</a></li>
+        <li><a href="favoritos.html">Favoritos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li>WhatsApp: (11) 97835-7841</li>
+        <li>Email: fale.tvision@outlook.com</li>
+        <li><a href="https://wa.me/5511978357841">Atendimento WhatsApp</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* PRODUTOS SOFTWARE (15) */
+const produtos = [
+ {nome:"Windows 11 Pro OEM",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/192058/windows-11-pro_1666295044_g.jpg"},
+ {nome:"Microsoft Office 2021",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/191225/office-2021_1665684963_g.jpg"},
+ {nome:"Microsoft 365 Personal",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/154682/microsoft-365_1634051094_g.jpg"},
+ {nome:"Antivírus Kaspersky Internet Security",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/112233/kaspersky_1622546732_g.jpg"},
+ {nome:"Antivírus Norton 360",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/114455/norton_1625567789_g.jpg"},
+ {nome:"Windows 10 Pro OEM",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/108765/windows-10-pro_1618329971_g.jpg"},
+ {nome:"CorelDRAW Graphics Suite",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/151234/coreldraw_1630011223_g.jpg"},
+ {nome:"Adobe Acrobat Pro DC",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/145678/adobe-acrobat_1628897741_g.jpg"},
+ {nome:"AutoCAD 2024 Licença",preco:2499.90,img:"https://images.kabum.com.br/produtos/fotos/167890/autocad_1641223344_g.jpg"},
+ {nome:"Windows Server 2019",preco:2999.90,img:"https://images.kabum.com.br/produtos/fotos/176543/windows-server_1650012234_g.jpg"},
+ {nome:"ESET Internet Security",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/119876/eset_1627789965_g.jpg"},
+ {nome:"Antivírus Bitdefender Total Security",preco:139.90,img:"https://images.kabum.com.br/produtos/fotos/118233/bitdefender_1627011123_g.jpg"},
+ {nome:"Microsoft Visio 2021",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/193344/visio_1667129988_g.jpg"},
+ {nome:"Microsoft Project 2021",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/193345/project_1667129999_g.jpg"},
+ {nome:"Licença Windows 11 Home",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/192059/windows-11-home_1666295055_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

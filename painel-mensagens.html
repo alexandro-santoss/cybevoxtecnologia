@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel de Mensagens | CyberVox Tecnologia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.panel-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.msg-card {
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:16px;
+}
+
+.msg-card + .msg-card {
+  margin-top:14px;
+}
+
+.msg-meta {
+  font-size:12px;
+  color:#64748b;
+  margin-bottom:8px;
+}
+
+.msg-actions {
+  margin-top:10px;
+  display:flex;
+  gap:10px;
+}
+
+.btn-danger {
+  background:#dc2626;
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.btn-danger:hover {
+  background:#b91c1c;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX · ADMIN</div>
+    <div class="header-actions">
+      <a href="index.html">🏠 Site</a>
+      <a href="fale-conosco.html">📩 Contato</a>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+<main class="content">
+
+<section class="hero-banner">
+  <h1>Painel de Mensagens</h1>
+  <p>Mensagens recebidas pelo formulário de contato.</p>
+</section>
+
+<div class="panel-header">
+  <strong>Total de mensagens: <span id="total"></span></strong>
+  <button class="btn-danger" onclick="limparTudo()">Limpar Tudo</button>
+</div>
+
+<div id="listaMensagens"></div>
+
+</main>
+</div>
+
+<script>
+let mensagens = JSON.parse(localStorage.getItem("mensagensCybervox")) || [];
+
+document.getElementById("total").innerText = mensagens.length;
+
+function render(){
+  const lista = document.getElementById("listaMensagens");
+  lista.innerHTML = "";
+
+  if(!mensagens.length){
+    lista.innerHTML = "<p>Nenhuma mensagem registrada.</p>";
+    return;
+  }
+
+  mensagens.slice().reverse().forEach((m,i)=>{
+    lista.innerHTML += `
+      <div class="msg-card">
+        <div class="msg-meta">
+          <strong>${m.nome}</strong> · ${m.email}<br>
+          ${new Date(m.data).toLocaleString("pt-BR")}
+        </div>
+        <p><strong>Assunto:</strong> ${m.assunto}</p>
+        <p>${m.mensagem}</p>
+        <div class="msg-actions">
+          <button class="btn-danger" onclick="excluir(${mensagens.length-1-i})">
+            Excluir
+          </button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function excluir(i){
+  if(confirm("Excluir esta mensagem?")){
+    mensagens.splice(i,1);
+    localStorage.setItem("mensagensCybervox", JSON.stringify(mensagens));
+    location.reload();
+  }
+}
+
+function limparTudo(){
+  if(confirm("Apagar TODAS as mensagens?")){
+    localStorage.removeItem("mensagensCybervox");
+    location.reload();
+  }
+}
+
+render();
+</script>
+
+</body>
+</html>

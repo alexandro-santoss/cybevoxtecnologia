@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Monitores | CyberVox Tecnologia</title>
+
+<meta name="description" content="Monitores profissionais, gamers e corporativos para trabalho, estudo e entretenimento.">
+<meta name="keywords" content="monitor, monitor gamer, monitor corporativo, monitor profissional, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid #e5e5e5;overflow-x:auto
+}
+.top-categories a{
+  padding:8px 14px;border-radius:18px;background:#f1f5f9;
+  color:#111;text-decoration:none;font-weight:600;font-size:14px
+}
+.top-categories a:hover,.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#dc2626;color:#fff}
+
+.layout{display:flex;gap:20px}
+.sidebar{
+  width:240px;padding:20px;background:#f1f5f9;border-radius:14px
+}
+.sidebar a{
+  display:flex;gap:10px;align-items:center;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  font-weight:600;color:#111;text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,.06)
+}
+.sidebar a:hover,.sidebar a.active{
+  background:#111;color:#fff;transform:translateY(-2px)
+}
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar monitores...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+<aside class="sidebar">
+  <a href="hardware.html">🧩 Hardware</a>
+  <a href="software.html">💿 Software</a>
+  <a href="computadores.html">🖥️ Computadores</a>
+  <a href="setup-gamers.html">🎮 Setup Gamers</a>
+  <a href="notebook.html">💻 Notebook</a>
+  <a class="active" href="monitores.html">🖥️ Monitores</a>
+  <a href="perifericos.html">⌨️ Periféricos</a>
+  <a href="acessorios.html">🔌 Acessórios</a>
+  <a href="energia.html">⚡ Energia</a>
+  <a href="impressao.html">🖨️ Impressão</a>
+  <a href="audio.html">🔊 Áudio</a>
+  <a href="automacao.html">🤖 Automação</a>
+  <a href="redes.html">🌐 Redes</a>
+  <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+</aside>
+
+<main class="content">
+
+<section class="hero-banner">
+  <h1>Monitores</h1>
+  <p>Qualidade de imagem, ergonomia e desempenho para qualquer necessidade.</p>
+</section>
+
+<section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+  <strong>Filtrar por preço</strong><br><br>
+  <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+  <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+  <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+</section>
+
+<section class="products-grid" id="listaProdutos"></section>
+
+</main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText=
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){favoritos.splice(idx,1);btn.innerText="♡ Favoritar";}
+  else{favoritos.push(p);btn.innerText="♥ Favorito";}
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* === 30 MONITORES === */
+const produtos=[
+{nome:"Monitor LG 21.5 Full HD",desc:"IPS, ideal para escritório.",preco:799.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Samsung 22 Full HD",desc:"Uso profissional.",preco:829.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Dell 23.8 Full HD",desc:"Alta confiabilidade.",preco:1099.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor LG 24 Full HD IPS",desc:"Excelente qualidade de imagem.",preco:999.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Samsung 24 Full HD",desc:"Design moderno.",preco:1049.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor AOC 24 Gamer 144Hz",desc:"Alto desempenho gamer.",preco:1299.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor LG UltraGear 24 144Hz",desc:"Gaming competitivo.",preco:1499.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Acer 27 Full HD",desc:"Tela ampla.",preco:1399.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Samsung 27 Curvo",desc:"Imersão total.",preco:1599.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Dell 27 QHD",desc:"Alta resolução.",preco:2299.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor LG 29 Ultrawide",desc:"Produtividade elevada.",preco:1899.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor LG 34 Ultrawide",desc:"Experiência premium.",preco:3299.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Samsung Odyssey G5",desc:"Gamer curvo 144Hz.",preco:2499.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Samsung Odyssey G7",desc:"Gamer premium.",preco:3999.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor ASUS TUF 27 165Hz",desc:"Alta taxa de atualização.",preco:2599.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor ASUS ProArt",desc:"Design gráfico.",preco:2899.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor BenQ 24 Profissional",desc:"Precisão de cores.",preco:1499.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor BenQ 27 Profissional",desc:"Uso corporativo.",preco:1999.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor HP 23.8 Full HD",desc:"Ambiente empresarial.",preco:999.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor HP 27 QHD",desc:"Alta definição.",preco:2199.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Gamer Curvo 32",desc:"Imersão gamer.",preco:2999.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Philips 24 Full HD",desc:"Uso geral.",preco:899.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Philips 27 QHD",desc:"Imagem nítida.",preco:1799.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor LG 32 4K",desc:"Altíssima resolução.",preco:3499.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Samsung 32 4K",desc:"Profissional.",preco:3699.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Dell 32 4K",desc:"Linha corporativa.",preco:4299.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Gamer 240Hz",desc:"Competitivo.",preco:4999.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor LG OLED 27",desc:"Tecnologia OLED.",preco:5999.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Profissional Curvo 34",desc:"Alta produtividade.",preco:3799.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Executivo Premium",desc:"Top de linha.",preco:6499.90,img:"https://via.placeholder.com/250"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}">
+      <h3>${p.nome}</h3>
+      <p>${p.desc}</p>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+      <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+    </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

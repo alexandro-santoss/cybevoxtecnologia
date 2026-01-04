@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Headsets Gamer | CyberVox Tecnologia</title>
+
+<meta name="description" content="Headsets gamer para consoles PlayStation e Xbox. Áudio imersivo para sua experiência nos games.">
+<meta name="keywords" content="headset gamer, headset ps5, headset xbox, fone gamer console, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid #e5e5e5;overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;border-radius:18px;background:#f1f5f9;
+  color:#111;text-decoration:none;font-weight:600;
+}
+.top-categories a:hover,.top-categories a.active{
+  background:#111;color:#fff;
+}
+.top-categories a.ofertas{background:#dc2626;color:#fff;}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;padding:20px;background:#f1f5f9;border-radius:14px;
+}
+.sidebar a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  text-decoration:none;font-weight:600;color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,.sidebar a.active{
+  background:#111;color:#fff;transform:translateY(-2px);
+}
+
+.content{flex:1}
+
+.products-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;margin-top:20px;
+}
+.product-card{
+  background:#fff;border-radius:12px;padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);text-align:center;
+}
+.product-card img{
+  width:100%;height:170px;object-fit:contain;
+}
+.product-card h3{font-size:15px;margin:10px 0}
+.product-card strong{display:block;margin-bottom:10px;font-size:16px}
+.product-card button{
+  width:100%;padding:10px;margin-top:6px;
+  border:none;border-radius:8px;font-weight:600;
+  cursor:pointer;background:#111;color:#fff;
+}
+.product-card button.favorito{
+  background:#e5e7eb;color:#111;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar headsets...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a class="active" href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="games.html">🎮 Games</a>
+    <a href="consoles.html">🕹️ Consoles</a>
+    <a href="jogos.html">🎯 Jogos</a>
+    <a href="controles.html">🎮 Controles</a>
+    <a class="active" href="headsets.html">🎧 Headsets</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Headsets Gamer</h1>
+      <p>Headsets para PlayStation e Xbox com áudio imersivo e comunicação clara.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos = [
+{id:801,nome:"Headset Sony Pulse 3D PS5",preco:699.90,img:"https://images.kabum.com.br/produtos/fotos/111235/headset-pulse-3d_1602212211_g.jpg"},
+{id:802,nome:"Headset HyperX Cloud II",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/102441/hyperx-cloud-ii_1542212211_g.jpg"},
+{id:803,nome:"Headset HyperX Cloud Alpha",preco:749.90,img:"https://images.kabum.com.br/produtos/fotos/113322/hyperx-cloud-alpha_1562212211_g.jpg"},
+{id:804,nome:"Headset Logitech G Pro X",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/112334/logitech-g-pro-x_1552212211_g.jpg"},
+{id:805,nome:"Headset Razer BlackShark V2",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/110223/razer-blackshark-v2_1592212211_g.jpg"},
+{id:806,nome:"Headset Razer Kraken X",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/110224/razer-kraken-x_1592212222_g.jpg"},
+{id:807,nome:"Headset JBL Quantum 100",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/109887/jbl-quantum-100_1582212211_g.jpg"},
+{id:808,nome:"Headset JBL Quantum 200",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/109888/jbl-quantum-200_1582212222_g.jpg"},
+{id:809,nome:"Headset JBL Quantum 400",preco:549.90,img:"https://images.kabum.com.br/produtos/fotos/109889/jbl-quantum-400_1582212233_g.jpg"},
+{id:810,nome:"Headset SteelSeries Arctis 1",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/108998/steelseries-arctis-1_1572212211_g.jpg"},
+{id:811,nome:"Headset SteelSeries Arctis 3",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/108999/steelseries-arctis-3_1572212222_g.jpg"},
+{id:812,nome:"Headset SteelSeries Arctis 5",preco:749.90,img:"https://images.kabum.com.br/produtos/fotos/109000/steelseries-arctis-5_1572212233_g.jpg"},
+{id:813,nome:"Headset Turtle Beach Recon 70",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/113444/turtle-beach-recon-70_1592212211_g.jpg"},
+{id:814,nome:"Headset Turtle Beach Stealth 600",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/113445/turtle-beach-stealth-600_1592212222_g.jpg"},
+{id:815,nome:"Headset Astro A10",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/112221/astro-a10_1552212211_g.jpg"},
+{id:816,nome:"Headset Astro A20 Wireless",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/112222/astro-a20_1552212222_g.jpg"},
+{id:817,nome:"Headset Corsair HS35",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/110555/corsair-hs35_1592212211_g.jpg"},
+{id:818,nome:"Headset Corsair HS50 Pro",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/110556/corsair-hs50_1592212222_g.jpg"},
+{id:819,nome:"Headset Redragon Zeus X",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/102497/redragon-zeus-x_1552212211_g.jpg"},
+{id:820,nome:"Headset Redragon Lamia 2",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/102498/redragon-lamia_1552212222_g.jpg"},
+{id:821,nome:"Headset Trust GXT 488",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/113555/trust-gxt-488_1592212211_g.jpg"},
+{id:822,nome:"Headset Trust GXT 415",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/113556/trust-gxt-415_1592212222_g.jpg"},
+{id:823,nome:"Headset Multilaser Warrior PH317",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/103221/warrior-ph317_1552212211_g.jpg"},
+{id:824,nome:"Headset Multilaser Warrior PH298",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/103222/warrior-ph298_1552212222_g.jpg"},
+{id:825,nome:"Headset Havit HV-H2002d",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/101998/havit-h2002d_1542212211_g.jpg"},
+{id:826,nome:"Headset Havit HV-H2232d",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/101999/havit-h2232d_1542212222_g.jpg"},
+{id:827,nome:"Headset Onikuma K6",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/102111/onikuma-k6_1552212211_g.jpg"},
+{id:828,nome:"Headset Onikuma K19",preco:229.90,img:"https://images.kabum.com.br/produtos/fotos/102112/onikuma-k19_1552212222_g.jpg"},
+{id:829,nome:"Headset Logitech G335",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/166221/logitech-g335_1622212211_g.jpg"},
+{id:830,nome:"Headset Logitech G432",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/166222/logitech-g432_1622212222_g.jpg"}
+];
+
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(id){
+  const p = produtos.find(x=>x.id===id);
+  const item = carrinho.find(x=>x.id===id);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx = favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(lista){
+  const el=document.getElementById("listaProdutos");
+  el.innerHTML="";
+  lista.forEach(p=>{
+    const fav = favoritos.some(f=>f.id===p.id);
+    el.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+        <button class="favorito" onclick="favoritar(${p.id},this)">
+          ${fav?"♥ Favorito":"♡ Favoritar"}
+        </button>
+      </div>`;
+  });
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const t=e.target.value.toLowerCase();
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(t)));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

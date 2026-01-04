@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Acessórios para Smartphones | CyberVox Tecnologia</title>
+
+<meta name="description" content="Acessórios para smartphones: cabos, carregadores, suportes, power banks e muito mais.">
+<meta name="keywords" content="acessorios smartphone, cabos, carregadores, power bank, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{
+  display:flex;
+  gap:20px;
+  padding:20px;
+}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+
+.product-card button.favorito{
+  background:#e5e7eb;
+  color:#111;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar acessórios...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a class="active" href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="android.html">🤖 Android</a>
+    <a href="apple.html">🍎 Apple</a>
+    <a class="active" href="acessorios-smartphone.html">📱 Acessórios</a>
+    <a href="capas.html">🛡️ Capas</a>
+    <a href="carregadores.html">🔌 Carregadores</a>
+    <a href="fones.html">🎧 Fones de Ouvido</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Acessórios para Smartphones</h1>
+      <p>Praticidade, proteção e energia para o seu celular no dia a dia.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos=[
+ {id:601,nome:"Cabo USB-C Baseus 1m",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/315644/cabo-usb-c-baseus_1671234567_g.jpg"},
+ {id:602,nome:"Cabo Lightning Apple Original",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/123998/cabo-lightning-apple_1612345678_g.jpg"},
+ {id:603,nome:"Power Bank Xiaomi 10000mAh",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/155667/power-bank-xiaomi_1623456778_g.jpg"},
+ {id:604,nome:"Power Bank Samsung 20000mAh",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/255778/power-bank-samsung_1635566778_g.jpg"},
+ {id:605,nome:"Suporte Veicular Magnético",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/198776/suporte-veicular_1611112233_g.jpg"},
+ {id:606,nome:"Suporte de Mesa Articulado",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/233445/suporte-mesa_1619988776_g.jpg"},
+ {id:607,nome:"Película Vidro 3D Universal",preco:29.90,img:"https://images.kabum.com.br/produtos/fotos/344556/pelicula-vidro_1609981234_g.jpg"},
+ {id:608,nome:"Carregador Veicular Duplo USB",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/622334/carregador-veicular_1608877665_g.jpg"},
+ {id:609,nome:"Carregador Sem Fio Qi",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/633445/carregador-wireless_1623342211_g.jpg"},
+ {id:610,nome:"Tripé Flexível para Celular",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/600112/tripe-flexivel_1619982233_g.jpg"}
+];
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

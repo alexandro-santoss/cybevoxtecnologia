@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Favoritos | CyberVox Tecnologia</title>
+
+<meta name="description" content="Produtos favoritos da CyberVox Tecnologia. Acesse rapidamente os itens que você marcou como favoritos.">
+<meta name="keywords" content="favoritos, wishlist, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= MENU SUPERIOR ================= */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:10px 16px;
+  border-radius:20px;
+  background:#f0f0f0;
+  color:#222;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#d62828;
+  color:#fff;
+}
+
+/* ================= MENU LATERAL ================= */
+.sidebar{
+  padding:20px;
+  background:#fafafa;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  margin-bottom:10px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#222;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:.2s;
+}
+.sidebar a:hover{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* ================= FAVORITOS ================= */
+.favorites-empty{
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+/* =================================================
+   AJUSTE CIRÚRGICO — WHATSAPP (NÃO AFETA O SITE)
+   ================================================= */
+.whatsapp-float{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.whatsapp-btn{
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+
+.whatsapp-btn img{
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  object-fit: contain;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" disabled placeholder="Meus Favoritos">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Meus Favoritos</h1>
+      <p>Produtos que você salvou para ver depois.</p>
+    </section>
+
+    <section class="products-grid" id="listaFavoritos"></section>
+
+    <div class="favorites-empty" id="emptyFavorites" style="display:none;">
+      <p>Você ainda não adicionou nenhum produto aos favoritos.</p>
+    </div>
+
+  </main>
+
+</div>
+
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="fale-conosco.html">Fale Conosco</a></li>
+        <li><a href="rastreamento.html">Rastreamento</a></li>
+        <li><a href="politica-troca.html">Troca e Devolução</a></li>
+        <li><a href="politica-troca.html">Garantia</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li><a href="marca-propria.html">Marca Própria</a></li>
+        <li><a href="carreiras.html">Carreiras</a></li>
+        <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Minha Conta</h4>
+      <ul>
+        <li><a href="minha-conta.html">Entrar / Cadastrar</a></li>
+        <li><a href="favoritos.html">Favoritos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li>WhatsApp: (11) 97835-7841</li>
+        <li>Email: fale.tvision@outlook.com</li>
+        <li><a href="https://wa.me/5511978357841">Atendimento WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+
+</footer>
+
+<div class="whatsapp-float">
+  <a class="whatsapp-btn" href="https://wa.me/5511978357841" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
+</div>
+
+<script>
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+
+const lista = document.getElementById("listaFavoritos");
+const vazio = document.getElementById("emptyFavorites");
+const cartCount = document.querySelector(".cart-count");
+
+function atualizarTopo(){
+  cartCount.textContent = carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function removerFavorito(id){
+  favoritos = favoritos.filter(p => p.id !== id);
+  localStorage.setItem("favoritosCybervox", JSON.stringify(favoritos));
+  renderizar();
+}
+
+function addCarrinho(produto){
+  const item = carrinho.find(p => p.id === produto.id);
+  item ? item.qtd++ : carrinho.push({...produto, qtd:1});
+  localStorage.setItem("carrinhoCybervox", JSON.stringify(carrinho));
+  atualizarTopo();
+}
+
+function renderizar(){
+  lista.innerHTML = "";
+
+  if(favoritos.length === 0){
+    vazio.style.display = "block";
+    return;
+  }
+
+  vazio.style.display = "none";
+
+  favoritos.forEach(p=>{
+    lista.innerHTML += `
+      <div class="product-card">
+        <img src="${p.img}">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick="removerFavorito(${p.id})">Remover</button>
+      </div>
+    `;
+  });
+}
+
+renderizar();
+atualizarTopo();
+</script>
+
+</body>
+</html>

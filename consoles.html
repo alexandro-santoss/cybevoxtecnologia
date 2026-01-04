@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Consoles | CyberVox Tecnologia</title>
+
+<meta name="description" content="Consoles PlayStation, Xbox e Nintendo originais. Os melhores videogames para jogar no máximo desempenho.">
+<meta name="keywords" content="consoles, playstation, xbox, nintendo, videogame, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:20px;
+}
+.product-card{
+  background:#fff;
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  text-align:center;
+}
+.product-card img{
+  width:100%;
+  height:170px;
+  object-fit:contain;
+}
+.product-card h3{
+  font-size:15px;
+  margin:10px 0;
+}
+.product-card strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:16px;
+}
+.product-card button{
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  background:#111;
+  color:#fff;
+}
+.product-card button.favorito{
+  background:#e5e7eb;
+  color:#111;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar consoles...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a class="active" href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="games.html">🎮 Games</a>
+    <a class="active" href="consoles.html">🕹️ Consoles</a>
+    <a href="jogos.html">🎯 Jogos</a>
+    <a href="controles.html">🎮 Controles</a>
+    <a href="headsets.html">🎧 Headsets</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Consoles</h1>
+      <p>PlayStation, Xbox e Nintendo. Escolha seu console e comece a jogar.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos = [
+ {id:501,nome:"PlayStation 5 Slim 1TB",preco:3499.90,img:"https://images.kabum.com.br/produtos/fotos/386759/playstation-5-slim_1694019896_g.jpg"},
+ {id:502,nome:"PlayStation 5 Digital Edition",preco:3299.90,img:"https://images.kabum.com.br/produtos/fotos/112870/ps5-digital_1625249655_g.jpg"},
+ {id:503,nome:"Xbox Series X 1TB",preco:4299.90,img:"https://images.kabum.com.br/produtos/fotos/111019/xbox-series-x_1598998417_g.jpg"},
+ {id:504,nome:"Xbox Series S 512GB",preco:2999.90,img:"https://images.kabum.com.br/produtos/fotos/112998/xbox-series-s_1565887682_g.jpg"},
+ {id:505,nome:"Nintendo Switch OLED",preco:2499.90,img:"https://images.kabum.com.br/produtos/fotos/201003/nintendo-switch-oled_1632778222_g.jpg"},
+ {id:506,nome:"Nintendo Switch V2",preco:2199.90,img:"https://images.kabum.com.br/produtos/fotos/104908/nintendo-switch_1568297811_g.jpg"},
+ {id:507,nome:"PlayStation 4 Slim 1TB",preco:2799.90,img:"https://images.kabum.com.br/produtos/fotos/101233/ps4-slim_1558991211_g.jpg"},
+ {id:508,nome:"Xbox One S 1TB",preco:2599.90,img:"https://images.kabum.com.br/produtos/fotos/98011/xbox-one-s_1547822123_g.jpg"}
+];
+
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(id){
+  const p = produtos.find(x=>x.id===id);
+  const item = carrinho.find(x=>x.id===id);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx = favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(lista){
+  const el=document.getElementById("listaProdutos");
+  el.innerHTML="";
+  lista.forEach(p=>{
+    const fav = favoritos.some(f=>f.id===p.id);
+    el.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+        <button class="favorito" onclick="favoritar(${p.id},this)">
+          ${fav?"♥ Favorito":"♡ Favoritar"}
+        </button>
+      </div>`;
+  });
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const t=e.target.value.toLowerCase();
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(t)));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

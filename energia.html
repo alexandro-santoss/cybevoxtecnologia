@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Energia | CyberVox Tecnologia</title>
+
+<meta name="description" content="Energia para informática: filtros de linha, nobreaks, estabilizadores, extensões e proteção elétrica.">
+<meta name="keywords" content="energia informatica, nobreak, filtro de linha, estabilizador, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar produtos de energia...">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a class="active" href="informatica.html">Informática</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="games.html">Games</a>
+  <a href="papelaria.html">Papelaria</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">Hardware</a>
+    <a href="software.html">Software</a>
+    <a href="computadores.html">Computadores</a>
+    <a href="setup-gamers.html">Setup Gamers</a>
+    <a href="notebook.html">Notebook</a>
+    <a href="monitores.html">Monitores</a>
+    <a href="perifericos.html">Periféricos</a>
+    <a href="acessorios.html">Acessórios</a>
+    <a href="energia.html" class="active">Energia</a>
+    <a href="impressao.html">Impressão</a>
+    <a href="audio.html">Áudio</a>
+    <a href="automacao.html">Automação</a>
+    <a href="redes.html">Redes</a>
+    <a href="cadeiras-gamers.html">Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <a href="informatica.html">Informática</a> ›
+      <span>Energia</span>
+    </nav>
+
+    <section class="hero-banner">
+      <h1>Energia</h1>
+      <p>Proteção elétrica, alimentação segura e continuidade para seus equipamentos.</p>
+    </section>
+
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+      <a href="politica-troca.html">Garantia</a>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+      <a href="#">Carreiras</a>
+      <a href="#">Sustentabilidade</a>
+    </div>
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841" target="_blank">Atendimento via WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function showToast(msg){
+  const t=document.createElement("div");
+  t.className="toast show";
+  t.innerText=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+  showToast("Produto adicionado ao carrinho");
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+const produtos = [
+ {nome:"Filtro de Linha 5 Tomadas",desc:"Proteção contra surtos elétricos.",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/106688/filtro-de-linha_1599065906_g.jpg"},
+ {nome:"Filtro de Linha 8 Tomadas",desc:"Ideal para escritório.",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/107207/filtro-8-tomadas_1600174027_g.jpg"},
+ {nome:"Estabilizador SMS 300VA",desc:"Proteção básica para PCs.",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/109385/estabilizador-sms_1604507741_g.jpg"},
+ {nome:"Estabilizador SMS 500VA",desc:"Uso doméstico e corporativo.",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/109386/estabilizador-500va_1604507748_g.jpg"},
+ {nome:"Nobreak SMS 600VA",desc:"Autonomia em quedas de energia.",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/110055/nobreak-sms-600va_1607024484_g.jpg"},
+ {nome:"Nobreak SMS 1200VA",desc:"Proteção para estações de trabalho.",preco:949.90,img:"https://images.kabum.com.br/produtos/fotos/111802/nobreak-sms-1200va_1610134223_g.jpg"},
+ {nome:"Nobreak APC 1500VA",desc:"Senoidal para equipamentos críticos.",preco:2199.90,img:"https://images.kabum.com.br/produtos/fotos/112900/nobreak-apc-1500va_1613587022_g.jpg"},
+ {nome:"Extensão Elétrica 3m",desc:"Uso residencial.",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/114332/extensao-3m_1617984009_g.jpg"},
+ {nome:"Extensão Elétrica 5m",desc:"Maior alcance.",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/114333/extensao-5m_1617984015_g.jpg"},
+ {nome:"Extensão Elétrica 10m",desc:"Ambientes amplos.",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/114334/extensao-10m_1617984022_g.jpg"},
+ {nome:"Protetor Eletrônico Intelbras",desc:"Proteção contra picos.",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/116210/protetor-intelbras_1621347782_g.jpg"},
+ {nome:"Filtro de Linha Clamper 5 Tomadas",desc:"Alta eficiência contra surtos.",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/117850/filtro-clamper_1624478139_g.jpg"},
+ {nome:"Nobreak TS Shara 600VA",desc:"Compacto e silencioso.",preco:479.90,img:"https://images.kabum.com.br/produtos/fotos/118905/nobreak-ts-shara_1626778302_g.jpg"},
+ {nome:"Nobreak TS Shara 1400VA",desc:"Uso profissional.",preco:1199.90,img:"https://images.kabum.com.br/produtos/fotos/118906/nobreak-1400va_1626778310_g.jpg"},
+ {nome:"Filtro de Linha APC",desc:"Proteção premium.",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/119340/filtro-apc_1628099942_g.jpg"},
+ {nome:"Estabilizador Ragtech 500VA",desc:"Proteção confiável.",preco:239.90,img:"https://images.kabum.com.br/produtos/fotos/120998/estabilizador-ragtech_1631658742_g.jpg"},
+ {nome:"Estabilizador Ragtech 1000VA",desc:"Para ambientes corporativos.",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/120999/estabilizador-1000va_1631658751_g.jpg"},
+ {nome:"Nobreak Intelbras 1200VA",desc:"Proteção avançada.",preco:1099.90,img:"https://images.kabum.com.br/produtos/fotos/122345/nobreak-intelbras_1634578033_g.jpg"},
+ {nome:"Filtro de Linha 10 Tomadas",desc:"Alta capacidade.",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/123778/filtro-10_1638205522_g.jpg"},
+ {nome:"Protetor DPS Clamper",desc:"Proteção industrial.",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/125001/dps-clamper_1641123302_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

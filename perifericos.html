@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Periféricos | CyberVox Tecnologia</title>
+
+<meta name="description" content="Periféricos para computador: teclados, mouses, headsets, webcams e acessórios.">
+<meta name="keywords" content="perifericos, teclado, mouse, headset, webcam, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL DO INDEX ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar periféricos...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a class="active" href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Periféricos</h1>
+      <p>Teclados, mouses, headsets, webcams e acessórios para produtividade e jogos.</p>
+    </section>
+
+    <!-- FILTRO DE PREÇO -->
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* ===== PRODUTOS PERIFÉRICOS (30) ===== */
+const produtos = [
+ {nome:"Teclado Logitech K120",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/97415/teclado-logitech-k120_1542820197_g.jpg"},
+ {nome:"Kit Teclado e Mouse Logitech MK120",preco:139.90,img:"https://images.kabum.com.br/produtos/fotos/100821/kit-logitech-mk120_1551909962_g.jpg"},
+ {nome:"Teclado Gamer Redragon Kumara",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/103234/teclado-redragon-kumara_1561498292_g.jpg"},
+ {nome:"Teclado HyperX Alloy Core",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/123456/hyperx-alloy_1600123321_g.jpg"},
+ {nome:"Mouse Logitech M170",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/97555/mouse-logitech-m170_1542831109_g.jpg"},
+ {nome:"Mouse Logitech G203",preco:169.90,img:"https://images.kabum.com.br/produtos/fotos/97539/mouse-logitech-g203_1543008213_g.jpg"},
+ {nome:"Mouse Gamer Razer DeathAdder",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/101001/razer-deathadder_1550301123_g.jpg"},
+ {nome:"Mouse Corsair Harpoon",preco:229.90,img:"https://images.kabum.com.br/produtos/fotos/110233/corsair-harpoon_1582231112_g.jpg"},
+ {nome:"Headset Logitech H390",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/114776/headset-logitech-h390_1626877782_g.jpg"},
+ {nome:"Headset HyperX Cloud Stinger",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/101999/hyperx-cloud-stinger_1550998212_g.jpg"},
+ {nome:"Headset Redragon Zeus",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/105443/redragon-zeus_1578892211_g.jpg"},
+ {nome:"Headset Razer Kraken",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/107665/razer-kraken_1589982312_g.jpg"},
+ {nome:"Webcam Logitech C270",preco:229.90,img:"https://images.kabum.com.br/produtos/fotos/97059/webcam-logitech-c270_1542826111_g.jpg"},
+ {nome:"Webcam Logitech C920",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/97177/webcam-logitech-c920_1542827123_g.jpg"},
+ {nome:"Webcam Logitech Brio 4K",preco:1199.90,img:"https://images.kabum.com.br/produtos/fotos/106321/logitech-brio_1582237765_g.jpg"},
+ {nome:"Mouse Pad Gamer Speed",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/120123/mousepad-gamer_1600112233_g.jpg"},
+ {nome:"Mouse Pad Gamer Control",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/120124/mousepad-control_1600112244_g.jpg"},
+ {nome:"Controle Xbox Series USB",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/122331/controle-xbox_1611122233_g.jpg"},
+ {nome:"Controle DualSense PS5",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/129876/dualsense-ps5_1629983311_g.jpg"},
+ {nome:"Microfone Condensador USB",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/132112/microfone-usb_1631122211_g.jpg"},
+ {nome:"Microfone Gamer Fifine",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/133221/fifine-mic_1632213322_g.jpg"},
+ {nome:"Hub USB 4 Portas",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/109876/hub-usb_1589982211_g.jpg"},
+ {nome:"Suporte Ergonômico Notebook",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/135667/suporte-notebook_1639982211_g.jpg"},
+ {nome:"Base Cooler Notebook",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/136778/base-cooler_1641122211_g.jpg"},
+ {nome:"Mesa Digitalizadora Wacom",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/140001/wacom-tablet_1651122233_g.jpg"},
+ {nome:"Teclado Numérico USB",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/141112/teclado-numerico_1652233344_g.jpg"},
+ {nome:"Teclado Ergonômico Microsoft",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/142223/teclado-ergonomico_1653344455_g.jpg"},
+ {nome:"Leitor Biométrico USB",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/137889/leitor-biometrico_1642233322_g.jpg"},
+ {nome:"Scanner Canon Lide",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/150001/scanner-canon_1661122233_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados = produtos.filter(p=>p.preco>=min && p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados = produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

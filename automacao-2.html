@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Automação | CyberVox Tecnologia</title>
+
+<meta name="description" content="Automação residencial e IoT: câmeras, sensores, hubs, controles inteligentes e segurança conectada.">
+<meta name="keywords" content="automacao residencial, iot, smart home, sensores, cameras wifi, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar produtos de automação...">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a class="active" href="informatica.html">Informática</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a href="higiene.html">Higiene</a>
+  <a href="games.html">Games</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="papelaria.html">Papelaria</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">Hardware</a>
+    <a href="software.html">Software</a>
+    <a href="computadores.html">Computadores</a>
+    <a href="setup-gamers.html">Setup Gamers</a>
+    <a href="notebook.html">Notebook</a>
+    <a href="monitores.html">Monitores</a>
+    <a href="perifericos.html">Periféricos</a>
+    <a href="acessorios.html">Acessórios</a>
+    <a href="energia.html">Energia</a>
+    <a href="impressao.html">Impressão</a>
+    <a href="audio.html">Áudio</a>
+    <a href="automacao.html" class="active">Automação</a>
+    <a href="redes.html">Redes</a>
+    <a href="cadeiras-gamers.html">Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <a href="informatica.html">Informática</a> ›
+      <span>Automação</span>
+    </nav>
+
+    <section class="hero-banner">
+      <h1>Automação & IoT</h1>
+      <p>Segurança, conforto e controle inteligente para sua casa ou empresa.</p>
+    </section>
+
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+    <div style="text-align:center;margin-top:20px;">
+      <strong>Páginas:</strong>
+      <a href="automacao.html">1</a>
+      <a href="automacao-2.html">2</a>
+      <a href="automacao-3.html">3</a>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+      <a href="politica-troca.html">Garantia</a>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+      <a href="#">Carreiras</a>
+      <a href="#">Sustentabilidade</a>
+    </div>
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841" target="_blank">
+        Atendimento via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function showToast(msg){
+  const t=document.createElement("div");
+  t.className="toast show";
+  t.innerText=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+  showToast("Produto adicionado ao carrinho");
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+const produtos = [
+ {nome:"Câmera Wi-Fi Intelbras IM4",desc:"Full HD com visão noturna.",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/118889/intelbras-im4_1626694312_g.jpg"},
+ {nome:"Câmera Wi-Fi Positivo Smart",desc:"Compatível com Alexa.",preco:229.90,img:"https://images.kabum.com.br/produtos/fotos/121904/positivo-camera_1633022351_g.jpg"},
+ {nome:"Câmera Wi-Fi Xiaomi Mi 360°",desc:"Cobertura panorâmica.",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/115998/xiaomi-360_1620895542_g.jpg"},
+ {nome:"Sensor de Presença Intelbras Smart",desc:"Automação por movimento.",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/118780/intelbras-presenca_1626691299_g.jpg"},
+ {nome:"Sensor de Temperatura Tuya",desc:"Monitoramento ambiente.",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/127334/sensor-tuya_1643237744_g.jpg"},
+ {nome:"Hub Zigbee Positivo",desc:"Central de automação.",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/121905/positivo-hub_1633022438_g.jpg"},
+ {nome:"Hub Zigbee Tuya",desc:"Integra dispositivos IoT.",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/127335/hub-tuya_1643237811_g.jpg"},
+ {nome:"Controle Universal Smart Wi-Fi",desc:"Controla TV e ar.",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/126112/controle-ir_1640012334_g.jpg"},
+ {nome:"Fechadura Smart Intelbras FR 101",desc:"Acesso por senha.",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/120345/intelbras-fr101_1634012331_g.jpg"},
+ {nome:"Fechadura Smart Positivo",desc:"Controle por aplicativo.",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/123456/positivo-fechadura_1639021132_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

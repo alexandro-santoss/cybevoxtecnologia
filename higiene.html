@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Higiene | CyberVox Tecnologia</title>
+
+<meta name="description" content="Produtos de higiene pessoal e profissional. Sabonetes, papel higiênico, descartáveis e soluções completas.">
+<meta name="keywords" content="higiene, higiene pessoal, papel higienico, sabonete, cybervox">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Higiene | CyberVox Tecnologia">
+<meta property="og:description" content="Linha completa de produtos de higiene pessoal, corporativa e institucional.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cybervox.github.io/higiene.html">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" placeholder="O que você procura?">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho</a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<!-- MENU SUPERIOR -->
+<nav class="top-categories">
+  <a href="informatica.html">Informática</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a class="active" href="higiene.html">Higiene</a>
+  <a href="games.html">Games</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="papelaria.html">Papelaria</a>
+</nav>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR HIGIENE -->
+  <aside class="sidebar">
+    <a class="active">Higiene Pessoal</a>
+    <a>Papel Higiênico</a>
+    <a>Descartáveis</a>
+    <a>Higiene Corporativa</a>
+    <a>Higiene Hospitalar</a>
+    <a>Sabonetes</a>
+    <a>Proteção</a>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="content">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <span>Higiene</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-banner">
+      <h1>Higiene</h1>
+      <p>
+        Produtos de higiene pessoal, profissional e institucional, garantindo
+        proteção, conforto e bem-estar no dia a dia.
+      </p>
+    </section>
+
+    <!-- PRODUTOS -->
+    <h2>Produtos de Higiene</h2>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>🧴 Qualidade Garantida</div>
+    <div>🚚 Entrega Rápida</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>🔐 Compra Segura</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+    </div>
+
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841">Atendimento WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-33
+  </div>
+</footer>
+
+<script>
+/* PRODUTOS HIGIENE */
+const produtos = [
+  {nome:"Papel Higiênico Neve 16 rolos", preco:24.90, img:"https://via.placeholder.com/250"},
+  {nome:"Papel Higiênico Personal 12 rolos", preco:19.90, img:"https://via.placeholder.com/250"},
+  {nome:"Sabonete Dove 90g", preco:3.90, img:"https://via.placeholder.com/250"},
+  {nome:"Sabonete Lux 85g", preco:3.50, img:"https://via.placeholder.com/250"},
+  {nome:"Sabonete Líquido Protex 250ml", preco:12.90, img:"https://via.placeholder.com/250"},
+  {nome:"Álcool Gel Antisséptico 500ml", preco:7.90, img:"https://via.placeholder.com/250"},
+  {nome:"Lenço Umedecido Baby 100 un", preco:12.90, img:"https://via.placeholder.com/250"},
+  {nome:"Papel Toalha Scott 2 rolos", preco:7.90, img:"https://via.placeholder.com/250"},
+  {nome:"Toalha de Papel Interfolha", preco:39.90, img:"https://via.placeholder.com/250"},
+  {nome:"Guardanapo de Papel 50 un", preco:3.90, img:"https://via.placeholder.com/250"},
+  {nome:"Máscara Descartável 50 un", preco:29.90, img:"https://via.placeholder.com/250"},
+  {nome:"Luvas Descartáveis 100 un", preco:39.90, img:"https://via.placeholder.com/250"},
+  {nome:"Touca Descartável 100 un", preco:24.90, img:"https://via.placeholder.com/250"},
+  {nome:"Avental Descartável", preco:3.90, img:"https://via.placeholder.com/250"},
+  {nome:"Sabonete Espuma Refil 800ml", preco:29.90, img:"https://via.placeholder.com/250"},
+  {nome:"Dispensador Sabonete", preco:49.90, img:"https://via.placeholder.com/250"},
+  {nome:"Dispensador Papel Toalha", preco:59.90, img:"https://via.placeholder.com/250"},
+  {nome:"Papel Higiênico Institucional", preco:69.90, img:"https://via.placeholder.com/250"},
+  {nome:"Lenço Antisséptico", preco:9.90, img:"https://via.placeholder.com/250"},
+  {nome:"Protetor Facial", preco:14.90, img:"https://via.placeholder.com/250"}
+];
+
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function salvarCarrinho(){
+  localStorage.setItem("carrinhoCybervox", JSON.stringify(carrinho));
+}
+function salvarFavoritos(){
+  localStorage.setItem("favoritosCybervox", JSON.stringify(favoritos));
+}
+
+function addCarrinho(p){
+  const item = carrinho.find(i => i.nome === p.nome);
+  item ? item.qtd++ : carrinho.push({nome:p.nome, preco:p.preco, qtd:1});
+  salvarCarrinho();
+  alert("Produto adicionado ao carrinho");
+}
+
+function favoritar(p){
+  if(!favoritos.find(f => f.nome === p.nome)){
+    favoritos.push(p);
+    salvarFavoritos();
+    alert("Produto adicionado aos favoritos");
+  }
+}
+
+const lista = document.getElementById("listaProdutos");
+produtos.forEach(p => {
+  lista.innerHTML += `
+    <div class="product-card">
+      <img src="${p.img}" loading="lazy" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <div class="price">
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+      </div>
+      <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+      <button style="margin-top:6px;background:#444" onclick='favoritar(${JSON.stringify(p)})'>❤️ Favoritar</button>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>

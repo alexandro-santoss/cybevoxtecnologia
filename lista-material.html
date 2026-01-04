@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Monte sua Lista de Material | CyberVox Tecnologia</title>
+
+<meta name="description" content="Monte, organize e envie sua lista de material escolar ou de escritório.">
+<meta name="keywords" content="lista de material, papelaria, orçamento escolar">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= PADRÃO VISUAL ================= */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto
+}
+.top-categories a{
+  padding:10px 16px;
+  border-radius:20px;
+  background:#f0f0f0;
+  color:#222;
+  text-decoration:none;
+  font-weight:600
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff
+}
+.top-categories a.ofertas{
+  background:#d62828;
+  color:#fff
+}
+
+.layout{
+  display:flex;
+  gap:20px
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+  width:260px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:.2s
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px)
+}
+.sidebar a.cta-lista-material{
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(37,99,235,.35)
+}
+.sidebar a.cta-lista-material span.badge{
+  margin-left:auto;
+  background:#facc15;
+  color:#111;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:999px
+}
+
+/* ================= LISTA ================= */
+.lista-container{
+  margin-top:20px;
+  display:grid;
+  gap:16px
+}
+.lista-item{
+  display:grid;
+  grid-template-columns:90px 1fr auto;
+  gap:16px;
+  align-items:center;
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 8px 22px rgba(0,0,0,.08)
+}
+.lista-item img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+  background:#f8fafc;
+  border-radius:10px;
+  padding:8px
+}
+.item-info h4{
+  font-size:15px;
+  margin-bottom:4px
+}
+.item-info small{
+  color:#64748b
+}
+.item-info strong{
+  display:block;
+  color:#2563eb;
+  margin-top:4px
+}
+
+.item-actions{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px
+}
+.qtd-controls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#f1f5f9;
+  padding:6px 10px;
+  border-radius:999px
+}
+.qtd-controls button{
+  width:28px;
+  height:28px;
+  border:none;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer
+}
+.remove-btn{
+  background:none;
+  border:none;
+  color:#dc2626;
+  font-weight:700;
+  cursor:pointer
+}
+
+/* ================= RESUMO ================= */
+.resumo{
+  margin-top:30px;
+  background:#111;
+  color:#fff;
+  padding:24px;
+  border-radius:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px
+}
+.resumo strong{
+  font-size:22px
+}
+.resumo-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap
+}
+.btn{
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer
+}
+.btn-limpar{
+  background:#334155;
+  color:#fff
+}
+.btn-enviar{
+  background:#22c55e;
+  color:#111
+}
+.btn-pdf{
+  background:#2563eb;
+  color:#fff
+}
+.btn-wpp{
+  background:#25D366;
+  color:#111
+}
+
+/* ================= BADGE HEADER ================= */
+.badge-count{
+  background:#dc2626;
+  color:#fff;
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  margin-left:6px
+}
+
+/* ================= TOAST ================= */
+.toast{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#111;
+  color:#fff;
+  padding:14px 20px;
+  border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  font-weight:600;
+  opacity:0;
+  transform:translateY(20px);
+  transition:.4s;
+  z-index:9999
+}
+.toast.show{
+  opacity:1;
+  transform:translateY(0)
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar na sua lista...">
+    </div>
+    <div class="header-actions">
+      <a href="lista-material.html">
+        📋 Lista <span class="badge-count" id="badgeLista">0</span>
+      </a>
+      <a href="carrinho.html">🛒 Carrinho</a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a class="active" href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+<aside class="sidebar">
+  <a href="lista-material.html" class="cta-lista-material active">
+    📋 Monte sua Lista de Material
+    <span class="badge">NOVO</span>
+  </a>
+
+  <a href="escrita.html">✏️ Escrita</a>
+  <a href="papeis.html">📄 Papéis</a>
+  <a href="mochilas.html">🎒 Mochilas</a>
+  <a href="lancheiras.html">🥪 Lancheiras</a>
+  <a href="estojos.html">🧰 Estojos</a>
+  <a href="escritorio.html">🏢 Escritório</a>
+  <a href="bazar.html">🏷️ Bazar</a>
+</aside>
+
+<main class="content">
+  <section class="hero-banner">
+    <h1>Monte sua Lista de Material</h1>
+    <p>Organize, Gerar PDF ou envie sua lista por WhatsApp.</p>
+  </section>
+
+  <div class="lista-container" id="listaContainer"></div>
+
+  <div class="resumo">
+    <strong>Total: R$ <span id="total">0.00</span></strong>
+    <div class="resumo-actions">
+      <button class="btn btn-limpar" onclick="limparLista()">Limpar</button>
+      <button class="btn btn-pdf" onclick="gerarPDF()">Gerar PDF</button>
+      <button class="btn btn-wpp" onclick="enviarWhats()">WhatsApp</button>
+      <button class="btn btn-enviar" onclick="enviarCarrinho()">Carrinho</button>
+    </div>
+  </div>
+</main>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let listaMaterial = JSON.parse(localStorage.getItem("listaMaterialCybervox")) || [];
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+
+const container = document.getElementById("listaContainer");
+const totalEl = document.getElementById("total");
+const busca = document.getElementById("busca");
+const badge = document.getElementById("badgeLista");
+const toast = document.getElementById("toast");
+
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"),2500);
+}
+
+function atualizarBadge(){
+  badge.textContent = listaMaterial.reduce((t,p)=>t+p.qtd,0);
+}
+
+function renderLista(filtro=""){
+  container.innerHTML="";
+  let total=0;
+
+  listaMaterial
+    .filter(p=>p.nome.toLowerCase().includes(filtro.toLowerCase()))
+    .forEach((p,i)=>{
+      const subtotal = p.preco * p.qtd;
+      total += subtotal;
+
+      container.innerHTML += `
+      <div class="lista-item">
+        <img src="${p.img}">
+        <div class="item-info">
+          <h4>${p.nome}</h4>
+          <small>${p.qtd} × R$ ${p.preco.toFixed(2)}</small>
+          <strong>Subtotal: R$ ${subtotal.toFixed(2)}</strong>
+        </div>
+        <div class="item-actions">
+          <div class="qtd-controls">
+            <button onclick="alterarQtd(${i},-1)">−</button>
+            ${p.qtd}
+            <button onclick="alterarQtd(${i},1)">+</button>
+          </div>
+          <button class="remove-btn" onclick="removerItem(${i})">Remover</button>
+        </div>
+      </div>`;
+    });
+
+  totalEl.textContent = total.toFixed(2);
+  atualizarBadge();
+  localStorage.setItem("listaMaterialCybervox",JSON.stringify(listaMaterial));
+}
+
+busca.addEventListener("input",()=>renderLista(busca.value));
+
+function alterarQtd(i,d){
+  listaMaterial[i].qtd += d;
+  if(listaMaterial[i].qtd <= 0) listaMaterial.splice(i,1);
+  renderLista(busca.value);
+}
+
+function removerItem(i){
+  listaMaterial.splice(i,1);
+  renderLista(busca.value);
+}
+
+function limparLista(){
+  listaMaterial = [];
+  renderLista();
+  showToast("Lista limpa");
+}
+
+function enviarCarrinho(){
+  listaMaterial.forEach(p=>{
+    const item = carrinho.find(c=>c.id===p.id);
+    item ? item.qtd += p.qtd : carrinho.push({...p});
+  });
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  listaMaterial=[];
+  renderLista();
+  showToast("Itens enviados ao carrinho");
+}
+
+function enviarWhats(){
+  let msg = "📋 *Lista de Material - CyberVox*%0A%0A";
+  listaMaterial.forEach(p=>{
+    msg += `• ${p.nome} (${p.qtd}x) - R$ ${(p.preco*p.qtd).toFixed(2)}%0A`;
+  });
+  msg += `%0A💰 Total: R$ ${totalEl.textContent}`;
+  window.open(`https://wa.me/5511978357841?text=${msg}`,"_blank");
+}
+
+function gerarPDF(){
+  const w = window.open("");
+  w.document.write("<h2>CyberVox Tecnologia</h2><hr>");
+  listaMaterial.forEach(p=>{
+    w.document.write(`<p>${p.nome} - ${p.qtd}x - R$ ${(p.preco*p.qtd).toFixed(2)}</p>`);
+  });
+  w.document.write(`<hr><strong>Total: R$ ${totalEl.textContent}</strong>`);
+  w.print();
+}
+
+renderLista();
+</script>
+
+</body>
+</html>

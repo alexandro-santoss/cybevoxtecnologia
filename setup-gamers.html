@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Setup Gamers | CyberVox Tecnologia</title>
+
+<meta name="description" content="Setup gamer completo: PCs gamers, monitores, periféricos e acessórios de alto desempenho.">
+<meta name="keywords" content="setup gamer, pc gamer, periféricos gamer, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid #e5e5e5;overflow-x:auto
+}
+.top-categories a{
+  padding:8px 14px;border-radius:18px;background:#f1f5f9;
+  color:#111;text-decoration:none;font-weight:600;font-size:14px
+}
+.top-categories a:hover,.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#dc2626;color:#fff}
+
+.layout{display:flex;gap:20px}
+.sidebar{
+  width:240px;padding:20px;background:#f1f5f9;border-radius:14px
+}
+.sidebar a{
+  display:flex;gap:10px;align-items:center;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  font-weight:600;color:#111;text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,.06)
+}
+.sidebar a:hover,.sidebar a.active{
+  background:#111;color:#fff;transform:translateY(-2px)
+}
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar setup gamer...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+<aside class="sidebar">
+  <a href="hardware.html">🧩 Hardware</a>
+  <a href="software.html">💿 Software</a>
+  <a href="computadores.html">🖥️ Computadores</a>
+  <a class="active" href="setup-gamers.html">🎮 Setup Gamers</a>
+  <a href="notebook.html">💻 Notebook</a>
+  <a href="monitores.html">🖥️ Monitores</a>
+  <a href="perifericos.html">⌨️ Periféricos</a>
+  <a href="acessorios.html">🔌 Acessórios</a>
+  <a href="energia.html">⚡ Energia</a>
+  <a href="impressao.html">🖨️ Impressão</a>
+  <a href="audio.html">🔊 Áudio</a>
+  <a href="automacao.html">🤖 Automação</a>
+  <a href="redes.html">🌐 Redes</a>
+  <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+</aside>
+
+<main class="content">
+
+<section class="hero-banner">
+  <h1>Setup Gamer Completo</h1>
+  <p>Performance, imersão e estilo para gamers exigentes.</p>
+</section>
+
+<section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+  <strong>Filtrar por preço</strong><br><br>
+  <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+  <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+  <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+</section>
+
+<section class="products-grid" id="listaProdutos"></section>
+
+</main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText=
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){favoritos.splice(idx,1);btn.innerText="♡ Favoritar";}
+  else{favoritos.push(p);btn.innerText="♥ Favorito";}
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* === 30 PRODUTOS SETUP GAMER === */
+const produtos=[
+{nome:"PC Gamer Ryzen 5 RTX 3060",desc:"Ryzen 5, 16GB RAM, SSD 512GB, RTX 3060.",preco:6499.90,img:"https://via.placeholder.com/250"},
+{nome:"PC Gamer Intel i5 RTX 3050",desc:"Intel i5, 16GB RAM, SSD 512GB.",preco:5999.90,img:"https://via.placeholder.com/250"},
+{nome:"PC Gamer Ryzen 7 RTX 3070",desc:"Alto desempenho para jogos AAA.",preco:8499.90,img:"https://via.placeholder.com/250"},
+{nome:"PC Gamer Intel i7 RTX 4060",desc:"Performance extrema.",preco:9299.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Gamer 24\" 144Hz",desc:"Full HD, 1ms.",preco:1299.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Gamer 27\" 165Hz",desc:"QHD, alta fluidez.",preco:2199.90,img:"https://via.placeholder.com/250"},
+{nome:"Teclado Mecânico RGB",desc:"Switch Blue, iluminação RGB.",preco:299.90,img:"https://via.placeholder.com/250"},
+{nome:"Mouse Gamer 16000 DPI",desc:"Alta precisão.",preco:249.90,img:"https://via.placeholder.com/250"},
+{nome:"Headset Gamer Surround",desc:"Áudio 7.1.",preco:399.90,img:"https://via.placeholder.com/250"},
+{nome:"Cadeira Gamer Premium",desc:"Ergonomia avançada.",preco:1299.90,img:"https://via.placeholder.com/250"},
+{nome:"Mousepad Gamer XXL",desc:"Superfície estendida.",preco:149.90,img:"https://via.placeholder.com/250"},
+{nome:"Webcam Gamer Full HD",desc:"Streaming e calls.",preco:349.90,img:"https://via.placeholder.com/250"},
+{nome:"Microfone Gamer USB",desc:"Qualidade de estúdio.",preco:499.90,img:"https://via.placeholder.com/250"},
+{nome:"Controle Gamer PC",desc:"Compatível com Windows.",preco:229.90,img:"https://via.placeholder.com/250"},
+{nome:"Fonte Gamer 750W",desc:"Alta eficiência.",preco:699.90,img:"https://via.placeholder.com/250"},
+{nome:"Gabinete Gamer RGB",desc:"Fluxo de ar otimizado.",preco:599.90,img:"https://via.placeholder.com/250"},
+{nome:"Placa de Vídeo RTX 4060",desc:"Ray Tracing.",preco:3299.90,img:"https://via.placeholder.com/250"},
+{nome:"Placa de Vídeo RX 7600",desc:"Alto custo-benefício.",preco:2899.90,img:"https://via.placeholder.com/250"},
+{nome:"SSD NVMe 1TB Gamer",desc:"Alta velocidade.",preco:499.90,img:"https://via.placeholder.com/250"},
+{nome:"Memória RAM RGB 32GB",desc:"Performance gamer.",preco:699.90,img:"https://via.placeholder.com/250"},
+{nome:"Kit Teclado + Mouse Gamer",desc:"Combo RGB.",preco:399.90,img:"https://via.placeholder.com/250"},
+{nome:"Cooler Water Cooler 240mm",desc:"Refrigeração avançada.",preco:699.90,img:"https://via.placeholder.com/250"},
+{nome:"Suporte Headset Gamer",desc:"Organização e estilo.",preco:129.90,img:"https://via.placeholder.com/250"},
+{nome:"Placa Mãe Gamer B550",desc:"Compatível Ryzen.",preco:899.90,img:"https://via.placeholder.com/250"},
+{nome:"Placa Mãe Gamer Z690",desc:"Compatível Intel.",preco:1299.90,img:"https://via.placeholder.com/250"},
+{nome:"Fonte Gamer 650W",desc:"Estável e silenciosa.",preco:599.90,img:"https://via.placeholder.com/250"},
+{nome:"Monitor Gamer Curvo 32\"",desc:"Imersão total.",preco:2999.90,img:"https://via.placeholder.com/250"},
+{nome:"Teclado Mecânico Low Profile",desc:"Resposta rápida.",preco:449.90,img:"https://via.placeholder.com/250"},
+{nome:"Mouse Gamer Wireless",desc:"Sem fio, baixa latência.",preco:499.90,img:"https://via.placeholder.com/250"},
+{nome:"Kit Setup Gamer Completo",desc:"PC + monitor + periféricos.",preco:11999.90,img:"https://via.placeholder.com/250"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}">
+      <h3>${p.nome}</h3>
+      <p>${p.desc}</p>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+      <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+    </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

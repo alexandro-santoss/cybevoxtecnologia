@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Smartphones Android | CyberVox Tecnologia</title>
+
+<meta name="description" content="Smartphones Android das principais marcas: Samsung, Motorola, Xiaomi, Realme e muito mais.">
+<meta name="keywords" content="android, smartphones android, samsung, motorola, xiaomi, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= MENU SUPERIOR ================= */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:10px 16px;
+  border-radius:20px;
+  background:#f0f0f0;
+  color:#222;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#d62828;
+  color:#fff;
+}
+
+/* ================= MENU LATERAL ================= */
+.sidebar{
+  padding:20px;
+  background:#fafafa;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  margin-bottom:10px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#222;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:.2s;
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* ================= BOTÃO FAVORITOS (PADRÃO) ================= */
+.product-card button.favorito{
+  background:#e5e5e5;
+  color:#111;
+}
+.product-card button.favorito:hover{
+  background:#d1d5db;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar smartphones Android...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a class="active" href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a class="active" href="android.html">🤖 Android</a>
+    <a href="apple.html">🍎 Apple</a>
+    <a href="acessorios-smartphone.html">📱 Acessórios</a>
+    <a href="capas.html">🛡️ Capas</a>
+    <a href="carregadores.html">🔌 Carregadores</a>
+    <a href="fones.html">🎧 Fones de Ouvido</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Smartphones Android</h1>
+      <p>Modelos Android das principais marcas, para todos os perfis e bolsos.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos=[
+ {id:301,nome:"Samsung Galaxy A05s 128GB",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/391847/samsung-galaxy-a05s_1696957326_g.jpg"},
+ {id:302,nome:"Samsung Galaxy A15 128GB",preco:949.90,img:"https://images.kabum.com.br/produtos/fotos/392199/galaxy-a15_1698123456_g.jpg"},
+ {id:303,nome:"Samsung Galaxy A25 5G",preco:1199.90,img:"https://images.kabum.com.br/produtos/fotos/392200/galaxy-a25_1698123466_g.jpg"},
+ {id:304,nome:"Samsung Galaxy A34 5G",preco:1599.90,img:"https://images.kabum.com.br/produtos/fotos/392201/galaxy-a34_1698123476_g.jpg"},
+ {id:305,nome:"Samsung Galaxy A54 5G",preco:1999.90,img:"https://images.kabum.com.br/produtos/fotos/392202/galaxy-a54_1698123486_g.jpg"},
+ {id:306,nome:"Motorola Moto E13",preco:699.90,img:"https://images.kabum.com.br/produtos/fotos/391995/moto-e13_1697456341_g.jpg"},
+ {id:307,nome:"Motorola Moto G14",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/392948/moto-g14_1700160634_g.jpg"},
+ {id:308,nome:"Motorola Moto G34 5G",preco:1099.90,img:"https://images.kabum.com.br/produtos/fotos/392948/moto-g34_1700160634_g.jpg"},
+ {id:309,nome:"Motorola Moto G54 5G",preco:1399.90,img:"https://images.kabum.com.br/produtos/fotos/392949/moto-g54_1700160644_g.jpg"},
+ {id:310,nome:"Motorola Edge 40",preco:2299.90,img:"https://images.kabum.com.br/produtos/fotos/392950/moto-edge-40_1700160654_g.jpg"},
+ {id:311,nome:"Xiaomi Redmi 13C",preco:849.90,img:"https://images.kabum.com.br/produtos/fotos/392388/redmi-13c_1699373064_g.jpg"},
+ {id:312,nome:"Xiaomi Redmi Note 12",preco:1199.90,img:"https://images.kabum.com.br/produtos/fotos/392389/redmi-note-12_1699373074_g.jpg"},
+ {id:313,nome:"Xiaomi Redmi Note 13",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/392388/redmi-note-13_1699373064_g.jpg"},
+ {id:314,nome:"Xiaomi Redmi Note 13 Pro",preco:1799.90,img:"https://images.kabum.com.br/produtos/fotos/392390/redmi-note-13-pro_1699373084_g.jpg"},
+ {id:315,nome:"Xiaomi Poco X6 Pro",preco:1999.90,img:"https://images.kabum.com.br/produtos/fotos/392391/poco-x6-pro_1699373094_g.jpg"}
+];
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

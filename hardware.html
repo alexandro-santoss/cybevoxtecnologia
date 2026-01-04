@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Hardware | CyberVox Tecnologia</title>
+
+<meta name="description" content="Hardware para computadores: processadores, placas-mãe, memórias, SSDs, fontes e componentes.">
+<meta name="keywords" content="hardware, processador, placa mae, memoria ram, ssd, fonte, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL DO INDEX ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar hardware...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a class="active" href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Hardware</h1>
+      <p>Componentes essenciais para montar ou atualizar seu computador.</p>
+    </section>
+
+    <!-- 🔹 FILTRO DE PREÇO (RESTAURADO) -->
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* ===== PRODUTOS ===== */
+const produtos = [
+  /* (25 produtos – mantidos exatamente como antes) */
+  {nome:"Processador AMD Ryzen 5 5600G",preco:759.90,img:"https://images.kabum.com.br/produtos/fotos/113922/processador-amd-ryzen-5-5600g_1623427406_g.jpg"},
+  {nome:"Processador Intel Core i5-12400F",preco:889.90,img:"https://images.kabum.com.br/produtos/fotos/241098/intel-core-i5-12400f_1643822276_g.jpg"},
+  {nome:"Placa-mãe ASUS Prime B550M-A",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/158183/placa-mae-asus-prime-b550m-a_1632157716_g.jpg"},
+  {nome:"Placa-mãe Gigabyte B660M DS3H",preco:949.90,img:"https://images.kabum.com.br/produtos/fotos/241775/placa-mae-gigabyte-b660m_1644242278_g.jpg"},
+  {nome:"Memória Kingston Fury Beast 16GB",preco:289.90,img:"https://images.kabum.com.br/produtos/fotos/114545/memoria-kingston-fury-beast-16gb_1626875982_g.jpg"},
+  {nome:"Memória Corsair Vengeance LPX 16GB",preco:319.90,img:"https://images.kabum.com.br/produtos/fotos/102438/memoria-corsair-vengeance-lpx_1584389343_g.jpg"},
+  {nome:"SSD Kingston NV2 1TB NVMe",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/148040/ssd-kingston-nv2-1tb_1663339386_g.jpg"},
+  {nome:"SSD WD Green 480GB",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/108355/ssd-wd-green_1617115467_g.jpg"},
+  {nome:"HD Seagate Barracuda 1TB",preco:289.90,img:"https://images.kabum.com.br/produtos/fotos/128389/hd-seagate-barracuda_1627992212_g.jpg"},
+  {nome:"Fonte Corsair CV650 650W",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/115260/fonte-corsair-cv650_1627996716_g.jpg"},
+  {nome:"Fonte Cooler Master MWE 600W",preco:369.90,img:"https://images.kabum.com.br/produtos/fotos/130002/fonte-cooler-master-mwe_1629984478_g.jpg"},
+  {nome:"Placa de Vídeo RTX 3060 12GB",preco:1899.90,img:"https://images.kabum.com.br/produtos/fotos/158458/placa-de-video-rtx-3060_1632329989_g.jpg"},
+  {nome:"Placa de Vídeo GTX 1660 Super",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/120778/placa-de-video-gtx-1660-super_1620213312_g.jpg"},
+  {nome:"Cooler Master Hyper 212",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/93354/cooler-master-hyper-212_1543512431_g.jpg"},
+  {nome:"Gabinete Gamer Rise Mode Glass",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/115833/gabinete-rise-mode-glass_1628333314_g.jpg"},
+  {nome:"Gabinete Corsair Carbide",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/97769/gabinete-corsair-carbide_1543598745_g.jpg"},
+  {nome:"Placa de Rede TP-Link Gigabit",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/100289/placa-de-rede-tp-link_1550581223_g.jpg"},
+  {nome:"Placa Controladora USB 3.0",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/104998/placa-usb-3_1593457765_g.jpg"},
+  {nome:"Pasta Térmica Cooler Master",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/93164/pasta-termica-cooler-master_1543433221_g.jpg"},
+  {nome:"Ventoinha RGB 120mm",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/127944/cooler-fan-rgb_1627883344_g.jpg"}
+];
+
+let produtosFiltrados = [...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados = produtos.filter(p=>p.preco>=min && p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados = produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

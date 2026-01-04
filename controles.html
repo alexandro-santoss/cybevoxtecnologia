@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Controles | CyberVox Tecnologia</title>
+
+<meta name="description" content="Controles originais e compatíveis para Xbox, PlayStation 5 e PlayStation 4.">
+<meta name="keywords" content="controles xbox, controle ps5, controle ps4, joystick gamer, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid #e5e5e5;overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;border-radius:18px;background:#f1f5f9;
+  color:#111;text-decoration:none;font-weight:600;
+}
+.top-categories a:hover,.top-categories a.active{
+  background:#111;color:#fff;
+}
+.top-categories a.ofertas{background:#dc2626;color:#fff;}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;padding:20px;background:#f1f5f9;border-radius:14px;
+}
+.sidebar a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  text-decoration:none;font-weight:600;color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,.sidebar a.active{
+  background:#111;color:#fff;transform:translateY(-2px);
+}
+
+.content{flex:1}
+
+.products-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;margin-top:20px;
+}
+.product-card{
+  background:#fff;border-radius:12px;padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);text-align:center;
+}
+.product-card img{
+  width:100%;height:170px;object-fit:contain;
+}
+.product-card h3{font-size:15px;margin:10px 0}
+.product-card strong{display:block;margin-bottom:10px;font-size:16px}
+.product-card button{
+  width:100%;padding:10px;margin-top:6px;
+  border:none;border-radius:8px;font-weight:600;
+  cursor:pointer;background:#111;color:#fff;
+}
+.product-card button.favorito{
+  background:#e5e7eb;color:#111;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar controles...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a class="active" href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="games.html">🎮 Games</a>
+    <a href="consoles.html">🕹️ Consoles</a>
+    <a href="jogos.html">🎯 Jogos</a>
+    <a class="active" href="controles.html">🎮 Controles</a>
+    <a href="headsets.html">🎧 Headsets</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Controles</h1>
+      <p>Controles para Xbox, PlayStation 5 e PlayStation 4.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos = [
+/* ===== XBOX (20) ===== */
+{id:701,nome:"Controle Xbox Wireless Carbon Black",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/113946/controle-xbox-wireless_1566840424_g.jpg"},
+{id:702,nome:"Controle Xbox Wireless Robot White",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/113947/controle-xbox-white_1566840433_g.jpg"},
+{id:703,nome:"Controle Xbox Wireless Shock Blue",preco:429.90,img:"https://images.kabum.com.br/produtos/fotos/160236/controle-xbox-blue_1618241187_g.jpg"},
+{id:704,nome:"Controle Xbox Wireless Pulse Red",preco:429.90,img:"https://images.kabum.com.br/produtos/fotos/160235/controle-xbox-red_1618241177_g.jpg"},
+{id:705,nome:"Controle Xbox Series X/S Electric Volt",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/164819/controle-xbox-electric-volt_1624552222_g.jpg"},
+{id:706,nome:"Controle Xbox Series X/S Lunar Shift",preco:479.90,img:"https://images.kabum.com.br/produtos/fotos/177119/controle-xbox-lunar-shift_1637865544_g.jpg"},
+{id:707,nome:"Controle Xbox Series X/S Stellar Shift",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/303334/controle-xbox-stellar-shift_1669392211_g.jpg"},
+{id:708,nome:"Controle Xbox Series X/S Mineral Camo",preco:469.90,img:"https://images.kabum.com.br/produtos/fotos/160234/controle-xbox-camo_1618241167_g.jpg"},
+{id:709,nome:"Controle Xbox Series X/S Arctic Camo",preco:469.90,img:"https://images.kabum.com.br/produtos/fotos/189778/controle-xbox-arctic-camo_1648229987_g.jpg"},
+{id:710,nome:"Controle Xbox Series X/S Daystrike Camo",preco:469.90,img:"https://images.kabum.com.br/produtos/fotos/202111/controle-xbox-daystrike_1655992211_g.jpg"},
+{id:711,nome:"Controle PowerA Enhanced Xbox",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/102234/controle-powera-xbox_1552992211_g.jpg"},
+{id:712,nome:"Controle PowerA Spectra Xbox RGB",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/205444/controle-powera-rgb_1660012211_g.jpg"},
+{id:713,nome:"Controle PDP Wired Xbox",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/117222/controle-pdp-xbox_1592212211_g.jpg"},
+{id:714,nome:"Controle Xbox Elite Series 2",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/108221/xbox-elite-series-2_1582212211_g.jpg"},
+{id:715,nome:"Controle Xbox Elite Series 2 Core",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/291221/controle-elite-core_1662212211_g.jpg"},
+{id:716,nome:"Controle Xbox Series X/S Starfield",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/392114/controle-xbox-starfield_1698242211_g.jpg"},
+{id:717,nome:"Controle Xbox Series X/S Velocity Green",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/287332/controle-xbox-green_1672212211_g.jpg"},
+{id:718,nome:"Controle Xbox Series X/S Deep Pink",preco:429.90,img:"https://images.kabum.com.br/produtos/fotos/291441/controle-xbox-pink_1675212211_g.jpg"},
+{id:719,nome:"Controle Xbox Series X/S Astral Purple",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/323112/controle-xbox-purple_1682212211_g.jpg"},
+{id:720,nome:"Controle Xbox Series X/S Remix Edition",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/346221/controle-xbox-remix_1691212211_g.jpg"},
+
+/* ===== PLAYSTATION 5 (15) ===== */
+{id:721,nome:"Controle DualSense PS5 Branco",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/111234/controle-dualsense_1602212211_g.jpg"},
+{id:722,nome:"Controle DualSense PS5 Preto",preco:469.90,img:"https://images.kabum.com.br/produtos/fotos/160244/controle-dualsense-preto_1618242211_g.jpg"},
+{id:723,nome:"Controle DualSense PS5 Cosmic Red",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/160245/controle-dualsense-red_1618242222_g.jpg"},
+{id:724,nome:"Controle DualSense PS5 Midnight Black",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/160246/controle-dualsense-black_1618242233_g.jpg"},
+{id:725,nome:"Controle DualSense PS5 Starlight Blue",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/164823/controle-dualsense-blue_1624552211_g.jpg"},
+{id:726,nome:"Controle DualSense PS5 Nova Pink",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/164824/controle-dualsense-pink_1624552222_g.jpg"},
+{id:727,nome:"Controle DualSense PS5 Galactic Purple",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/164825/controle-dualsense-purple_1624552233_g.jpg"},
+{id:728,nome:"Controle DualSense PS5 Grey Camouflage",preco:529.90,img:"https://images.kabum.com.br/produtos/fotos/287445/controle-dualsense-camo_1672212211_g.jpg"},
+{id:729,nome:"Controle DualSense Edge PS5",preco:1399.90,img:"https://images.kabum.com.br/produtos/fotos/331119/controle-dualsense-edge_1672212233_g.jpg"},
+{id:730,nome:"Controle DualSense PS5 Volcanic Red",preco:529.90,img:"https://images.kabum.com.br/produtos/fotos/392118/controle-dualsense-volcanic_1698242211_g.jpg"},
+{id:731,nome:"Controle DualSense PS5 Cobalt Blue",preco:529.90,img:"https://images.kabum.com.br/produtos/fotos/392119/controle-dualsense-cobalt_1698242222_g.jpg"},
+{id:732,nome:"Controle DualSense PS5 Sterling Silver",preco:529.90,img:"https://images.kabum.com.br/produtos/fotos/392120/controle-dualsense-silver_1698242233_g.jpg"},
+{id:733,nome:"Controle DualSense PS5 Fortnite",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/401221/controle-dualsense-fortnite_1702212211_g.jpg"},
+{id:734,nome:"Controle DualSense PS5 Spider-Man 2",preco:649.90,img:"https://images.kabum.com.br/produtos/fotos/392121/controle-dualsense-spiderman_1698242244_g.jpg"},
+{id:735,nome:"Controle DualSense PS5 God of War Ragnarök",preco:649.90,img:"https://images.kabum.com.br/produtos/fotos/392122/controle-dualsense-gow_1698242255_g.jpg"},
+
+/* ===== PLAYSTATION 4 (15) ===== */
+{id:736,nome:"Controle DualShock 4 PS4 Preto",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/100224/controle-dualshock-4_1542212211_g.jpg"},
+{id:737,nome:"Controle DualShock 4 PS4 Branco",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/100225/controle-dualshock-4-branco_1542212222_g.jpg"},
+{id:738,nome:"Controle DualShock 4 PS4 Azul",preco:369.90,img:"https://images.kabum.com.br/produtos/fotos/100226/controle-dualshock-4-azul_1542212233_g.jpg"},
+{id:739,nome:"Controle DualShock 4 PS4 Vermelho",preco:369.90,img:"https://images.kabum.com.br/produtos/fotos/100227/controle-dualshock-4-vermelho_1542212244_g.jpg"},
+{id:740,nome:"Controle DualShock 4 PS4 Camuflado",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/100228/controle-dualshock-4-camo_1542212255_g.jpg"},
+{id:741,nome:"Controle DualShock 4 PS4 Gold",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/100229/controle-dualshock-4-gold_1542212266_g.jpg"},
+{id:742,nome:"Controle DualShock 4 PS4 Silver",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/100230/controle-dualshock-4-silver_1542212277_g.jpg"},
+{id:743,nome:"Controle DualShock 4 PS4 Crystal",preco:419.90,img:"https://images.kabum.com.br/produtos/fotos/100231/controle-dualshock-4-crystal_1542212288_g.jpg"},
+{id:744,nome:"Controle DualShock 4 PS4 Sunset Orange",preco:429.90,img:"https://images.kabum.com.br/produtos/fotos/100232/controle-dualshock-4-orange_1542212299_g.jpg"},
+{id:745,nome:"Controle DualShock 4 PS4 Berry Blue",preco:429.90,img:"https://images.kabum.com.br/produtos/fotos/100233/controle-dualshock-4-berry_1542212300_g.jpg"},
+{id:746,nome:"Controle DualShock 4 PS4 Glacier White",preco:379.90,img:"https://images.kabum.com.br/produtos/fotos/100234/controle-dualshock-4-glacier_1542212311_g.jpg"},
+{id:747,nome:"Controle DualShock 4 PS4 Wave Blue",preco:389.90,img:"https://images.kabum.com.br/produtos/fotos/100235/controle-dualshock-4-wave_1542212322_g.jpg"},
+{id:748,nome:"Controle DualShock 4 PS4 Steel Black",preco:379.90,img:"https://images.kabum.com.br/produtos/fotos/100236/controle-dualshock-4-steel_1542212333_g.jpg"},
+{id:749,nome:"Controle DualShock 4 PS4 Green Camouflage",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/100237/controle-dualshock-4-green-camo_1542212344_g.jpg"},
+{id:750,nome:"Controle DualShock 4 PS4 Magma Red",preco:389.90,img:"https://images.kabum.com.br/produtos/fotos/100238/controle-dualshock-4-magma_1542212355_g.jpg"}
+];
+
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(id){
+  const p = produtos.find(x=>x.id===id);
+  const item = carrinho.find(x=>x.id===id);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx = favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(lista){
+  const el=document.getElementById("listaProdutos");
+  el.innerHTML="";
+  lista.forEach(p=>{
+    const fav = favoritos.some(f=>f.id===p.id);
+    el.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+        <button class="favorito" onclick="favoritar(${p.id},this)">
+          ${fav?"♥ Favorito":"♡ Favoritar"}
+        </button>
+      </div>`;
+  });
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const t=e.target.value.toLowerCase();
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(t)));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

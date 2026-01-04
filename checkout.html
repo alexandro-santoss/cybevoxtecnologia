@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Checkout | CyberVox Tecnologia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* =========================
+   CHECKOUT VISUAL AVANÇADO
+   ========================= */
+
+.checkout-step {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.checkout-alert {
+  background: linear-gradient(90deg,#2563eb,#1d4ed8);
+  color: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.checkout-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 14px 0;
+}
+
+.checkout-item strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.checkout-item span {
+  font-size: 14px;
+  color: #475569;
+}
+
+.checkout-box {
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.checkout-total {
+  font-size: 22px;
+  font-weight: bold;
+  color: #020617;
+}
+
+.checkout-pay-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.checkout-pay-btn:hover {
+  background: #b91c1c;
+}
+
+.checkout-secondary-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #020617;
+  border: 1px solid #cbd5f5;
+  cursor: pointer;
+}
+
+/* =========================
+   MODAL DE CONFIRMAÇÃO
+   ========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: #fff;
+  padding: 26px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 440px;
+  text-align: center;
+}
+
+.modal h3 {
+  margin-bottom: 8px;
+}
+
+.modal p {
+  font-size: 14px;
+  color: #475569;
+}
+
+.modal-total {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-cancelar {
+  background: #e5e7eb;
+  color: #020617;
+}
+
+.btn-confirmar {
+  background: #dc2626;
+  color: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" placeholder="O que você procura?">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho</a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<!-- MENU SUPERIOR -->
+<nav class="top-categories">
+  <a class="active" href="informatica.html">Informática</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="games.html">Games</a>
+  <a href="papelaria.html">Papelaria</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <!-- MENU LATERAL -->
+  <aside class="sidebar">
+    <a href="hardware.html">Hardware</a>
+    <a href="software.html">Software</a>
+    <a href="computadores.html">Computadores</a>
+    <a href="setup-gamers.html">Setup Gamers</a>
+    <a href="notebook.html">Notebook</a>
+    <a href="monitores.html">Monitores</a>
+    <a href="perifericos.html">Periféricos</a>
+    <a href="acessorios.html">Acessórios</a>
+    <a href="energia.html">Energia</a>
+    <a href="impressao.html">Impressão</a>
+    <a href="audio.html">Áudio</a>
+    <a href="automacao.html">Automação</a>
+    <a href="redes.html">Redes</a>
+    <a href="cadeiras-gamers.html">Cadeiras Gamers</a>
+  </aside>
+  <!-- CONTEÚDO -->
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Checkout</h1>
+      <p>Finalize sua compra com segurança.</p>
+    </section>
+
+    <div class="checkout-alert">
+      🔒 Pagamento seguro • Ambiente protegido • Dados criptografados
+    </div>
+
+    <section class="products-grid">
+
+      <!-- RESUMO -->
+      <div class="product-card" style="grid-column:span 2">
+        <div class="checkout-step">Etapa 1 de 2 — Revisão do Pedido</div>
+        <h3>📦 Itens do Pedido</h3>
+        <div id="resumoItens"></div>
+      </div>
+
+      <!-- PAGAMENTO -->
+      <div class="product-card">
+        <div class="checkout-step">Etapa 2 de 2 — Pagamento</div>
+
+        <div class="checkout-box">
+          <p>Subtotal: <strong id="subtotal">R$ 0,00</strong></p>
+          <p>Frete: <strong>Grátis</strong></p>
+          <hr>
+          <p class="checkout-total">
+            Total: <span id="total">R$ 0,00</span>
+          </p>
+        </div>
+
+        <button class="checkout-pay-btn" onclick="abrirModalPagamento()">
+          Confirmar Pagamento PIX
+        </button>
+
+        <a href="carrinho.html">
+          <button class="checkout-secondary-btn">
+            ← Voltar ao Carrinho
+          </button>
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL PAGAMENTO -->
+<div class="modal-overlay" id="modalPagamento">
+  <div class="modal">
+    <h3>Confirmar pagamento</h3>
+    <p>Você está prestes a concluir sua compra no valor de:</p>
+    <div class="modal-total" id="modalTotal">R$ 0,00</div>
+
+    <div class="modal-actions">
+      <button class="btn-cancelar" onclick="fecharModalPagamento()">
+        Cancelar
+      </button>
+      <button class="btn-confirmar" onclick="confirmarPagamento()">
+        Prosseguir
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- RODAPÉ PADRÃO -->
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+      <a href="politica-troca.html">Garantia</a>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+      <a href="#">Carreiras</a>
+      <a href="#">Sustentabilidade</a>
+    </div>
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841" target="_blank">
+        Atendimento via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+
+</footer>
+
+<script>
+function formatar(v){
+  return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+}
+
+const resumo = JSON.parse(localStorage.getItem("checkoutResumoCybervox"));
+if(!resumo || !resumo.itens || !resumo.itens.length){
+  window.location.href="carrinho.html";
+}
+
+const resumoItens=document.getElementById("resumoItens");
+resumo.itens.forEach(i=>{
+  resumoItens.innerHTML+=`
+    <div class="checkout-item">
+      <strong>${i.nome}</strong>
+      <span>Quantidade: ${i.qtd}</span><br>
+      <span>Preço unitário: ${formatar(i.preco)}</span><br>
+      <span>Subtotal: ${formatar(i.preco*i.qtd)}</span>
+    </div>`;
+});
+
+subtotal.innerText=formatar(resumo.subtotal);
+total.innerText=formatar(resumo.total);
+modalTotal.innerText=formatar(resumo.total);
+
+function abrirModalPagamento(){
+  modalPagamento.style.display="flex";
+}
+function fecharModalPagamento(){
+  modalPagamento.style.display="none";
+}
+function confirmarPagamento(){
+  alert("PIX real será integrado na próxima etapa.");
+}
+</script>
+
+</body>
+</html>

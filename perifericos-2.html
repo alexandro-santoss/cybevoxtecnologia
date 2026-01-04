@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Periféricos | CyberVox Tecnologia</title>
+
+<meta name="description" content="Periféricos para computadores: teclados, mouses, headsets, webcams e acessórios.">
+<meta name="keywords" content="perifericos, teclado, mouse, headset, webcam, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar periféricos...">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a class="active" href="informatica.html">Informática</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="games.html">Games</a>
+  <a href="papelaria.html">Papelaria</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">Hardware</a>
+    <a href="software.html">Software</a>
+    <a href="computadores.html">Computadores</a>
+    <a href="setup-gamers.html">Setup Gamers</a>
+    <a href="notebook.html">Notebook</a>
+    <a href="monitores.html">Monitores</a>
+    <a href="perifericos.html" class="active">Periféricos</a>
+    <a href="acessorios.html">Acessórios</a>
+    <a href="energia.html">Energia</a>
+    <a href="impressao.html">Impressão</a>
+    <a href="audio.html">Áudio</a>
+    <a href="automacao.html">Automação</a>
+    <a href="redes.html">Redes</a>
+    <a href="cadeiras-gamers.html">Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <a href="informatica.html">Informática</a> ›
+      <span>Periféricos</span>
+    </nav>
+
+    <section class="hero-banner">
+      <h1>Periféricos</h1>
+      <p>Mais opções de teclados, mouses, headsets e acessórios para uso geral.</p>
+    </section>
+
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+    <div style="text-align:center;margin-top:20px;">
+      <strong>Páginas:</strong>
+      <a href="perifericos.html">1</a>
+      <a href="perifericos-2.html">2</a>
+      <a href="perifericos-3.html">3</a>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+      <a href="politica-troca.html">Garantia</a>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+      <a href="#">Carreiras</a>
+      <a href="#">Sustentabilidade</a>
+    </div>
+
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841" target="_blank">
+        Atendimento via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function showToast(msg){
+  const t=document.createElement("div");
+  t.className="toast show";
+  t.innerText=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+  showToast("Produto adicionado ao carrinho");
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+const produtos = [
+ {nome:"Teclado Mecânico Redragon Kumara",desc:"Switch mecânico e estrutura reforçada.",preco:239.90,img:"https://images.kabum.com.br/produtos/fotos/100772/teclado-redragon-kumara_1551112233_g.jpg"},
+ {nome:"Teclado Mecânico HyperX Alloy Core",desc:"Iluminação RGB e resistência.",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/108998/teclado-hyperx_1617788999_g.jpg"},
+ {nome:"Teclado Logitech MX Keys",desc:"Digitação premium e sem fio.",preco:699.90,img:"https://images.kabum.com.br/produtos/fotos/114998/teclado-mx-keys_1629981123_g.jpg"},
+ {nome:"Mouse Logitech MX Master 3",desc:"Precisão e ergonomia profissional.",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/116223/mouse-mx-master_1631123344_g.jpg"},
+ {nome:"Mouse Logitech G305 Wireless",desc:"Wireless com alto desempenho.",preco:329.90,img:"https://images.kabum.com.br/produtos/fotos/97545/mouse-logitech-g305_1543009988_g.jpg"},
+ {nome:"Mouse Razer Basilisk Essential",desc:"Ergonomia e precisão.",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/112998/mouse-razer_1622233111_g.jpg"},
+ {nome:"Mouse Sem Fio Microsoft Sculpt",desc:"Design ergonômico.",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/117998/mouse-microsoft_1639981123_g.jpg"},
+ {nome:"Headset HyperX Cloud Stinger",desc:"Conforto e áudio equilibrado.",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/99788/headset-hyperx_1548892233_g.jpg"},
+ {nome:"Headset Logitech G432",desc:"Som surround 7.1.",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/101998/headset-logitech_1559981123_g.jpg"},
+ {nome:"Headset JBL Quantum 100",desc:"Áudio imersivo para uso geral.",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/118223/headset-jbl_1625542231_g.jpg"},
+ {nome:"Webcam Logitech StreamCam",desc:"Full HD para streaming.",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/119223/webcam-streamcam_1626678899_g.jpg"},
+ {nome:"Webcam Redragon Apex",desc:"Full HD 1080p.",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/120998/webcam-redragon_1629981123_g.jpg"},
+ {nome:"Mousepad Gamer XXL",desc:"Grande área de uso.",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/121223/mousepad-xxl_1631123344_g.jpg"},
+ {nome:"Mousepad SteelSeries QcK",desc:"Alta precisão.",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/122223/mousepad-steelseries_1633345566_g.jpg"},
+ {nome:"Hub USB 7 Portas",desc:"Mais conectividade.",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/123998/hub-usb-7_1655567788_g.jpg"},
+ {nome:"Adaptador USB-C para USB",desc:"Compatibilidade com notebooks.",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/124998/adaptador-usb-c_1657788999_g.jpg"},
+ {nome:"Teclado Bluetooth Multi-dispositivos",desc:"Troca rápida entre dispositivos.",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/125998/teclado-bluetooth_1659981123_g.jpg"},
+ {nome:"Mouse Bluetooth Multiuso",desc:"Funciona em vários dispositivos.",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/126998/mouse-bluetooth_1661123344_g.jpg"},
+ {nome:"Headset Bluetooth",desc:"Sem fios para mobilidade.",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/127998/headset-bluetooth_1663345566_g.jpg"},
+ {nome:"Webcam com Ring Light",desc:"Iluminação integrada.",preco:329.90,img:"https://images.kabum.com.br/produtos/fotos/128998/webcam-ring_1665567788_g.jpg"},
+ {nome:"Teclado Numérico USB",desc:"Ideal para planilhas.",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/129223/teclado-numerico_1667788999_g.jpg"},
+ {nome:"Mouse Trackball",desc:"Precisão sem mover o braço.",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/130998/mouse-trackball_1669981123_g.jpg"},
+ {nome:"Headset Office Premium",desc:"Conforto prolongado.",preco:279.90,img:"https://images.kabum.com.br/produtos/fotos/131998/headset-office_1671123344_g.jpg"},
+ {nome:"Webcam 2K",desc:"Imagem mais nítida.",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/132998/webcam-2k_1673345566_g.jpg"},
+ {nome:"Mouse USB Retrátil",desc:"Portabilidade.",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/133998/mouse-retratil_1675567788_g.jpg"},
+ {nome:"Teclado Dobrável Bluetooth",desc:"Ideal para viagens.",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/134998/teclado-dobravel_1677788999_g.jpg"},
+ {nome:"Headset USB com Cancelamento",desc:"Redução de ruído.",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/135998/headset-cancelamento_1679981123_g.jpg"},
+ {nome:"Webcam 4K",desc:"Alta definição para produção.",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/136998/webcam-4k_1681123344_g.jpg"},
+ {nome:"Mouse Ergonômico Vertical",desc:"Menos esforço do pulso.",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/137998/mouse-vertical_1683345566_g.jpg"},
+ {nome:"Teclado Retroiluminado",desc:"Uso em ambientes escuros.",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/138998/teclado-backlight_1685567788_g.jpg"},
+ {nome:"Headset Gamer Básico",desc:"Versátil para uso geral.",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/139998/headset-gamer_1687788999_g.jpg"},
+ {nome:"Webcam USB Profissional",desc:"Videoconferências avançadas.",preco:549.90,img:"https://images.kabum.com.br/produtos/fotos/140998/webcam-pro_1689981123_g.jpg"},
+ {nome:"Mouse Sem Fio Slim",desc:"Design fino.",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/141998/mouse-slim_1691123344_g.jpg"},
+ {nome:"Teclado Office Premium",desc:"Conforto e durabilidade.",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/142998/teclado-office-premium_1693345566_g.jpg"},
+ {nome:"Headset Estéreo USB",desc:"Chamadas claras.",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/143998/headset-stereo-usb_1695567788_g.jpg"},
+ {nome:"Webcam com Autofoco",desc:"Imagem sempre nítida.",preco:459.90,img:"https://images.kabum.com.br/produtos/fotos/144998/webcam-autofocus_1697788999_g.jpg"},
+ {nome:"Mouse USB Silencioso",desc:"Cliques suaves.",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/145998/mouse-silencioso_1699981123_g.jpg"},
+ {nome:"Teclado Compacto Bluetooth",desc:"Sem fio e portátil.",preco:229.90,img:"https://images.kabum.com.br/produtos/fotos/146998/teclado-compacto-bt_1701123344_g.jpg"},
+ {nome:"Headset Corporativo USB",desc:"Uso profissional.",preco:319.90,img:"https://images.kabum.com.br/produtos/fotos/147998/headset-corporativo_1703345566_g.jpg"},
+ {nome:"Webcam Full HD Office",desc:"Ideal para reuniões.",preco:289.90,img:"https://images.kabum.com.br/produtos/fotos/148998/webcam-office_1705567788_g.jpg"},
+ {nome:"Mouse Multidispositivo",desc:"Alterna entre PCs.",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/149998/mouse-multi_1707788999_g.jpg"},
+ {nome:"Teclado USB Profissional",desc:"Alta durabilidade.",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/150998/teclado-pro_1709981123_g.jpg"},
+ {nome:"Headset com Microfone Destacável",desc:"Flexibilidade de uso.",preco:259.90,img:"https://images.kabum.com.br/produtos/fotos/151998/headset-mic_1711123344_g.jpg"},
+ {nome:"Webcam USB Compacta",desc:"Design discreto.",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/152998/webcam-compacta_1713345566_g.jpg"},
+ {nome:"Mouse USB Clássico",desc:"Modelo tradicional.",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/153998/mouse-classico_1715567788_g.jpg"},
+ {nome:"Teclado Multimídia Avançado",desc:"Atalhos dedicados.",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/154998/teclado-avancado_1717788999_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

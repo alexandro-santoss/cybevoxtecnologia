@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Games | CyberVox Tecnologia</title>
+
+<meta name="description" content="Games na CyberVox Tecnologia: consoles, jogos, acessórios gamer, periféricos e setups completos para jogar melhor.">
+<meta name="keywords" content="games, videogames, consoles, pc gamer, perifericos gamer, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= MENU SUPERIOR ================= */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:10px 16px;
+  border-radius:20px;
+  background:#f0f0f0;
+  color:#222;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#d62828;
+  color:#fff;
+}
+
+/* ================= MENU LATERAL ================= */
+.sidebar{
+  padding:20px;
+  background:#fafafa;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  margin-bottom:10px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#222;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:.2s;
+}
+.sidebar a:hover{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* ================= PRODUTOS ================= */
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:20px;
+}
+.product-card{
+  background:#fff;
+  border-radius:10px;
+  padding:15px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  text-align:center;
+}
+.product-card img{
+  max-width:100%;
+  height:160px;
+  object-fit:contain;
+}
+.product-card h3{
+  font-size:15px;
+  margin:10px 0;
+  color:#111;
+}
+.product-card strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:16px;
+  color:#000;
+}
+.product-card button{
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  background:#111;
+  color:#fff;
+}
+.product-card button.favorito{
+  background:#e5e5e5;
+  color:#111;
+}
+.product-card button:hover{
+  opacity:.9;
+}
+
+/* ================= RODAPÉ ================= */
+.footer{
+  background:#111;
+  color:#e5e5e5;
+  margin-top:40px;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  padding:20px;
+  border-bottom:1px solid #222;
+  font-weight:600;
+  text-align:center;
+}
+.footer-content{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+  padding:30px 20px;
+}
+.footer-content h4{
+  margin-bottom:12px;
+  color:#fff;
+}
+.footer-content ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.footer-content li{
+  margin-bottom:8px;
+}
+.footer-content a{
+  text-decoration:none;
+  color:#cfcfcf;
+}
+.footer-content a:hover{
+  color:#fff;
+  text-decoration:underline;
+}
+.footer-bottom{
+  text-align:center;
+  padding:15px;
+  font-size:14px;
+  color:#9ca3af;
+  border-top:1px solid #222;
+}
+
+/* ================= WHATSAPP ================= */
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:9999;
+}
+.whatsapp-btn{
+  width:60px;
+  height:60px;
+  background:#25d366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+.whatsapp-btn img{width:34px}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar games e acessórios...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a class="active" href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+ <aside class="sidebar">
+  <a class="active" href="games.html">🎮 Games</a>
+  <a href="consoles.html">🕹️ Consoles</a>
+  <a href="jogos.html">🎯 Jogos</a>
+  <a href="controles.html">🎮 Controles</a>
+  <a href="headsets.html">🎧 Headsets</a>
+</aside>
+
+  <main class="content">
+    <section class="hero-banner">
+      <h1>Games</h1>
+      <p>Consoles, jogos e acessórios gamer para elevar sua experiência.</p>
+    </section>
+
+    <h2>Games em Destaque</h2>
+    <section class="products-grid" id="listaProdutos"></section>
+  </main>
+
+</div>
+
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+
+    <div>
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="fale-conosco.html">Fale Conosco</a></li>
+        <li><a href="rastreamento.html">Rastreamento</a></li>
+        <li><a href="politica-troca.html">Troca e Devolução</a></li>
+        <li><a href="politica-troca.html">Garantia</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li><a href="marca-propria.html">Marca Própria</a></li>
+        <li><a href="carreiras.html">Carreiras</a></li>
+        <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Minha Conta</h4>
+      <ul>
+        <li><a href="minha-conta.html">Entrar / Cadastrar</a></li>
+        <li><a href="favoritos.html">Favoritos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li>WhatsApp: (11) 97835-7841</li>
+        <li>Email: fale.tvision@outlook.com</li>
+        <li><a href="https://wa.me/5511978357841">Atendimento WhatsApp</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+
+</footer>
+
+<div class="whatsapp-float">
+  <a class="whatsapp-btn" href="https://wa.me/5511978357841" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
+</div>
+
+<script>
+const produtos=[
+ {id:301,nome:"Console PlayStation 5 Slim",preco:3499.90,img:"https://images.kabum.com.br/produtos/fotos/386759/playstation-5-slim_1694019896_g.jpg"},
+ {id:302,nome:"Console Xbox Series S",preco:2999.90,img:"https://images.kabum.com.br/produtos/fotos/112998/xbox-series-s_1565887682_g.jpg"},
+ {id:303,nome:"Headset Gamer Redragon Zeus",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/102497/headset-redragon-zeus_1551375135_g.jpg"},
+ {id:304,nome:"Controle Xbox Wireless",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/113946/controle-xbox-wireless_1566840424_g.jpg"}
+];
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

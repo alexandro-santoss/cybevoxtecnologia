@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Bazar | CyberVox Tecnologia</title>
+
+<meta name="description" content="Produtos diversos de bazar: utilidades, organização, limpeza leve e acessórios.">
+<meta name="keywords" content="bazar, utilidades domesticas, organizadores">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ===== */
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;
+  background:#fff;border-bottom:1px solid #e5e5e5;overflow-x:auto
+}
+.top-categories a{
+  padding:10px 16px;border-radius:20px;
+  background:#f0f0f0;color:#222;text-decoration:none;font-weight:600
+}
+.top-categories a:hover,
+.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#d62828;color:#fff}
+
+.layout{display:flex;gap:20px}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  width:260px;padding:20px;background:#f1f5f9;border-radius:14px
+}
+.sidebar a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  text-decoration:none;font-weight:600;color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:.2s
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;color:#fff;transform:translateY(-2px)
+}
+.sidebar a.cta-lista-material{
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:#fff;font-weight:700;
+  box-shadow:0 8px 20px rgba(37,99,235,.35)
+}
+.sidebar a.cta-lista-material span.badge{
+  margin-left:auto;background:#facc15;color:#111;
+  font-size:11px;font-weight:700;
+  padding:3px 8px;border-radius:999px
+}
+
+/* ===== PRODUTOS ===== */
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;margin-top:20px
+}
+.product-card{
+  background:#fff;border-radius:12px;
+  padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.08);
+  text-align:center
+}
+.product-card img{
+  width:100%;height:160px;object-fit:contain
+}
+.product-card h3{font-size:14px;margin:10px 0}
+.product-card strong{display:block;margin-bottom:10px}
+.product-card button{
+  width:100%;padding:10px;margin-top:6px;
+  border:none;border-radius:6px;
+  font-weight:600;cursor:pointer
+}
+.btn-cart{background:#111;color:#fff}
+.btn-fav{background:#e5e5e5;color:#111}
+.btn-lista{background:#2563eb;color:#fff}
+
+/* ===== BADGE ===== */
+.badge-count{
+  background:#dc2626;color:#fff;
+  padding:2px 8px;border-radius:999px;
+  font-size:12px;font-weight:700;margin-left:6px
+}
+
+/* ===== TOAST ===== */
+.toast{
+  position:fixed;bottom:30px;right:30px;
+  background:#111;color:#fff;
+  padding:14px 20px;border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  font-weight:600;opacity:0;
+  transform:translateY(20px);transition:.4s;
+  z-index:9999
+}
+.toast.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar produtos de bazar...">
+    </div>
+    <div class="header-actions">
+      <a href="lista-material.html">
+        📋 Lista <span class="badge-count" id="badgeLista">0</span>
+      </a>
+      <a href="carrinho.html">🛒 Carrinho</a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a class="active" href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+<aside class="sidebar">
+  <a href="lista-material.html" class="cta-lista-material">
+    📋 Monte sua Lista de Material <span class="badge">NOVO</span>
+  </a>
+
+  <a href="escrita.html">✏️ Escrita</a>
+  <a href="papeis.html">📄 Papéis</a>
+  <a href="mochilas.html">🎒 Mochilas</a>
+  <a href="lancheiras.html">🥪 Lancheiras</a>
+  <a href="estojos.html">🧰 Estojos</a>
+  <a href="escritorio.html">🏢 Escritório</a>
+  <a class="active" href="bazar.html">🏷️ Bazar</a>
+</aside>
+
+<main class="content">
+  <section class="hero-banner">
+    <h1>Bazar</h1>
+    <p>Utilidades diversas para casa, escola e escritório.</p>
+  </section>
+
+  <section class="products-grid" id="listaProdutos"></section>
+</main>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== PRODUTOS BASE (BAZAR) ===== */
+const baseProdutos=[
+ {nome:"Organizador Plástico Multiuso",preco:19.90,img:"https://images.kabum.com.br/produtos/fotos/200001/organizador-plastico.jpg"},
+ {nome:"Caixa Organizadora Média",preco:29.90,img:"https://images.kabum.com.br/produtos/fotos/200002/caixa-organizadora.jpg"},
+ {nome:"Cesto Multiuso",preco:24.90,img:"https://images.kabum.com.br/produtos/fotos/200003/cesto-multiuso.jpg"},
+ {nome:"Pano Multiuso",preco:6.90,img:"https://images.kabum.com.br/produtos/fotos/200004/pano-multiuso.jpg"},
+ {nome:"Porta Objetos Plástico",preco:14.90,img:"https://images.kabum.com.br/produtos/fotos/200005/porta-objetos.jpg"},
+ {nome:"Gancho Adesivo",preco:9.90,img:"https://images.kabum.com.br/produtos/fotos/200006/gancho-adesivo.jpg"},
+ {nome:"Lixeira Plástica 10L",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/200007/lixeira.jpg"},
+ {nome:"Tapete Antiderrapante",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/200008/tapete.jpg"},
+ {nome:"Balde Plástico",preco:17.90,img:"https://images.kabum.com.br/produtos/fotos/200009/balde.jpg"},
+ {nome:"Escova Multiuso",preco:11.90,img:"https://images.kabum.com.br/produtos/fotos/200010/escova.jpg"}
+];
+
+let produtos=[];
+for(let i=0;i<100;i++){
+  produtos.push({...baseProdutos[i%10],id:i+1});
+}
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+let listaMaterial=JSON.parse(localStorage.getItem("listaMaterialCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("busca");
+const toast=document.getElementById("toast");
+
+function showToast(msg){
+  toast.textContent=msg;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"),2500);
+}
+
+function atualizarBadge(){
+  document.getElementById("badgeLista").textContent =
+    listaMaterial.reduce((s,p)=>s+(p.qtd||1),0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  showToast("Produto adicionado ao carrinho");
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.indexOf(id);
+  idx>=0?(favoritos.splice(idx,1),btn.textContent="♡ Favoritar"):
+           (favoritos.push(id),btn.textContent="♥ Favorito");
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function addLista(produto){
+  const item=listaMaterial.find(p=>p.id===produto.id);
+  item?item.qtd++:listaMaterial.push({...produto,qtd:1});
+  localStorage.setItem("listaMaterialCybervox",JSON.stringify(listaMaterial));
+  atualizarBadge();
+  showToast("Produto adicionado à Lista de Material");
+}
+
+function render(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button class="btn-cart" onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="btn-fav" onclick="favoritar(${p.id},this)">♡ Favoritar</button>
+      <button class="btn-lista" onclick='addLista(${JSON.stringify(p)})'>➕ Adicionar à Lista</button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  render(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+render(produtos);
+atualizarBadge();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Carregadores para Smartphones | CyberVox Tecnologia</title>
+
+<meta name="description" content="Carregadores para smartphones: USB-C, Lightning, wireless, veicular e fast charge para Apple e Android.">
+<meta name="keywords" content="carregadores celular, carregador usb-c, carregador iphone, carregador samsung">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{display:flex;gap:10px;padding:12px 16px;background:#fff;border-bottom:1px solid #e5e5e5;overflow-x:auto}
+.top-categories a{padding:8px 14px;border-radius:18px;background:#f1f5f9;color:#111;text-decoration:none;font-weight:600}
+.top-categories a:hover,.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#dc2626;color:#fff}
+
+.layout{display:flex;gap:20px;padding:20px}
+.sidebar{width:240px;padding:20px;background:#f1f5f9;border-radius:14px}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:8px;background:#fff;border-radius:10px;text-decoration:none;font-weight:600;color:#111;box-shadow:0 4px 10px rgba(0,0,0,.06)}
+.sidebar a:hover,.sidebar a.active{background:#111;color:#fff;transform:translateY(-2px)}
+
+.content{flex:1}
+.product-card button.favorito{background:#e5e7eb;color:#111}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar carregadores...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a class="active" href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="android.html">🤖 Android</a>
+    <a href="apple.html">🍎 Apple</a>
+    <a href="acessorios-smartphone.html">📱 Acessórios</a>
+    <a href="capas.html">🛡️ Capas</a>
+    <a class="active" href="carregadores.html">🔌 Carregadores</a>
+    <a href="fones.html">🎧 Fones de Ouvido</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Carregadores para Smartphones</h1>
+      <p>Energia rápida, segura e compatível com os principais modelos do mercado.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos=[
+/* ===== PAREDE / FAST CHARGE ===== */
+{id:801,nome:"Carregador USB-C 20W Apple",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/193998/carregador-apple-20w_1666295044_g.jpg"},
+{id:802,nome:"Carregador Samsung Super Fast 25W",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/186554/carregador-samsung-25w_1657893321_g.jpg"},
+{id:803,nome:"Carregador Samsung 45W Super Fast",preco:219.90,img:"https://images.kabum.com.br/produtos/fotos/199887/carregador-samsung-45w_1669129988_g.jpg"},
+{id:804,nome:"Carregador Motorola Turbo Power 30W",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/187665/carregador-motorola-30w_1659981234_g.jpg"},
+{id:805,nome:"Carregador Xiaomi 33W Fast Charge",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/178334/carregador-xiaomi-33w_1651123344_g.jpg"},
+{id:806,nome:"Carregador Baseus GaN 65W",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/314556/carregador-baseus-65w_1672234455_g.jpg"},
+{id:807,nome:"Carregador Anker Nano 20W",preco:169.90,img:"https://images.kabum.com.br/produtos/fotos/299887/carregador-anker-20w_1669987766_g.jpg"},
+{id:808,nome:"Carregador Multilaser USB 2.1A",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/155667/carregador-multilaser_1623456778_g.jpg"},
+
+/* ===== WIRELESS ===== */
+{id:809,nome:"Carregador Wireless Samsung 15W",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/188776/carregador-wireless-samsung_1659982233_g.jpg"},
+{id:810,nome:"Carregador Wireless Apple MagSafe",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/192445/magsafe-apple_1661234567_g.jpg"},
+{id:811,nome:"Carregador Wireless Baseus 15W",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/288556/wireless-baseus_1669981111_g.jpg"},
+{id:812,nome:"Carregador Wireless Xiaomi 20W",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/199332/wireless-xiaomi_1663322111_g.jpg"},
+
+/* ===== VEICULAR ===== */
+{id:813,nome:"Carregador Veicular USB Duplo",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/622334/carregador-veicular_1608877665_g.jpg"},
+{id:814,nome:"Carregador Veicular Fast Charge Baseus",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/311223/carregador-veicular-baseus_1671122334_g.jpg"},
+{id:815,nome:"Carregador Veicular Samsung",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/211998/carregador-veicular-samsung_1668877665_g.jpg"},
+
+/* ===== MULTIPLAS PORTAS / GAN ===== */
+{id:816,nome:"Carregador USB 4 Portas 40W",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/255667/carregador-4portas_1635566778_g.jpg"},
+{id:817,nome:"Carregador GaN 100W Profissional",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/322556/carregador-gan-100w_1675566778_g.jpg"},
+
+/* ===== DIVERSOS ===== */
+{id:818,nome:"Carregador Universal Bivolt",preco:29.90,img:"https://images.kabum.com.br/produtos/fotos/144556/carregador-universal_1611122334_g.jpg"},
+{id:819,nome:"Carregador USB-C Lenovo 65W",preco:259.90,img:"https://images.kabum.com.br/produtos/fotos/211112/carregador-lenovo_1671022111_g.jpg"},
+{id:820,nome:"Carregador Dell USB-C 65W",preco:289.90,img:"https://images.kabum.com.br/produtos/fotos/207889/carregador-dell_1670992211_g.jpg"},
+
+/* ===== COMPLEMENTARES (PARA FECHAR 50) ===== */
+{id:821,nome:"Carregador USB 12W Compacto",preco:34.90,img:"https://images.kabum.com.br/produtos/fotos/188001/carregador-12w_1659981122_g.jpg"},
+{id:822,nome:"Carregador Turbo 18W QC3.0",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/188002/carregador-qc3_1659982233_g.jpg"},
+{id:823,nome:"Carregador USB-C 30W Compacto",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/188003/carregador-30w_1659983344_g.jpg"},
+{id:824,nome:"Carregador USB-C 45W Notebook",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/188004/carregador-45w_1659984455_g.jpg"},
+{id:825,nome:"Carregador Wireless Stand",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/188005/wireless-stand_1659985566_g.jpg"},
+{id:826,nome:"Carregador Veicular USB-C PD",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/188006/veicular-pd_1659986677_g.jpg"},
+{id:827,nome:"Carregador USB Retrátil",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/188007/carregador-retratil_1659987788_g.jpg"},
+{id:828,nome:"Carregador Fast Charge 33W",preco:109.90,img:"https://images.kabum.com.br/produtos/fotos/188008/carregador-33w_1659988899_g.jpg"},
+{id:829,nome:"Carregador USB-C PD 20W",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/188009/carregador-pd20w_1659989900_g.jpg"},
+{id:830,nome:"Carregador Mesa 6 Portas",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/188010/carregador-6portas_1659991010_g.jpg"}
+];
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Acessórios | CyberVox Tecnologia</title>
+
+<meta name="description" content="Acessórios de informática: cabos, adaptadores, suportes, energia, organização e utilidades.">
+<meta name="keywords" content="acessorios informatica, cabos, adaptadores, suportes, energia, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar acessórios...">
+    </div>
+
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a class="active" href="informatica.html">Informática</a>
+  <a href="smartphones.html">Smartphones</a>
+  <a href="games.html">Games</a>
+  <a href="papelaria.html">Papelaria</a>
+  <a href="limpeza.html">Limpeza</a>
+  <a href="embalagens.html">Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+
+<div class="layout">
+
+  <!-- MENU LATERAL PADRÃO OFICIAL -->
+  <aside class="sidebar">
+    <a href="hardware.html">Hardware</a>
+    <a href="software.html">Software</a>
+    <a href="computadores.html">Computadores</a>
+    <a href="setup-gamers.html">Setup Gamers</a>
+    <a href="notebook.html">Notebook</a>
+    <a href="monitores.html">Monitores</a>
+    <a href="perifericos.html">Periféricos</a>
+    <a href="acessorios.html" class="active">Acessórios</a>
+    <a href="energia.html">Energia</a>
+    <a href="impressao.html">Impressão</a>
+    <a href="audio.html">Áudio</a>
+    <a href="automacao.html">Automação</a>
+    <a href="redes.html">Redes</a>
+    <a href="cadeiras-gamers.html">Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <a href="informatica.html">Informática</a> ›
+      <span>Acessórios</span>
+    </nav>
+
+    <section class="hero-banner">
+      <h1>Acessórios</h1>
+      <p>Acessórios essenciais para informática, escritório e home office.</p>
+    </section>
+
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+    <div style="text-align:center;margin-top:20px;">
+      <strong>Páginas:</strong>
+      <a href="acessorios.html">1</a>
+      <a href="acessorios-2.html">2</a>
+      <a href="acessorios-3.html">3</a>
+      <a href="acessorios-4.html">4</a>
+      <a href="acessorios-5.html">5</a>
+      <a href="acessorios-6.html">6</a>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <a href="fale-conosco.html">Fale Conosco</a>
+      <a href="rastreamento.html">Rastreamento</a>
+      <a href="politica-troca.html">Troca e Devolução</a>
+      <a href="politica-troca.html">Garantia</a>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="sobre-nos.html">Sobre Nós</a>
+      <a href="marca-propria.html">Marca Própria</a>
+      <a href="#">Carreiras</a>
+      <a href="#">Sustentabilidade</a>
+    </div>
+    <div>
+      <h4>Minha Conta</h4>
+      <a href="minha-conta.html">Entrar / Cadastrar</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a href="carrinho.html">Carrinho</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>WhatsApp: (11) 97835-7841</p>
+      <p>Email: fale.tvision@outlook.com</p>
+      <a class="whatsapp" href="https://wa.me/5511978357841" target="_blank">Atendimento via WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function showToast(msg){
+  const t=document.createElement("div");
+  t.className="toast show";
+  t.innerText=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+  showToast("Produto adicionado ao carrinho");
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+const produtos = [
+ {nome:"Cabo HDMI 3m",desc:"Alta definição para TVs e monitores.",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/300001/hdmi-3m_g.jpg"},
+ {nome:"Cabo DisplayPort 1.2",desc:"Conexão digital estável.",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/300002/dp-12_g.jpg"},
+ {nome:"Cabo USB-C Nylon 1,5m",desc:"Resistente ao desgaste.",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/300003/usbc-nylon_g.jpg"},
+ {nome:"Adaptador HDMI para DVI",desc:"Compatível com monitores antigos.",preco:29.90,img:"https://images.kabum.com.br/produtos/fotos/300004/hdmi-dvi_g.jpg"},
+ {nome:"Hub USB 3.0 Alumínio",desc:"4 portas de alta velocidade.",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/300005/hub-aluminio_g.jpg"},
+ {nome:"Dock USB-C com PD",desc:"Expansão e carregamento.",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/300006/dock-pd_g.jpg"},
+ {nome:"Carregador USB-C 45W",desc:"Ideal para ultrabooks.",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/300007/carregador-45w_g.jpg"},
+ {nome:"Fonte Universal 65W",desc:"Compatível com vários notebooks.",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/300008/fonte-65w_g.jpg"},
+ {nome:"Suporte Ajustável Notebook",desc:"Ergonomia no trabalho.",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/300009/suporte-ajustavel_g.jpg"},
+ {nome:"Base Refrigerada Slim",desc:"Ventilação silenciosa.",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/300010/base-slim_g.jpg"},
+ {nome:"Case para HD 3.5\"",desc:"Proteção externa.",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/300011/case-35_g.jpg"},
+ {nome:"Case SSD USB-C",desc:"Transferência rápida.",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/300012/case-ssd-usbc_g.jpg"},
+ {nome:"Leitor Cartão SD USB 3.0",desc:"Alta velocidade.",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/300013/leitor-sd_g.jpg"},
+ {nome:"Filtro de Linha 8 Tomadas",desc:"Proteção completa.",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/300014/filtro-8_g.jpg"},
+ {nome:"Extensão Elétrica 5m",desc:"Maior alcance.",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/300015/extensao-5m_g.jpg"},
+ {nome:"Organizador de Cabos Espiral",desc:"Gestão de cabos.",preco:19.90,img:"https://images.kabum.com.br/produtos/fotos/300016/espiral_g.jpg"},
+ {nome:"Trava Notebook com Senha",desc:"Segurança sem chave.",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/300017/trava-senha_g.jpg"},
+ {nome:"Kit Limpeza Profissional",desc:"Telas e periféricos.",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/300018/limpeza-pro_g.jpg"},
+ {nome:"Luminária LED USB",desc:"Iluminação de mesa.",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/300019/luminaria-usb_g.jpg"},
+ {nome:"Adaptador USB-C para USB-A",desc:"Compatibilidade ampliada.",preco:19.90,img:"https://images.kabum.com.br/produtos/fotos/300020/adaptador-c-a_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados=produtos.filter(p=>p.preco>=min&&p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados=produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Carrinho | CyberVox Tecnologia</title>
+
+<meta name="description" content="Carrinho de compras da CyberVox Tecnologia. Revise seus produtos antes de finalizar a compra.">
+<meta name="keywords" content="carrinho, compras, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ================= MENU SUPERIOR ================= */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:10px 16px;
+  border-radius:20px;
+  background:#f0f0f0;
+  color:#222;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#d62828;
+  color:#fff;
+}
+
+/* ================= MENU LATERAL ================= */
+.sidebar{
+  padding:20px;
+  background:#fafafa;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  margin-bottom:10px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#222;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:.2s;
+}
+.sidebar a:hover{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* ================= CARRINHO ================= */
+.cart-box{
+  background:#fff;
+  border-radius:10px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+.cart-table{
+  width:100%;
+  border-collapse:collapse;
+}
+.cart-table th,
+.cart-table td{
+  padding:12px;
+  border-bottom:1px solid #e5e7eb;
+  text-align:left;
+}
+.cart-table th{
+  font-weight:600;
+}
+.cart-table img{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+}
+.cart-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:15px;
+  margin-top:20px;
+}
+.cart-actions button{
+  padding:12px 20px;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn-clear{background:#e5e5e5;}
+.btn-checkout{background:#111;color:#fff;}
+.cart-total{
+  text-align:right;
+  font-size:18px;
+  font-weight:700;
+  margin-top:15px;
+}
+
+/* ================= WHATSAPP FLUTUANTE ================= */
+.whatsapp-float{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.whatsapp-btn{
+  width:56px;
+  height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
+  animation: whatsappPulse 2.8s infinite;
+}
+
+.whatsapp-btn img{
+  width:32px;
+  height:32px;
+}
+
+/* ================= EFEITO PULSE DISCRETO ================= */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37,211,102,.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37,211,102,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37,211,102,0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" disabled placeholder="Carrinho de compras">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Meu Carrinho</h1>
+      <p>Revise seus produtos antes de finalizar a compra.</p>
+    </section>
+
+    <div class="cart-box">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Descrição</th>
+            <th>Qtd</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cartItems">
+          <tr>
+            <td colspan="5">Seu carrinho está vazio.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cart-total" id="cartTotal"></div>
+
+      <div class="cart-actions">
+        <button class="btn-clear" onclick="limparCarrinho()">Limpar Carrinho</button>
+        <button class="btn-checkout" onclick="finalizarCompra()">Finalizar Compra</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+    <div>
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="fale-conosco.html">Fale Conosco</a></li>
+        <li><a href="rastreamento.html">Rastreamento</a></li>
+        <li><a href="politica-troca.html">Troca e Devolução</a></li>
+        <li><a href="politica-troca.html">Garantia</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li><a href="marca-propria.html">Marca Própria</a></li>
+        <li><a href="carreiras.html">Carreiras</a></li>
+        <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Minha Conta</h4>
+      <ul>
+        <li><a href="minha-conta.html">Entrar / Cadastrar</a></li>
+        <li><a href="favoritos.html">Favoritos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li>WhatsApp: (11) 97835-7841</li>
+        <li>Email: fale.tvision@outlook.com</li>
+        <li><a href="https://wa.me/5511978357841">Atendimento WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<div class="whatsapp-float">
+  <a class="whatsapp-btn" href="https://wa.me/5511978357841" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  </a>
+</div>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
+const cartCount = document.querySelector(".cart-count");
+
+function atualizarTopo(){
+  cartCount.textContent = carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function renderCarrinho(){
+  cartItems.innerHTML = "";
+
+  if(carrinho.length === 0){
+    cartItems.innerHTML = '<tr><td colspan="5">Seu carrinho está vazio.</td></tr>';
+    cartTotal.textContent = "";
+    atualizarTopo();
+    return;
+  }
+
+  let total = 0;
+
+  carrinho.forEach((p,i)=>{
+    total += p.preco * p.qtd;
+    cartItems.innerHTML += `
+      <tr>
+        <td><img src="${p.img}"></td>
+        <td>${p.nome}</td>
+        <td><input type="number" min="1" value="${p.qtd}" onchange="alterarQtd(${i},this.value)"></td>
+        <td>R$ ${(p.preco * p.qtd).toFixed(2)}</td>
+        <td><button onclick="removerItem(${i})">❌</button></td>
+      </tr>`;
+  });
+
+  cartTotal.textContent = "Total: R$ " + total.toFixed(2);
+  atualizarTopo();
+}
+
+function alterarQtd(i,v){
+  carrinho[i].qtd = Math.max(1,parseInt(v));
+  salvar();
+}
+
+function removerItem(i){
+  carrinho.splice(i,1);
+  salvar();
+}
+
+function limparCarrinho(){
+  if(confirm("Deseja limpar o carrinho?")){
+    carrinho = [];
+    salvar();
+  }
+}
+
+function finalizarCompra(){
+  alert("Checkout será integrado.");
+}
+
+function salvar(){
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  renderCarrinho();
+}
+
+renderCarrinho();
+</script>
+
+</body>
+</html>

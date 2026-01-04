@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel Admin | CyberVox Tecnologia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Painel administrativo da CyberVox Tecnologia. Gerencie pedidos, produtos e clientes.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER PADRÃO -->
+<header>
+
+  <h1>CYBERVOX</h1>
+
+  <div class="header-search">
+    <input type="text" placeholder="Buscar no admin...">
+  </div>
+
+  <div class="header-actions">
+    <a href="carrinho.html">
+      <span>🛒</span>
+      Carrinho
+    </a>
+    <a href="favoritos.html">
+      <span>❤️</span>
+      Favoritos
+    </a>
+    <a href="minha-conta.html">
+      <span>👤</span>
+      Minha Conta
+    </a>
+  </div>
+
+</header>
+
+<!-- MENU SUPERIOR -->
+<nav class="top-categories">
+  <ul>
+    <li><a href="index.html">Loja</a></li>
+    <li><a href="produtos.html">Produtos</a></li>
+    <li><a href="admin.html" class="ofertas">Painel Admin</a></li>
+  </ul>
+</nav>
+
+<!-- LAYOUT -->
+<div class="container">
+
+  <!-- MENU LATERAL -->
+  <aside>
+    <a href="#dashboard">Dashboard <span>›</span></a>
+    <a href="#pedidos">Pedidos <span>›</span></a>
+    <a href="#produtos">Produtos <span>›</span></a>
+    <a href="#clientes">Clientes <span>›</span></a>
+    <a href="#config">Configurações <span>›</span></a>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main>
+
+    <h2>Painel Administrativo</h2>
+    <p id="statusAdmin">Acesso restrito. Faça login como administrador.</p>
+
+    <!-- LOGIN ADMIN -->
+    <div id="loginAdmin" style="background:#fff;padding:20px;border-radius:12px;max-width:420px;">
+      <label>Usuário</label><br>
+      <input id="adminUser" type="text" style="width:100%;padding:8px;"><br><br>
+
+      <label>Senha</label><br>
+      <input id="adminPass" type="password" style="width:100%;padding:8px;"><br><br>
+
+      <button onclick="loginAdmin()">Entrar no Painel</button>
+    </div>
+
+    <!-- PAINEL -->
+    <div id="painel" style="display:none;">
+
+      <!-- CARDS -->
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+        gap:20px;
+        margin-top:30px;
+      ">
+
+        <div style="background:#fff;padding:20px;border-radius:12px;">
+          <h3>Pedidos</h3>
+          <p>Total: <strong>12</strong></p>
+        </div>
+
+        <div style="background:#fff;padding:20px;border-radius:12px;">
+          <h3>Produtos</h3>
+          <p>Cadastrados: <strong>48</strong></p>
+        </div>
+
+        <div style="background:#fff;padding:20px;border-radius:12px;">
+          <h3>Clientes</h3>
+          <p>Ativos: <strong>27</strong></p>
+        </div>
+
+      </div>
+
+      <!-- PEDIDOS -->
+      <div id="pedidos" style="margin-top:40px;">
+        <h3>Últimos Pedidos</h3>
+
+        <table style="width:100%;margin-top:15px;background:#fff;border-collapse:collapse;">
+          <thead>
+            <tr style="background:#e0e0e0;">
+              <th style="padding:10px;text-align:left;">Pedido</th>
+              <th style="padding:10px;">Cliente</th>
+              <th style="padding:10px;">Valor</th>
+              <th style="padding:10px;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:10px;">CVX1023</td>
+              <td style="padding:10px;">João Silva</td>
+              <td style="padding:10px;">R$ 349,90</td>
+              <td style="padding:10px;">Enviado</td>
+            </tr>
+            <tr>
+              <td style="padding:10px;">CVX1024</td>
+              <td style="padding:10px;">Maria Souza</td>
+              <td style="padding:10px;">R$ 899,90</td>
+              <td style="padding:10px;">Em separação</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br>
+      <button onclick="logoutAdmin()">Sair do Painel</button>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+
+  <div class="footer-top">
+
+    <div>
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="fale-conosco.html">Fale Conosco</a></li>
+        <li><a href="rastreamento.html">Rastreamento</a></li>
+        <li><a href="politica-troca.html">Trocas</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li>CyberVox Tecnologia</li>
+        <li>by Tvision Tecnologia</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li>WhatsApp: (11) 97835-7841</li>
+        <li>Email: fale.tvision@outlook.com</li>
+      </ul>
+
+      <a class="footer-whatsapp" href="https://wa.me/5511978357841" target="_blank">
+        Chat WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia • CNPJ 63.890.993/0001-33
+  </div>
+
+</footer>
+
+<!-- SCRIPT ADMIN -->
+<script>
+const admin = JSON.parse(localStorage.getItem("adminLogado"));
+const loginBox = document.getElementById("loginAdmin");
+const painel = document.getElementById("painel");
+const statusTxt = document.getElementById("statusAdmin");
+
+if (admin) {
+  mostrarPainel();
+}
+
+function loginAdmin() {
+  const user = document.getElementById("adminUser").value;
+  const pass = document.getElementById("adminPass").value;
+
+  if (user === "admin" && pass === "1234") {
+    localStorage.setItem("adminLogado", JSON.stringify({ user }));
+    mostrarPainel();
+  } else {
+    alert("Usuário ou senha inválidos.");
+  }
+}
+
+function mostrarPainel() {
+  loginBox.style.display = "none";
+  painel.style.display = "block";
+  statusTxt.textContent = "Administrador logado.";
+}
+
+function logoutAdmin() {
+  localStorage.removeItem("adminLogado");
+  location.reload();
+}
+</script>
+
+</body>
+</html>

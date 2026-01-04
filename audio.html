@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Áudio | CyberVox Tecnologia</title>
+
+<meta name="description" content="Produtos de áudio: caixas de som, headsets, fones de ouvido, microfones e soluções de som para uso pessoal e profissional.">
+<meta name="keywords" content="audio, headset, fone de ouvido, microfone, caixa de som, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL DO INDEX ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar áudio...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a class="active" href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Áudio</h1>
+      <p>Som de qualidade para trabalho, jogos, entretenimento e uso profissional.</p>
+    </section>
+
+    <!-- FILTRO DE PREÇO -->
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* ===== PRODUTOS ÁUDIO (30) ===== */
+const produtos = [
+ {nome:"Headset Gamer HyperX Cloud Stinger",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/102438/headset-hyperx_1584389343_g.jpg"},
+ {nome:"Headset Gamer Logitech G435",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/154998/logitech-g435_1633322211_g.jpg"},
+ {nome:"Headset Gamer Redragon Zeus",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/133998/redragon-zeus_1629982211_g.jpg"},
+ {nome:"Fone de Ouvido JBL Tune 510BT",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/162221/jbl-tune_1641122211_g.jpg"},
+ {nome:"Fone de Ouvido JBL Quantum 50",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/168221/jbl-quantum_1643322211_g.jpg"},
+ {nome:"Microfone Condensador Fifine K669B",preco:219.90,img:"https://images.kabum.com.br/produtos/fotos/116998/fifine-mic_1619982211_g.jpg"},
+ {nome:"Microfone Gamer HyperX SoloCast",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/151998/hyperx-solocast_1629982211_g.jpg"},
+ {nome:"Caixa de Som JBL Go 3",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/167998/jbl-go3_1649982211_g.jpg"},
+ {nome:"Caixa de Som JBL Flip 6",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/169998/jbl-flip6_1651122211_g.jpg"},
+ {nome:"Caixa de Som Logitech Z207",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/112221/logitech-z207_1621122211_g.jpg"},
+ {nome:"Caixa de Som Logitech Z313",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/113221/logitech-z313_1622211122_g.jpg"},
+ {nome:"Soundbar JBL Cinema SB120",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/171998/jbl-soundbar_1653322211_g.jpg"},
+ {nome:"Soundbar Samsung HW-T450",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/172998/samsung-soundbar_1654412211_g.jpg"},
+ {nome:"Fone Bluetooth Xiaomi Redmi Buds 4",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/173998/redmi-buds_1655512211_g.jpg"},
+ {nome:"Fone Bluetooth Samsung Galaxy Buds FE",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/174998/galaxy-buds_1656612211_g.jpg"},
+ {nome:"Mesa de Som Behringer Xenyx 802",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/118998/behringer-xenyx_1619982211_g.jpg"},
+ {nome:"Interface de Áudio Focusrite Scarlett Solo",preco:1099.90,img:"https://images.kabum.com.br/produtos/fotos/119998/focusrite-scarlett_1621122211_g.jpg"},
+ {nome:"Microfone Lapela Boya M1",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/120998/boya-m1_1622211122_g.jpg"},
+ {nome:"Headphone Profissional AKG K92",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/121998/akg-k92_1623322211_g.jpg"},
+ {nome:"Amplificador de Fone Behringer",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/122998/amplificador-fone_1624412211_g.jpg"},
+ {nome:"Caixa de Som Multilaser SP172",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/123998/multilaser-sp172_1625512211_g.jpg"},
+ {nome:"Caixa de Som Edifier R1280DB",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/124998/edifier-r1280_1626612211_g.jpg"},
+ {nome:"Headset Office Jabra Evolve 20",preco:699.90,img:"https://images.kabum.com.br/produtos/fotos/125998/jabra-evolve_1627712211_g.jpg"},
+ {nome:"Microfone USB Blue Snowball",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/126998/blue-snowball_1628812211_g.jpg"},
+ {nome:"Soundbar LG SN4",preco:1099.90,img:"https://images.kabum.com.br/produtos/fotos/127998/lg-soundbar_1629912211_g.jpg"},
+ {nome:"Fone Profissional Audio-Technica ATH-M20x",preco:449.90,img:"https://images.kabum.com.br/produtos/fotos/128998/ath-m20x_1631012211_g.jpg"},
+ {nome:"Microfone Condensador BM800",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/129998/bm800_1632112211_g.jpg"},
+ {nome:"Caixa de Som Portátil Multilaser",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/130998/caixa-portatil_1633212211_g.jpg"},
+ {nome:"Headset Gamer Corsair HS35",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/131998/corsair-hs35_1634312211_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados = produtos.filter(p=>p.preco>=min && p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados = produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

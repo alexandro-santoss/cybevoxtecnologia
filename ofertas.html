@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Ofertas Imperdíveis | CyberVox Tecnologia</title>
+
+<meta name="description" content="Ofertas imperdíveis em tecnologia, games, papelaria, limpeza e embalagens. Promoções por tempo limitado!">
+<meta name="keywords" content="ofertas, promoções, descontos, tecnologia, cybervox">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* =================================================
+   FORÇAR PADRÃO VISUAL DO INDEX.HTML
+   ================================================= */
+
+/* MENU SUPERIOR */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#ffffff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  white-space:nowrap;
+}
+.top-categories a:hover{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+/* MENU LATERAL */
+.layout{
+  display:flex;
+  gap:20px;
+}
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#ffffff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* CONTEÚDO */
+.content{
+  flex:1;
+}
+
+/* =================================================
+   ESTILOS DE OFERTAS (ORIGINAL)
+   ================================================= */
+.offer-badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#e63946;
+  color:#fff;
+  padding:6px 10px;
+  font-size:13px;
+  border-radius:6px;
+  font-weight:bold;
+}
+.old-price{
+  text-decoration:line-through;
+  color:#999;
+  font-size:14px;
+}
+.new-price{
+  color:#e63946;
+  font-size:18px;
+  font-weight:bold;
+}
+.offer-card{
+  position:relative;
+  animation:pulse 2.5s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(230,57,70,.4)}
+  70%{box-shadow:0 0 0 10px rgba(230,57,70,0)}
+  100%{box-shadow:0 0 0 0 rgba(230,57,70,0)}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar ofertas...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas active" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner" style="background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);color:#fff;">
+      <h1>🔥 Ofertas Imperdíveis CyberVox</h1>
+      <p>Promoções reais, por tempo limitado. Aproveite antes que acabe.</p>
+    </section>
+
+    <section style="margin:20px 0;background:#fff;padding:20px;border-radius:12px;">
+      <h2>⚡ Destaques da Semana</h2>
+      <p>Selecionamos ofertas especiais de todas as categorias do site.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+
+  <div class="footer-content">
+
+    <div>
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="fale-conosco.html">Fale Conosco</a></li>
+        <li><a href="rastreamento.html">Rastreamento</a></li>
+        <li><a href="politica-troca.html">Troca e Devolução</a></li>
+        <li><a href="politica-troca.html">Garantia</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li><a href="marca-propria.html">Marca Própria</a></li>
+        <li><a href="carreiras.html">Carreiras</a></li>
+        <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Minha Conta</h4>
+      <ul>
+        <li><a href="minha-conta.html">Entrar / Cadastrar</a></li>
+        <li><a href="favoritos.html">Favoritos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li>WhatsApp: (11) 97835-7841</li>
+        <li>Email: fale.tvision@outlook.com</li>
+        <li><a href="https://wa.me/5511978357841">Atendimento WhatsApp</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+const produtos = [
+ {nome:"Smartphone Samsung Galaxy A15",de:1499.90,por:1299.90,img:"https://via.placeholder.com/250"},
+ {nome:"Notebook Lenovo IdeaPad",de:3299.90,por:2899.90,img:"https://via.placeholder.com/250"},
+ {nome:"Console Xbox Series S",de:3299.90,por:2999.90,img:"https://via.placeholder.com/250"}
+];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtos.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card offer-card">
+        <div class="offer-badge">OFERTA</div>
+        <img src="${p.img}">
+        <h3>${p.nome}</h3>
+        <div class="old-price">De R$ ${p.de.toFixed(2)}</div>
+        <div class="new-price">Por R$ ${p.por.toFixed(2)}</div>
+      </div>`;
+  });
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

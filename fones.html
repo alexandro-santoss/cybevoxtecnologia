@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Fones de Ouvido | CyberVox Tecnologia</title>
+
+<meta name="description" content="Fones de ouvido Apple e Android: Bluetooth, TWS, com fio, originais e paralelos premium.">
+<meta name="keywords" content="fones de ouvido, airpods, fone bluetooth, fone android, fone apple">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{
+  display:flex;gap:10px;padding:12px 16px;background:#fff;
+  border-bottom:1px solid #e5e5e5;overflow-x:auto
+}
+.top-categories a{
+  padding:8px 14px;border-radius:18px;background:#f1f5f9;
+  color:#111;text-decoration:none;font-weight:600
+}
+.top-categories a:hover,
+.top-categories a.active{background:#111;color:#fff}
+.top-categories a.ofertas{background:#dc2626;color:#fff}
+
+.layout{display:flex;gap:20px;padding:20px}
+
+.sidebar{
+  width:240px;padding:20px;background:#f1f5f9;border-radius:14px
+}
+.sidebar a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;margin-bottom:8px;
+  background:#fff;border-radius:10px;
+  text-decoration:none;font-weight:600;color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06)
+}
+.sidebar a:hover,
+.sidebar a.active{background:#111;color:#fff;transform:translateY(-2px)}
+
+.content{flex:1}
+
+.product-card button.favorito{
+  background:#e5e7eb;color:#111
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar fones de ouvido...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a class="active" href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="android.html">🤖 Android</a>
+    <a href="apple.html">🍎 Apple</a>
+    <a href="acessorios-smartphone.html">📱 Acessórios</a>
+    <a href="capas.html">🛡️ Capas</a>
+    <a href="carregadores.html">🔌 Carregadores</a>
+    <a class="active" href="fones.html">🎧 Fones de Ouvido</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Fones de Ouvido</h1>
+      <p>Qualidade sonora para Apple e Android, com modelos originais e paralelos premium.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos=[
+/* ===== APPLE (ORIGINAIS) ===== */
+{id:901,nome:"Apple AirPods 2ª Geração",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/111222/airpods-2_1609981111_g.jpg"},
+{id:902,nome:"Apple AirPods 3ª Geração",preco:1399.90,img:"https://images.kabum.com.br/produtos/fotos/191234/airpods-3_1665684963_g.jpg"},
+{id:903,nome:"Apple AirPods Pro 2ª Geração",preco:1899.90,img:"https://images.kabum.com.br/produtos/fotos/191235/airpods-pro-2_1665684999_g.jpg"},
+{id:904,nome:"Apple EarPods Lightning",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/123456/earpods-lightning_1612345678_g.jpg"},
+{id:905,nome:"Apple EarPods P2",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/123457/earpods-p2_1612345688_g.jpg"},
+
+/* ===== ANDROID (ORIGINAIS) ===== */
+{id:906,nome:"Samsung Galaxy Buds FE",preco:599.90,img:"https://images.kabum.com.br/produtos/fotos/392888/galaxy-buds-fe_1698241944_g.jpg"},
+{id:907,nome:"Samsung Galaxy Buds 2",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/241112/galaxy-buds-2_1641223344_g.jpg"},
+{id:908,nome:"Samsung Galaxy Buds Pro",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/241113/galaxy-buds-pro_1641223355_g.jpg"},
+{id:909,nome:"Xiaomi Redmi Buds 4",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/322334/redmi-buds-4_1675566778_g.jpg"},
+{id:910,nome:"Xiaomi Redmi Buds Essential",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/322335/redmi-buds-essential_1675566888_g.jpg"},
+{id:911,nome:"Motorola Moto Buds 085",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/255998/moto-buds_1659981234_g.jpg"},
+
+/* ===== PARALELOS PREMIUM ===== */
+{id:912,nome:"Fone Bluetooth TWS i12",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/199887/fone-i12_1669129988_g.jpg"},
+{id:913,nome:"Fone Bluetooth TWS i7s",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/199888/fone-i7s_1669130099_g.jpg"},
+{id:914,nome:"Fone Bluetooth TWS M10",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/288556/fone-m10_1669981111_g.jpg"},
+{id:915,nome:"Fone Bluetooth TWS F9",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/288557/fone-f9_1669982222_g.jpg"},
+{id:916,nome:"Fone Bluetooth Gamer RGB",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/299111/fone-gamer-rgb_1671122334_g.jpg"},
+
+/* ===== COM FIO ===== */
+{id:917,nome:"Fone P2 Intra Auricular JBL",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/155667/fone-jbl_1623456778_g.jpg"},
+{id:918,nome:"Fone P2 Samsung Original",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/155668/fone-samsung-p2_1623456888_g.jpg"},
+{id:919,nome:"Fone USB-C Samsung",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/199889/fone-usbc-samsung_1669130199_g.jpg"},
+{id:920,nome:"Fone USB-C Xiaomi",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/199890/fone-usbc-xiaomi_1669130299_g.jpg"},
+
+/* ===== HEADSETS ===== */
+{id:921,nome:"Headset Bluetooth JBL Tune 510BT",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/322556/jbl-510bt_1675566778_g.jpg"},
+{id:922,nome:"Headset Bluetooth Xiaomi Mi",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/322557/headset-xiaomi_1675566888_g.jpg"},
+{id:923,nome:"Headset Bluetooth Multilaser",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/255667/headset-multilaser_1635566778_g.jpg"},
+
+/* ===== COMPLEMENTARES ===== */
+{id:924,nome:"Fone Bluetooth Esportivo",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/144556/fone-esportivo_1611122334_g.jpg"},
+{id:925,nome:"Fone Bluetooth Neckband",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/144557/fone-neckband_1611122444_g.jpg"},
+{id:926,nome:"Fone Bluetooth Infantil",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/144558/fone-infantil_1611122555_g.jpg"},
+{id:927,nome:"Fone Bluetooth Dobrável",preco:139.90,img:"https://images.kabum.com.br/produtos/fotos/144559/fone-dobravel_1611122666_g.jpg"}
+];
+
+let carrinho=JSON.parse(localStorage.getItem("carrinhoCybervox"))||[];
+let favoritos=JSON.parse(localStorage.getItem("favoritosCybervox"))||[];
+
+const lista=document.getElementById("listaProdutos");
+const busca=document.getElementById("searchInput");
+const cartCount=document.querySelector(".cart-count");
+
+function atualizarCarrinho(){
+  cartCount.textContent=carrinho.reduce((t,p)=>t+p.qtd,0);
+}
+
+function addCarrinho(id){
+  const p=produtos.find(x=>x.id===id);
+  const item=carrinho.find(x=>x.id===id);
+  item?item.qtd++:carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx=favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.textContent="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.textContent="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(listaProdutos){
+  lista.innerHTML="";
+  listaProdutos.forEach(p=>{
+    const fav=favoritos.some(f=>f.id===p.id);
+    lista.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <strong>R$ ${p.preco.toFixed(2)}</strong>
+      <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+      <button class="favorito" onclick="favoritar(${p.id},this)">
+        ${fav?"♥ Favorito":"♡ Favoritar"}
+      </button>
+    </div>`;
+  });
+}
+
+busca.addEventListener("input",()=>{
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(busca.value.toLowerCase())));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Impressão | CyberVox Tecnologia</title>
+
+<meta name="description" content="Soluções de impressão: impressoras, multifuncionais, cartuchos, toners e suprimentos para empresas e uso doméstico.">
+<meta name="keywords" content="impressao, impressora, multifuncional, toner, cartucho, suprimentos, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL DO INDEX ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar impressão...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a class="active" href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Impressão</h1>
+      <p>Equipamentos e suprimentos de impressão para uso doméstico, corporativo e educacional.</p>
+    </section>
+
+    <!-- FILTRO DE PREÇO -->
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* ===== PRODUTOS IMPRESSÃO (30) ===== */
+const produtos = [
+ {nome:"Impressora HP DeskJet Ink Advantage 2774",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/164221/impressora-hp-deskjet_1643322211_g.jpg"},
+ {nome:"Impressora HP Laser 107a",preco:1099.90,img:"https://images.kabum.com.br/produtos/fotos/158998/hp-laser-107a_1633322211_g.jpg"},
+ {nome:"Multifuncional Epson EcoTank L3250",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/151998/epson-l3250_1629982211_g.jpg"},
+ {nome:"Multifuncional Epson EcoTank L4260",preco:1699.90,img:"https://images.kabum.com.br/produtos/fotos/167221/epson-l4260_1641122211_g.jpg"},
+ {nome:"Multifuncional Brother DCP-L2540DW",preco:1899.90,img:"https://images.kabum.com.br/produtos/fotos/171998/brother-l2540dw_1649982211_g.jpg"},
+ {nome:"Impressora Canon Pixma G3110",preco:1199.90,img:"https://images.kabum.com.br/produtos/fotos/158221/canon-g3110_1632211122_g.jpg"},
+ {nome:"Toner HP 12A Original",preco:379.90,img:"https://images.kabum.com.br/produtos/fotos/122221/toner-hp-12a_1622211122_g.jpg"},
+ {nome:"Toner Brother TN-3472",preco:489.90,img:"https://images.kabum.com.br/produtos/fotos/123221/toner-brother_1623322211_g.jpg"},
+ {nome:"Cartucho HP 664 Preto",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/124221/cartucho-hp-664_1624412211_g.jpg"},
+ {nome:"Cartucho HP 664 Colorido",preco:139.90,img:"https://images.kabum.com.br/produtos/fotos/125221/cartucho-hp-664-color_1625512211_g.jpg"},
+ {nome:"Refil de Tinta Epson T544 Preto",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/126221/tinta-epson_1626612211_g.jpg"},
+ {nome:"Refil de Tinta Epson T544 Color",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/127221/tinta-epson-color_1627712211_g.jpg"},
+ {nome:"Papel Sulfite A4 500 folhas",preco:39.90,img:"https://images.kabum.com.br/produtos/fotos/128221/papel-a4_1628812211_g.jpg"},
+ {nome:"Papel Fotográfico Glossy A4",preco:59.90,img:"https://images.kabum.com.br/produtos/fotos/129221/papel-fotografico_1629912211_g.jpg"},
+ {nome:"Tambor Fotocondutor Brother DR-3470",preco:699.90,img:"https://images.kabum.com.br/produtos/fotos/130221/tambor-brother_1631012211_g.jpg"},
+ {nome:"Cabeça de Impressão HP Original",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/131221/cabeca-impressao_1632112211_g.jpg"},
+ {nome:"Kit Refil Bulk Ink Universal",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/132221/bulk-ink_1633212211_g.jpg"},
+ {nome:"Fusor Impressora Laser",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/133221/fusor_1634312211_g.jpg"},
+ {nome:"Bandeja Papel Impressora",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/134221/bandeja-papel_1635412211_g.jpg"},
+ {nome:"Cabo USB Impressora",preco:29.90,img:"https://images.kabum.com.br/produtos/fotos/135221/cabo-usb-impressora_1636512211_g.jpg"},
+ {nome:"Servidor de Impressão USB",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/136221/servidor-impressao_1637612211_g.jpg"},
+ {nome:"Scanner Portátil Canon",preco:1299.90,img:"https://images.kabum.com.br/produtos/fotos/137221/scanner-portatil_1638712211_g.jpg"},
+ {nome:"Scanner de Mesa Epson",preco:999.90,img:"https://images.kabum.com.br/produtos/fotos/138221/scanner-epson_1639812211_g.jpg"},
+ {nome:"Etiqueta Adesiva A4",preco:49.90,img:"https://images.kabum.com.br/produtos/fotos/139221/etiqueta-a4_1640912211_g.jpg"},
+ {nome:"Ribbon Impressora Térmica",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/140221/ribbon-termica_1642012211_g.jpg"},
+ {nome:"Bobina Térmica 80mm",preco:19.90,img:"https://images.kabum.com.br/produtos/fotos/141221/bobina-termica_1643112211_g.jpg"},
+ {nome:"Cartucho Compatível HP 664",preco:69.90,img:"https://images.kabum.com.br/produtos/fotos/142221/cartucho-compativel_1644212211_g.jpg"},
+ {nome:"Toner Compatível Brother",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/143221/toner-compativel_1645312211_g.jpg"},
+ {nome:"Suporte para Impressora",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/144221/suporte-impressora_1646412211_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados = produtos.filter(p=>p.preco>=min && p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados = produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

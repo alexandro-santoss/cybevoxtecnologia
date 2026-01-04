@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Automação | CyberVox Tecnologia</title>
+
+<meta name="description" content="Automação residencial e comercial: smart switches, lâmpadas inteligentes, sensores, fechaduras e dispositivos IoT.">
+<meta name="keywords" content="automacao, casa inteligente, iot, sensores, smart home, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL DO INDEX ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar automação...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="hardware.html">🧩 Hardware</a>
+    <a href="software.html">💿 Software</a>
+    <a href="computadores.html">🖥️ Computadores</a>
+    <a href="setup-gamers.html">🎮 Setup Gamers</a>
+    <a href="notebook.html">💻 Notebook</a>
+    <a href="monitores.html">🖥️ Monitores</a>
+    <a href="perifericos.html">⌨️ Periféricos</a>
+    <a href="acessorios.html">🔌 Acessórios</a>
+    <a href="energia.html">⚡ Energia</a>
+    <a href="impressao.html">🖨️ Impressão</a>
+    <a href="audio.html">🔊 Áudio</a>
+    <a class="active" href="automacao.html">🤖 Automação</a>
+    <a href="redes.html">🌐 Redes</a>
+    <a href="cadeiras-gamers.html">🪑 Cadeiras Gamers</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Automação</h1>
+      <p>Soluções inteligentes para residências, escritórios e ambientes corporativos.</p>
+    </section>
+
+    <!-- FILTRO DE PREÇO -->
+    <section style="background:#fff;padding:16px;border-radius:10px;margin-bottom:20px;">
+      <strong>Filtrar por preço</strong><br><br>
+      <input type="number" id="min" placeholder="Preço mínimo" style="width:130px;padding:8px;">
+      <input type="number" id="max" placeholder="Preço máximo" style="width:130px;padding:8px;">
+      <button onclick="aplicarFiltro()" style="padding:8px 16px;">Aplicar</button>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(p){
+  const item=carrinho.find(i=>i.nome===p.nome);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(btn,p){
+  const idx=favoritos.findIndex(f=>f.nome===p.nome);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(p);
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+/* ===== PRODUTOS AUTOMAÇÃO (30) ===== */
+const produtos = [
+ {nome:"Lâmpada Inteligente Positivo Wi-Fi",preco:79.90,img:"https://images.kabum.com.br/produtos/fotos/151221/lampada-inteligente_1629982211_g.jpg"},
+ {nome:"Lâmpada Inteligente Xiaomi Mi LED",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/152221/lampada-xiaomi_1631122211_g.jpg"},
+ {nome:"Interruptor Inteligente Wi-Fi 1 Tecla",preco:99.90,img:"https://images.kabum.com.br/produtos/fotos/153221/interruptor-inteligente_1632213322_g.jpg"},
+ {nome:"Interruptor Inteligente Wi-Fi 2 Teclas",preco:139.90,img:"https://images.kabum.com.br/produtos/fotos/154221/interruptor-2t_1633322211_g.jpg"},
+ {nome:"Tomada Inteligente Wi-Fi Positivo",preco:89.90,img:"https://images.kabum.com.br/produtos/fotos/155221/tomada-inteligente_1634412211_g.jpg"},
+ {nome:"Tomada Inteligente Xiaomi",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/156221/tomada-xiaomi_1635512211_g.jpg"},
+ {nome:"Sensor de Presença Smart",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/157221/sensor-presenca_1636612211_g.jpg"},
+ {nome:"Sensor de Abertura Porta/Janela",preco:119.90,img:"https://images.kabum.com.br/produtos/fotos/158221/sensor-porta_1637712211_g.jpg"},
+ {nome:"Fechadura Digital Intelbras FR 10",preco:899.90,img:"https://images.kabum.com.br/produtos/fotos/159221/fechadura-digital_1638812211_g.jpg"},
+ {nome:"Fechadura Digital Positivo Casa Inteligente",preco:799.90,img:"https://images.kabum.com.br/produtos/fotos/160221/fechadura-positivo_1639912211_g.jpg"},
+ {nome:"Câmera Wi-Fi Intelbras IM3",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/161221/camera-wifi_1641012211_g.jpg"},
+ {nome:"Câmera Wi-Fi Xiaomi Mi Home",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/162221/camera-xiaomi_1642112211_g.jpg"},
+ {nome:"Central de Automação Smart Hub",preco:399.90,img:"https://images.kabum.com.br/produtos/fotos/163221/smart-hub_1643212211_g.jpg"},
+ {nome:"Controle Universal Inteligente IR",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/164221/controle-universal_1644312211_g.jpg"},
+ {nome:"Sensor de Temperatura e Umidade",preco:129.90,img:"https://images.kabum.com.br/produtos/fotos/165221/sensor-temp_1645412211_g.jpg"},
+ {nome:"Cortina Inteligente Wi-Fi",preco:699.90,img:"https://images.kabum.com.br/produtos/fotos/166221/cortina-inteligente_1646512211_g.jpg"},
+ {nome:"Módulo Relé Inteligente",preco:109.90,img:"https://images.kabum.com.br/produtos/fotos/167221/modulo-rele_1647612211_g.jpg"},
+ {nome:"Sirene Inteligente Wi-Fi",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/168221/sirene-inteligente_1648712211_g.jpg"},
+ {nome:"Campainha Inteligente com Câmera",preco:499.90,img:"https://images.kabum.com.br/produtos/fotos/169221/campainha-camera_1649812211_g.jpg"},
+ {nome:"Sensor de Fumaça Inteligente",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/170221/sensor-fumaca_1650912211_g.jpg"},
+ {nome:"Sensor de Vazamento de Água",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/171221/sensor-vazamento_1652012211_g.jpg"},
+ {nome:"Smart Plug com Medidor de Consumo",preco:139.90,img:"https://images.kabum.com.br/produtos/fotos/172221/smart-plug_1653112211_g.jpg"},
+ {nome:"Controle de Portão Wi-Fi",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/173221/controle-portao_1654212211_g.jpg"},
+ {nome:"Sensor de Vibração Inteligente",preco:189.90,img:"https://images.kabum.com.br/produtos/fotos/174221/sensor-vibracao_1655312211_g.jpg"},
+ {nome:"Dimmer Inteligente Wi-Fi",preco:159.90,img:"https://images.kabum.com.br/produtos/fotos/175221/dimmer_1656412211_g.jpg"},
+ {nome:"Controlador de Iluminação RGB",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/176221/controlador-rgb_1657512211_g.jpg"},
+ {nome:"Sensor de Movimento Zigbee",preco:149.90,img:"https://images.kabum.com.br/produtos/fotos/177221/sensor-zigbee_1658612211_g.jpg"},
+ {nome:"Gateway Zigbee Smart",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/178221/gateway-zigbee_1659712211_g.jpg"},
+ {nome:"Módulo Automação DIN Trilho",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/179221/modulo-din_1660812211_g.jpg"}
+];
+
+let produtosFiltrados=[...produtos];
+
+function render(){
+  const lista=document.getElementById("listaProdutos");
+  lista.innerHTML="";
+  produtosFiltrados.forEach(p=>{
+    lista.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}" loading="lazy">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick='addCarrinho(${JSON.stringify(p)})'>Adicionar ao Carrinho</button>
+        <button class="favorito" onclick='favoritar(this,${JSON.stringify(p)})'>♡ Favoritar</button>
+      </div>`;
+  });
+}
+
+function aplicarFiltro(){
+  const min=parseFloat(document.getElementById("min").value)||0;
+  const max=parseFloat(document.getElementById("max").value)||Infinity;
+  produtosFiltrados = produtos.filter(p=>p.preco>=min && p.preco<=max);
+  render();
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const termo=e.target.value.toLowerCase();
+  produtosFiltrados = produtos.filter(p=>p.nome.toLowerCase().includes(termo));
+  render();
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  atualizarCarrinho();
+  render();
+});
+</script>
+
+</body>
+</html>

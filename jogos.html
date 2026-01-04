@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<title>Jogos | CyberVox Tecnologia</title>
+
+<meta name="description" content="Jogos para PlayStation, Xbox e Nintendo. Títulos originais e lançamentos para consoles.">
+<meta name="keywords" content="jogos, games, playstation, xbox, nintendo, cybervox tecnologia">
+<meta name="author" content="CyberVox Tecnologia">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== PADRÃO VISUAL ATUAL ===== */
+.top-categories{
+  display:flex;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5e5;
+  overflow-x:auto;
+}
+.top-categories a{
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
+  text-decoration:none;
+  font-weight:600;
+}
+.top-categories a:hover,
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
+
+.layout{display:flex;gap:20px}
+
+.sidebar{
+  width:240px;
+  padding:20px;
+  background:#f1f5f9;
+  border-radius:14px;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.sidebar a:hover,
+.sidebar a.active{
+  background:#111;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.content{flex:1}
+
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:20px;
+}
+.product-card{
+  background:#fff;
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  text-align:center;
+}
+.product-card img{
+  width:100%;
+  height:170px;
+  object-fit:contain;
+}
+.product-card h3{
+  font-size:15px;
+  margin:10px 0;
+}
+.product-card strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:16px;
+}
+.product-card button{
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  background:#111;
+  color:#fff;
+}
+.product-card button.favorito{
+  background:#e5e7eb;
+  color:#111;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="logo">CYBERVOX</div>
+    <div class="search-box">
+      <input type="text" id="busca" placeholder="Buscar jogos...">
+    </div>
+    <div class="header-actions">
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
+      <a href="favoritos.html">❤️ Favoritos</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top-categories">
+  <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a class="active" href="games.html">🎮 Games</a>
+  <a href="papelaria.html">📚 Papelaria</a>
+  <a href="limpeza.html">🧼 Limpeza</a>
+  <a href="embalagens.html">📦 Embalagens</a>
+  <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="games.html">🎮 Games</a>
+    <a href="consoles.html">🕹️ Consoles</a>
+    <a class="active" href="jogos.html">🎯 Jogos</a>
+    <a href="controles.html">🎮 Controles</a>
+    <a href="headsets.html">🎧 Headsets</a>
+  </aside>
+
+  <main class="content">
+
+    <section class="hero-banner">
+      <h1>Jogos</h1>
+      <p>Jogos originais para PlayStation, Xbox e Nintendo.</p>
+    </section>
+
+    <section class="products-grid" id="listaProdutos"></section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>🚚 Entrega Rápida</div>
+    <div>🔐 Compra Segura</div>
+    <div>💳 Pagamento Facilitado</div>
+    <div>📦 Rastreamento Online</div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 CyberVox Tecnologia by Tvision Tecnologia · CNPJ 63.890.993/0001-34
+  </div>
+</footer>
+
+<script>
+const produtos = [
+ {id:601,nome:"God of War Ragnarök PS5",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/351684/god-of-war-ragnarok_1664556655_g.jpg"},
+ {id:602,nome:"Marvel's Spider-Man 2 PS5",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/391554/spider-man-2_1696368446_g.jpg"},
+ {id:603,nome:"The Last of Us Part I PS5",preco:279.90,img:"https://images.kabum.com.br/produtos/fotos/318388/the-last-of-us-part-i_1646220112_g.jpg"},
+ {id:604,nome:"EA Sports FC 24 PS5",preco:249.90,img:"https://images.kabum.com.br/produtos/fotos/391009/ea-sports-fc-24_1695139988_g.jpg"},
+ {id:605,nome:"Forza Horizon 5 Xbox",preco:229.90,img:"https://images.kabum.com.br/produtos/fotos/175564/forza-horizon-5_1634842123_g.jpg"},
+ {id:606,nome:"Halo Infinite Xbox",preco:199.90,img:"https://images.kabum.com.br/produtos/fotos/170227/halo-infinite_1631802211_g.jpg"},
+ {id:607,nome:"Red Dead Redemption 2 PS4",preco:179.90,img:"https://images.kabum.com.br/produtos/fotos/97655/red-dead-redemption-2_1543501233_g.jpg"},
+ {id:608,nome:"The Legend of Zelda Tears of the Kingdom",preco:349.90,img:"https://images.kabum.com.br/produtos/fotos/392112/zelda-tears-of-the-kingdom_1698242331_g.jpg"},
+ {id:609,nome:"Mario Kart 8 Deluxe",preco:299.90,img:"https://images.kabum.com.br/produtos/fotos/101554/mario-kart-8-deluxe_1550099223_g.jpg"},
+ {id:610,nome:"Hogwarts Legacy PS5",preco:259.90,img:"https://images.kabum.com.br/produtos/fotos/331113/hogwarts-legacy_1655992211_g.jpg"}
+];
+
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+let favoritos = JSON.parse(localStorage.getItem("favoritosCybervox")) || [];
+
+function atualizarCarrinho(){
+  document.querySelector(".cart-count").innerText =
+    carrinho.reduce((s,i)=>s+i.qtd,0);
+}
+
+function addCarrinho(id){
+  const p = produtos.find(x=>x.id===id);
+  const item = carrinho.find(x=>x.id===id);
+  item ? item.qtd++ : carrinho.push({...p,qtd:1});
+  localStorage.setItem("carrinhoCybervox",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function favoritar(id,btn){
+  const idx = favoritos.findIndex(f=>f.id===id);
+  if(idx>=0){
+    favoritos.splice(idx,1);
+    btn.innerText="♡ Favoritar";
+  }else{
+    favoritos.push(produtos.find(p=>p.id===id));
+    btn.innerText="♥ Favorito";
+  }
+  localStorage.setItem("favoritosCybervox",JSON.stringify(favoritos));
+}
+
+function renderizar(lista){
+  const el=document.getElementById("listaProdutos");
+  el.innerHTML="";
+  lista.forEach(p=>{
+    const fav = favoritos.some(f=>f.id===p.id);
+    el.innerHTML+=`
+      <div class="product-card">
+        <img src="${p.img}">
+        <h3>${p.nome}</h3>
+        <strong>R$ ${p.preco.toFixed(2)}</strong>
+        <button onclick="addCarrinho(${p.id})">Adicionar ao Carrinho</button>
+        <button class="favorito" onclick="favoritar(${p.id},this)">
+          ${fav?"♥ Favorito":"♡ Favoritar"}
+        </button>
+      </div>`;
+  });
+}
+
+document.getElementById("busca").addEventListener("input",e=>{
+  const t=e.target.value.toLowerCase();
+  renderizar(produtos.filter(p=>p.nome.toLowerCase().includes(t)));
+});
+
+renderizar(produtos);
+atualizarCarrinho();
+</script>
+
+</body>
+</html>
