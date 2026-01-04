@@ -183,6 +183,118 @@
   box-shadow:0 8px 20px rgba(0,0,0,.35);
 }
 .whatsapp-btn img{width:34px}
+
+/* ================= RESPONSIVO GLOBAL ================= */
+
+/* TABLET */
+@media (max-width: 1024px){
+  .header-container{
+    padding:12px;
+  }
+
+  .products-grid{
+    gap:20px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+
+  /* HEADER */
+  .header-container{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .logo{
+    text-align:center;
+    font-size:22px;
+  }
+
+  .search-box{
+    width:100%;
+  }
+
+  .search-box input{
+    width:100%;
+    font-size:16px;
+  }
+
+  .header-actions{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+  }
+
+  /* MENU SUPERIOR */
+  .top-categories{
+    gap:8px;
+    padding:10px;
+  }
+
+  .top-categories a{
+    padding:8px 14px;
+    font-size:14px;
+    white-space:nowrap;
+  }
+
+  /* LAYOUT */
+  .layout{
+    flex-direction:column;
+  }
+
+  /* SIDEBAR VIRA MENU HORIZONTAL */
+  .sidebar{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:10px;
+  }
+
+  .sidebar a{
+    flex:0 0 auto;
+    margin-bottom:0;
+    white-space:nowrap;
+  }
+
+  /* GRID DE PRODUTOS */
+  .products-grid{
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+  }
+
+  .product-card{
+    padding:14px;
+  }
+
+  .product-card img{
+    height:120px;
+  }
+
+  .product-card h3{
+    font-size:14px;
+  }
+
+  .product-card button,
+  .product-card a{
+    padding:12px;
+    font-size:14px;
+  }
+
+  /* FOOTER */
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    font-size:14px;
+  }
+
+  .footer-content{
+    grid-template-columns:1fr;
+    gap:20px;
+    text-align:center;
+  }
+}
+
 </style>
 </head>
 
