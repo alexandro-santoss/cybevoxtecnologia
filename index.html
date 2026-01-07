@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 
-<title>CyberVox Tecnologia | Informática, Papelaria, Limpeza e Embalagens</title>
+<title>CyberVox Tecnologia | Informática, Papelaria, Limpeza, Embalagens e Soluções Digitais</title>
 
-<meta name="description" content="CyberVox Tecnologia: informática, papelaria, limpeza e embalagens com entrega rápida, compra segura e atendimento profissional.">
-<meta name="keywords" content="cybervox, informatica, papelaria, limpeza, embalagens">
+<meta name="description" content="CyberVox Tecnologia: informática, papelaria, limpeza, embalagens, serviços de TI e soluções digitais com entrega rápida, compra segura e atendimento profissional.">
+<meta name="keywords" content="cybervox, informatica, papelaria, limpeza, embalagens, serviços de ti, soluções digitais">
 <meta name="author" content="CyberVox Tecnologia">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,34 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-/* ================= HEADER ================= */
-.header{background:#fff;border-bottom:1px solid #e5e5e5}
-.header-container{
-  max-width:1280px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:15px;
-}
-.logo{font-size:26px;font-weight:800;color:#111}
-
-.search-box input{
-  padding:12px 16px;
-  border-radius:30px;
-  border:1px solid #ddd;
-  min-width:280px;
-}
-
-.header-actions a{
-  margin-left:14px;
-  font-weight:600;
-  text-decoration:none;
-  color:#111;
-}
-
-/* ================= MENU SUPERIOR ================= */
+/* ===== PADRÃO VISUAL (MESMO TOPO DA PÁGINA MODELO) ===== */
 .top-categories{
   display:flex;
   gap:10px;
@@ -51,17 +24,23 @@
   overflow-x:auto;
 }
 .top-categories a{
-  padding:10px 16px;
-  border-radius:20px;
-  background:#f0f0f0;
-  color:#222;
+  padding:8px 14px;
+  border-radius:18px;
+  background:#f1f5f9;
+  color:#111;
   text-decoration:none;
   font-weight:600;
   white-space:nowrap;
 }
 .top-categories a:hover,
-.top-categories a.active{background:#111;color:#fff}
-.top-categories a.ofertas{background:#d62828;color:#fff}
+.top-categories a.active{
+  background:#111;
+  color:#fff;
+}
+.top-categories a.ofertas{
+  background:#dc2626;
+  color:#fff;
+}
 
 /* ================= HERO ================= */
 .hero{
@@ -73,75 +52,187 @@
 .hero h1{font-size:36px;margin-bottom:10px}
 .hero p{font-size:18px;opacity:.9}
 
-/* ================= GRID PADRÃO ================= */
+/* ================= GRID (2 FILEIRAS DE 3) ================= */
 .products-grid{
   max-width:1280px;
   margin:40px auto;
   padding:0 20px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:25px;
 }
+
+/* ================= CARDS ROBUSTOS / PROFISSIONAIS ================= */
+/* Card inteiro clicável + botão mantém função */
 .product-card{
+  position:relative;
   background:#fff;
-  border-radius:12px;
-  padding:20px;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  text-align:center;
+  border-radius:18px;
+  border:1px solid rgba(15,23,42,.10);
+  box-shadow:0 10px 24px rgba(2,6,23,.06);
+  overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  display:flex;
+  flex-direction:column;
+  min-height:360px;
 }
+.product-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 45px rgba(2,6,23,.12);
+  border-color:rgba(15,23,42,.18);
+}
+
+/* Link “card inteiro” (não muda HTML estrutural do site, só adiciona a âncora invisível) */
+.product-card .card-link{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  text-indent:-9999px;
+  overflow:hidden;
+}
+
+/* Media robusta com fundo e overlay */
+.product-card .media{
+  position:relative;
+  height:210px;
+  background:linear-gradient(180deg,#f8fafc,#eef2ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.product-card .media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(600px 180px at 15% 10%, rgba(220,38,38,.14), transparent 60%),
+             radial-gradient(600px 180px at 85% 0%, rgba(15,23,42,.10), transparent 55%);
+  pointer-events:none;
+  opacity:.9;
+}
+
+/* Imagem sem corte (contain), com zoom suave */
 .product-card img{
   width:100%;
-  height:160px;
+  height:100%;
   object-fit:contain;
+  transform:scale(1);
+  transition:transform .28s ease;
+  z-index:0;
 }
+.product-card:hover img{
+  transform:scale(1.05);
+}
+
+/* Conteúdo */
+.product-card .body{
+  padding:16px 16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex:1;
+}
+
+/* Título */
 .product-card h3{
-  font-size:16px;
-  margin:12px 0;
-  color:#111;
+  margin:0;
+  color:#0f172a;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:.2px;
 }
-.product-card a{
-  display:inline-block;
-  margin-top:10px;
-  padding:12px 20px;
+
+/* Descrição */
+.product-card .desc{
+  margin:0;
+  color:#475569;
+  font-size:14px;
+  line-height:1.45;
+  min-height:40px;
+}
+
+/* Linha de “chips” (benefícios rápidos) */
+.product-card .chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:2px;
+}
+.product-card .chip{
+  background:#f1f5f9;
+  color:#0f172a;
+  border:1px solid rgba(15,23,42,.08);
+  font-size:12px;
+  font-weight:800;
+  padding:6px 10px;
+  border-radius:999px;
+}
+
+/* Rodapé do card: botão + seta */
+.product-card .actions{
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding-top:4px;
+}
+
+/* Botão premium (sempre acima do card-link) */
+.product-card .btn{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px;
+  border-radius:12px;
   background:#111;
   color:#fff;
   text-decoration:none;
-  border-radius:8px;
-  font-weight:600;
+  font-weight:900;
+  transition:transform .18s ease, background .18s ease, opacity .18s ease;
+  white-space:nowrap;
+}
+.product-card .btn::after{
+  content:"→";
+  font-weight:900;
+  transition:transform .18s ease;
+}
+.product-card:hover .btn{
+  transform:translateY(-1px);
+  background:#000;
+}
+.product-card:hover .btn::after{
+  transform:translateX(4px);
 }
 
-/* ================= RODAPÉ PADRÃO ================= */
-.footer{
-  background:#111;
-  color:#e5e5e5;
-  margin-top:40px;
+/* Selo no canto (Categoria/Serviço) */
+.product-card .badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:2;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(15,23,42,.10);
+  color:#0f172a;
+  font-weight:900;
+  font-size:12px;
+  padding:7px 10px;
+  border-radius:999px;
+  backdrop-filter:blur(6px);
 }
-.footer-top{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  padding:20px;
-  border-bottom:1px solid #222;
-  font-weight:600;
-  text-align:center;
+
+/* Indicador de destaque (opcional) */
+.product-card .badge.badge-hot{
+  border-color:rgba(220,38,38,.18);
+  box-shadow:0 10px 22px rgba(220,38,38,.14);
 }
-.footer-content{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:40px;
-  padding:30px 20px;
-}
-.footer-content h4{margin-bottom:12px;color:#fff}
-.footer-content ul{list-style:none;padding:0;margin:0}
-.footer-content li{margin-bottom:8px}
-.footer-content a{text-decoration:none;color:#cfcfcf}
-.footer-content a:hover{color:#fff;text-decoration:underline}
-.footer-bottom{
-  text-align:center;
-  padding:15px;
-  font-size:14px;
-  color:#9ca3af;
-  border-top:1px solid #222;
+
+/* Acessibilidade: foco */
+.product-card:focus-within{
+  outline:2px solid rgba(15,23,42,.25);
+  outline-offset:4px;
 }
 
 /* ================= WHATSAPP ================= */
@@ -163,26 +254,70 @@
 }
 .whatsapp-btn img{width:34px}
 
-/* ================= RESPONSIVO ================= */
-@media (max-width:768px){
-  .header-container{flex-direction:column;gap:12px}
-  .search-box input{width:100%;min-width:unset}
+/* ================= RESPONSIVO GLOBAL (MESMO PADRÃO DO MODELO) ================= */
+@media (max-width: 1024px){
+  .header-container{padding:12px;}
+  .products-grid{gap:20px;}
+}
+
+@media (max-width: 768px){
+  .header-container{
+    flex-direction:column;
+    gap:12px;
+  }
+  .logo{
+    text-align:center;
+    font-size:22px;
+  }
+  .search-box{width:100%;}
+  .search-box input{
+    width:100%;
+    font-size:16px;
+  }
   .header-actions{
     width:100%;
     display:flex;
     justify-content:space-between;
+    font-size:14px;
   }
-  .hero h1{font-size:28px}
-  .hero p{font-size:16px}
+
+  .top-categories{
+    gap:8px;
+    padding:10px;
+  }
+  .top-categories a{
+    padding:8px 14px;
+    font-size:14px;
+    white-space:nowrap;
+  }
+
   .products-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:16px;
   }
-  .product-card img{height:120px}
+  .product-card{min-height:340px;}
+  .product-card .media{height:180px;}
+  .product-card h3{font-size:15px;}
+  .product-card .btn{padding:12px 14px;font-size:14px;}
+
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    font-size:14px;
+  }
   .footer-content{
     grid-template-columns:1fr;
+    gap:20px;
     text-align:center;
   }
+}
+
+@media (max-width: 480px){
+  .products-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .product-card{min-height:320px;}
+  .product-card .media{height:170px;}
 }
 </style>
 </head>
@@ -193,21 +328,25 @@
   <div class="header-container">
     <div class="logo">CYBERVOX</div>
     <div class="search-box">
-      <input type="text" placeholder="Buscar produtos...">
+      <input type="text" id="busca" placeholder="Buscar no site...">
     </div>
     <div class="header-actions">
-      <a href="carrinho.html">🛒 Carrinho</a>
+      <a href="carrinho.html">🛒 Carrinho <span class="cart-count">0</span></a>
       <a href="favoritos.html">❤️ Favoritos</a>
-      <a href="minha-conta.html">👤 Conta</a>
+      <a href="minha-conta.html">👤 Minha Conta</a>
     </div>
   </div>
 </header>
 
 <nav class="top-categories">
   <a href="informatica.html">💻 Informática</a>
+  <a href="smartphones.html">📱 Smartphones</a>
+  <a href="games.html">🎮 Games</a>
   <a href="papelaria.html">📚 Papelaria</a>
   <a href="limpeza.html">🧼 Limpeza</a>
   <a href="embalagens.html">📦 Embalagens</a>
+  <a href="servicos-ti.html">🛠️ Serviços de TI</a>
+  <a href="desenvolvimento.html">💡 Soluções Digitais</a>
   <a class="ofertas" href="ofertas.html">🔥 Ofertas</a>
 </nav>
 
@@ -216,30 +355,126 @@
   <p>Tudo para seu negócio, escola ou casa em um só lugar</p>
 </section>
 
-<section class="products-grid">
+<section class="products-grid" id="cardsHome">
 
-  <div class="product-card">
-    <img src="img/home/informatica.jpg" alt="Produtos de Informática" loading="lazy">
-    <h3>Informática</h3>
-    <a href="informatica.html">Ver produtos</a>
+  <div class="product-card" data-card="informatica computador notebook perifericos rede impressao">
+    <span class="badge">Categoria</span>
+    <a class="card-link" href="informatica.html">Informática</a>
+    <div class="media">
+      <img src="img/home/informatica.jpg" alt="Informática" loading="lazy">
+    </div>
+    <div class="body">
+      <h3>Informática</h3>
+      <p class="desc">Computadores, periféricos e acessórios para casa e empresa.</p>
+      <div class="chips">
+        <span class="chip">Periféricos</span>
+        <span class="chip">Redes</span>
+        <span class="chip">Impressão</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="informatica.html">Ver produtos</a>
+      </div>
+    </div>
   </div>
 
-  <div class="product-card">
-    <img src="img/home/papelaria.jpg" alt="Produtos de Papelaria" loading="lazy">
-    <h3>Papelaria</h3>
-    <a href="papelaria.html">Ver produtos</a>
+  <div class="product-card" data-card="papelaria escolar caderno caneta escritorio organizacao">
+    <span class="badge">Categoria</span>
+    <a class="card-link" href="papelaria.html">Papelaria</a>
+    <div class="media">
+      <img src="img/home/papelaria.jpg" alt="Papelaria" loading="lazy">
+    </div>
+    <div class="body">
+      <h3>Papelaria</h3>
+      <p class="desc">Itens escolares e escritório, organização e produtividade.</p>
+      <div class="chips">
+        <span class="chip">Escolar</span>
+        <span class="chip">Escritório</span>
+        <span class="chip">Organização</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="papelaria.html">Ver produtos</a>
+      </div>
+    </div>
   </div>
 
-  <div class="product-card">
-    <img src="img/home/limpeza.jpg" alt="Produtos de Limpeza" loading="lazy">
-    <h3>Limpeza</h3>
-    <a href="limpeza.html">Ver produtos</a>
+  <div class="product-card" data-card="limpeza produtos limpeza casa profissional higiene">
+    <span class="badge">Categoria</span>
+    <a class="card-link" href="limpeza.html">Limpeza</a>
+    <div class="media">
+      <img src="img/home/limpeza.jpg" alt="Limpeza" loading="lazy">
+    </div>
+    <div class="body">
+      <h3>Limpeza</h3>
+      <p class="desc">Produtos domésticos e profissionais para todos os ambientes.</p>
+      <div class="chips">
+        <span class="chip">Higiene</span>
+        <span class="chip">Profissional</span>
+        <span class="chip">Casa</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="limpeza.html">Ver produtos</a>
+      </div>
+    </div>
   </div>
 
-  <div class="product-card">
-    <img src="img/home/embalagens.jpg" alt="Embalagens e Caixas" loading="lazy">
-    <h3>Embalagens</h3>
-    <a href="embalagens.html">Ver produtos</a>
+  <div class="product-card" data-card="embalagens caixas sacolas fitas protecao envio delivery">
+    <span class="badge">Categoria</span>
+    <a class="card-link" href="embalagens.html">Embalagens</a>
+    <div class="media">
+      <img src="img/home/embalagens.jpg" alt="Embalagens" loading="lazy">
+    </div>
+    <div class="body">
+      <h3>Embalagens</h3>
+      <p class="desc">Caixas, fitas e proteção para envios, delivery e estoque.</p>
+      <div class="chips">
+        <span class="chip">Caixas</span>
+        <span class="chip">Fitas</span>
+        <span class="chip">Delivery</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="embalagens.html">Ver produtos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card" data-card="servicos de ti suporte tecnico redes manutencao backup contratos">
+    <span class="badge badge-hot">Serviço</span>
+    <a class="card-link" href="servicos-ti.html">Serviços de TI</a>
+    <div class="media">
+      <img src="img/home/servicos-ti.jpg" alt="Serviços de TI" loading="lazy">
+    </div>
+    <div class="body">
+      <h3>Serviços de TI</h3>
+      <p class="desc">Suporte, redes, manutenção e backup com atendimento profissional.</p>
+      <div class="chips">
+        <span class="chip">Suporte</span>
+        <span class="chip">Redes</span>
+        <span class="chip">Backup</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="servicos-ti.html">Conhecer</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card" data-card="solucoes digitais desenvolvimento sites sistemas aplicativos automacao">
+    <span class="badge badge-hot">Digital</span>
+    <a class="card-link" href="desenvolvimento.html">Soluções Digitais</a>
+    <div class="media">
+      <img src="img/home/solucoes-digitais.jpg" alt="Soluções Digitais" loading="lazy">
+    </div>
+    <div class="body">
+      <h3>Soluções Digitais</h3>
+      <p class="desc">Sites, sistemas sob medida, automações e aplicativos.</p>
+      <div class="chips">
+        <span class="chip">Sites</span>
+        <span class="chip">Sistemas</span>
+        <span class="chip">Apps</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="desenvolvimento.html">Ver soluções</a>
+      </div>
+    </div>
   </div>
 
 </section>
@@ -301,9 +536,34 @@
 
 <div class="whatsapp-float">
   <a class="whatsapp-btn" href="https://wa.me/5511978357841" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
   </a>
 </div>
+
+<script>
+/* ===== PADRÃO DE CARRINHO (MESMO DAS OUTRAS PÁGINAS) ===== */
+let carrinho = JSON.parse(localStorage.getItem("carrinhoCybervox")) || [];
+
+function atualizarCarrinho(){
+  const el = document.querySelector(".cart-count");
+  if(!el) return;
+  el.innerText = carrinho.reduce((s,i)=> s + (i.qtd || 0), 0);
+}
+
+/* ===== BUSCA FUNCIONAL NO INDEX (FILTRA OS CARDS DA HOME) ===== */
+document.getElementById("busca").addEventListener("input", (e) => {
+  const termo = (e.target.value || "").toLowerCase().trim();
+  const cards = document.querySelectorAll("#cardsHome .product-card");
+  cards.forEach(card => {
+    const hay = ((card.getAttribute("data-card") || "") + " " + (card.innerText || "")).toLowerCase();
+    card.style.display = (!termo || hay.includes(termo)) ? "" : "none";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  atualizarCarrinho();
+});
+</script>
 
 </body>
 </html>
